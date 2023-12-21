@@ -1,0 +1,18 @@
+{
+    "NameProject": "Our Name of App",
+    "MyData": "My data",
+    "SignUp": "Sign Up",
+    "AboutUs": "About us", 
+    "Salons" : "Salons", 
+    "YourID": "Your ID: ",
+    "YourEmail": "Your email: ",
+    "YourNumber": "Your number: ",
+    "YourGender": "Your gender: ",
+    "YourName": "Your name: ",
+    "MyNotes": "My notes",
+    "EditProfile": "Edit profile",
+    "MyFutureProcedures": "My future procedures:",
+    "AllSalons":"Salons from ur region",
+    "Story":"History of notes",
+    "About":" Information about the application: Program version: 1.0.3. For any questions please contact: @Prudey69 & @Dstels"
+}

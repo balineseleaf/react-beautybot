@@ -1,0 +1,57 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	color: var(--tg-theme-text-color);
+	background: var(--tg-theme-bg-color);
+}
+
+.mynotes__container {
+    padding-top: 10px;
+	width: 390px;
+    margin: 20px auto 0;
+}
+
+.back-arrow {
+    color: #7371e0;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.4s ease-out;
+    opacity: 1;
+}
+.back-arrow:hover {
+    opacity: 0.7;
+}
+
+.mynotes__header {
+    margin: 0;
+    font-weight: 900;
+    font-size: 27px;
+    color: #000000;
+    padding: 20px 0 0 0;
+    text-align: center;
+    color: #7371e0;
+
+}
+
+.mynotes__image-container {
+    margin-top: 50px;
+}
+
+.mynotes__image {
+    margin-left: 20%;
+    transform: scale(1);
+}
+
+.textwithoutnotes {
+    margin: 0;
+    font-weight: 900;
+    font-size: 24   px;
+    color: #000000;
+    padding: 20px 0 0 0;
+    text-align: center;
+    color: #7371e0;
+    border-color: #7371e0;
+    border-style: solid;
+    padding-bottom: 100px;
+}
