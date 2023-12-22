@@ -29,12 +29,12 @@ const { t } = useTranslation();
         setUserInfo() 
     })
 
-    // let tg = window.Telegram.WebApp; // создаем объект телеграмма
-    // tg.BackButton.show();
-    // tg.onEvent('backButtonClicked', function () {
-    // window.location.href = '/';
-    // tg.BackButton.hide();
-    // });
+    let tg = window.Telegram.WebApp; // создаем объект телеграмма
+    tg.BackButton.show();
+    tg.onEvent('backButtonClicked', function () {
+    window.location.href = '/';
+    tg.BackButton.hide();
+    });
 
 
     return (

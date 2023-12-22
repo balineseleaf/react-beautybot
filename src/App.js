@@ -24,7 +24,6 @@ function App() {
   });
 
   function getInfoAboutUser(formData) {
-    console.log('app.js formData',formData);
     api
       .getUserInfo()
       .then((clientData) => {
