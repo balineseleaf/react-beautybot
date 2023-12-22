@@ -2,29 +2,23 @@ import React, {useEffect} from "react";
 import './Profile.css';
 import { useFormWithValidation } from '../../utils/useForm';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = ({onEditProfile}) => {
+  const { t } = useTranslation();
   const currentUser = React.useContext(CurrentUserContext);
+  const navigate = useNavigate();
+
 
   const { handleChange, formValue, isValid, resetForm } =
     useFormWithValidation();
 
-    const isDataChanged =
-    formValue.name !== currentUser.name ||
-    formValue.email !== currentUser.email || 
-    formValue.gender !== currentUser.gender ||
-    formValue.phoneNumber !== currentUser.phoneNumber
-
-    // function sendDataForm() {
-    //   const formData = {
-    //     clientName: name,
-    //     clientGender: gender,
-    //     clientPhone: phone,
-    //     clientEmail: email,
-    //     clientId: clientId,
-    //   };
-    //   updateUser(formData);
-    // }
+    // const isDataChanged =
+    // formValue.name !== currentUser.name ||
+    // formValue.email !== currentUser.email || 
+    // formValue.gender !== currentUser.gender ||
+    // formValue.phoneNumber !== currentUser.phoneNumber
 
     const handleInputChange = (e) => {
       handleChange(e);
@@ -43,18 +37,19 @@ const Profile = ({onEditProfile}) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onEditProfile({
+    const formData = {
       name: formValue.name,
       gender: formValue.gender,
       phoneNumber: formValue.phoneNumber,
       email: formValue.email,
-    });
-    window.location.href = '/preprofile';
+    };
+    onEditProfile(formData);
+    navigate('/preprofile');
   }
     return ( 
         <div className="popup popup_opened popup_type_edit-avatar" id="popup">
         <div className="profile__container">
-          <h2 className="profile__header">Мои Данные:</h2>
+          <h2 className="profile__header">{t("MyData")}:</h2>
           <form
             onSubmit={handleSubmit}
             id="formEditProfile"
@@ -63,8 +58,8 @@ const Profile = ({onEditProfile}) => {
             noValidate
           >
             <fieldset className="profile__fieldset">
-              <p id="userID" className="profile__id">Ваш ID: </p>
-              <p className="name_paragraph">Введите ваше имя:</p>
+              <p id="userID" className="profile__id">{t("YourID")}{currentUser.clientId}</p>
+              <p className="name_paragraph">{t("InputYourName")}</p>
               <input
                 id="name-input"
                 className="profile_name popup__input popup__input_type_edit-name"
@@ -84,7 +79,7 @@ const Profile = ({onEditProfile}) => {
                 Введите ваше имя
               </div> */}
               {/* )} */}
-              <p className="gender_paragraph">Выберите ваш пол:</p>
+              <p className="gender_paragraph">{t("ChooseYourGender")}</p>
               <div className="radio_inputs">
               <input
                 type="radio"
@@ -96,7 +91,7 @@ const Profile = ({onEditProfile}) => {
                 onChange={handleInputChange}
                 //onChange={(e) => setGender(e.target.value)}
               />
-              <label className="radio_label" for="m_gender">М</label><br />
+              <label className="radio_label" for="m_gender">{t("MaleGender")}</label><br />
               <input
                 type="radio"
                 className="profile_gender popup__input"
@@ -107,7 +102,7 @@ const Profile = ({onEditProfile}) => {
                 onChange={handleInputChange}
                 //onChange={(e) => setGender(e.target.value)}
               />
-              <label className="radio_label" for="f_gender">Ж</label><br />
+              <label className="radio_label" for="f_gender">{t("FemaleGender")}</label><br />
               {/* {formValid || gender ? null : ( */}
               {/* <div
                 className="form__inputs_error gender__input-error"
@@ -119,15 +114,15 @@ const Profile = ({onEditProfile}) => {
               </div>
   
               <div className="inputs__container">
-                <p className="phone_paragraph">Введите ваш номер телефона:</p>
+                <p className="phone_paragraph">{t("InputYourNumber")}</p>
                 <input
                   className="profile_number popup__input"
                   id="phoneNumber"
-                  value={formValue.phoneNumber}
+                  value={formValue.phone}
+                  //onChange={handleInputChange}
                   onChange={handleInputChange}
-                  //onChange={(e) => setPhone(e.target.value)}
                   type="tel"
-                  name="phoneNumber"
+                  name="phone"
                   placeholder="+7(921)000-00-00"
                 />
                  {/* {formValid || !phone || validatePhone(phone) ? null : ( */}
@@ -138,15 +133,15 @@ const Profile = ({onEditProfile}) => {
                   Введите ваш номер телефона
                 </div> */}
                  {/* )} */}
-                <p className="email_paragraph">Введите вашу почту:</p>
+                <p className="email_paragraph">{t("InputYourMail")}</p>
                 <input
                   id="email-input"
                   className="profile_email popup__input"
                   type="email"
                   name="email"
                   value={formValue.email}
+                  //onChange={handleInputChange}
                   onChange={handleInputChange}
-                  //onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="Email"
                 />
@@ -162,11 +157,10 @@ const Profile = ({onEditProfile}) => {
               <button
                 type="submit"
                 id="submitButton"
-                // disabled={!formValid}
                 className="profile__submit popup__submitAddCard"
-                disabled={!isValid || !isDataChanged}
+                //disabled={!isValid}
               >
-                Сохранить
+                {t("Submit")}
               </button>
             </fieldset>
           </form>

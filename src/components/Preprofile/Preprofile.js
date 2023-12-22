@@ -1,40 +1,32 @@
 import React from "react";
 import { useEffect } from "react";
 import './Preprofile.css';
-import Api from '../../utils/Api';
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
-const Preprofile = () => {
-const apiPreProfile = new Api({
-    url: 'http://localhost:5000',
-    headers: {
-        //authorization: '79aff481-506e-4c4c-8308-be7829df1002',
-        'Content-Type': 'application/json',
-    },
-    });
-    
+const Preprofile = (props) => {
+const {data} = props;
+const currentUser = React.useContext(CurrentUserContext);
+console.log('preprofile data', data);
+console.log('preprofile', currentUser);
+const { t } = useTranslation();
     //получение инфо о пользователе
-    function getInfoAboutUser() {
-    const userId = document.getElementById('userID');
-    const userName = document.getElementById('userName');
-    const userPhone = document.getElementById('userPhone');
-    const userEmail = document.getElementById('userEmail');
-    const userGender = document.getElementById('userGender');
-    apiPreProfile
-        .getUserInfo()
-        .then((clientData) => {
-            userId.textContent = t("YourID") + ': ' + clientData.clientId;
-            userName.textContent = t("YourName") + ': ' + clientData.clientName;
-            userPhone.textContent = t("YourNumber") + ': ' + clientData.clientPhone;
-            userEmail.textContent = t("YourEmail") + ': ' + clientData.clientEmail;
-            userGender.textContent = t("YourGender") + ': ' + clientData.clientGender;
-        })
-        .catch((error) => console.log(error));
+    function setUserInfo() {
+        const userId = document.getElementById('userID');
+        const userName = document.getElementById('userName');
+        const userPhone = document.getElementById('userPhone');
+        const userEmail = document.getElementById('userEmail');
+        const userGender = document.getElementById('userGender');
+        userId.textContent = t("YourID") + ': ' + currentUser.clientId;
+        userName.textContent = t("YourName") + ': ' + currentUser.clientName;
+        userPhone.textContent = t("YourNumber") + ': ' + currentUser.clientPhone;
+        userEmail.textContent = t("YourEmail") + ': ' + currentUser.clientEmail;
+        userGender.textContent = t("YourGender") + ': ' + currentUser.clientGender;
     }
 
     useEffect(()=>{
-        getInfoAboutUser() 
+        setUserInfo() 
     })
 
     // let tg = window.Telegram.WebApp; // создаем объект телеграмма
@@ -44,7 +36,6 @@ const apiPreProfile = new Api({
     // tg.BackButton.hide();
     // });
 
-    const { t } = useTranslation();
 
     return (
         <div className="popup popup_opened popup_type_edit-avatar" id="popup">

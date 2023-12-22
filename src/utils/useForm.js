@@ -4,24 +4,28 @@ export function useFormWithValidation() {
   const [formValue, setFormValue] = useState({
     name: '',
     gender: '',
-    phoneNumber: '',
+    phone: '',
     email: '',
-  })
+  });
 
   const[isValid, setIsValid] = useState(false);
 
   const handleChange = (e) => {
-    const input = e.target;
-    const value = input.value;
-    const name = input.name;
+    const input = e.target;// здесь мой текущий инпут(dom), куда я ввожу
+    const value = input.value;// то, что я ввел в инпут 
+    const name = input.name;// атрибут name у input-a
 
     setFormValue({
       ...formValue,
       [name]: value
-    });
+    }); // обновляем formValue ,собирая данные с инпута
+
+    console.log("hook", formValue);
 
     setIsValid(input.closest("form").checkValidity());
   }
+
+  console.log("hook out", formValue);
 
   const resetForm = useCallback(
   (

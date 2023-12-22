@@ -14,5 +14,12 @@
     "MyFutureProcedures": "My future procedures:",
     "AllSalons":"Salons from ur region",
     "Story":"History of notes",
+    "InputYourName": "Input your name",
+    "ChooseYourGender" : "Choose your gender",
+    "MaleGender":"M",
+    "FemaleGender":"F",
+    "InputYourNumber": "Input your phone number",
+    "InputYourMail": "Input your email",
+    "Submit": "Submit",
     "About":" Information about the application: Program version: 1.0.3. For any questions please contact: @Prudey69 & @Dstels"
 }

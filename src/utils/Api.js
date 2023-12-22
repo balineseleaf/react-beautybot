@@ -13,7 +13,6 @@ export default class Api {
   }
 
   editProfile(data) {
-    console.log(data);
     return fetch(`${this._url}/clientData/`, {
       method: 'POST',
       headers: {
