@@ -5,7 +5,7 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-const Profile = ({onEditProfile, setCurrentUser}) => {
+const Profile = ({onEditProfile}) => {
   const { t } = useTranslation();
   const currentUser = React.useContext(CurrentUserContext);
   const navigate = useNavigate();
@@ -51,6 +51,7 @@ const Profile = ({onEditProfile, setCurrentUser}) => {
       formData.clientId = currentUser.clientId;
       console.log('formData', formData);
       onEditProfile(formData);
+      navigate("/preprofile");
     }
     
     return ( 

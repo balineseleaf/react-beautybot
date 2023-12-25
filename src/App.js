@@ -13,6 +13,7 @@ import { CurrentUserContext } from "./context/CurrentUserContext";
 
 function App() {
   const[currentUser, setCurrentUser] = useState({});
+  const[version, setVersion] = useState('');
   //const [dataForPreprofile, setDataForPreprofile] = useState(null);
 
   const api = new Api({
@@ -27,21 +28,36 @@ function App() {
     api
       .getUserInfo()
       .then((clientData) => {
-        console.log('идет с сервера', clientData);
+        //console.log('идет с сервера', clientData);
         setCurrentUser(clientData);
       })
       .catch((error) => console.log(error));
   }
 
-  function updateUserInfo(data) {
-    console.log("inside app js", data);
-    api.editProfile(data)
+  function updateUserInfo(formData) {
+    //console.log("app.js", formData);
+    api.editProfile(formData)
     .then((user) => {
       console.log('POST : идет с сервера ', user);
       setCurrentUser(user);
     })
+  
     .catch((error) => console.log(error));
+}
+
+  function getVersionApp() {
+    api
+      .getVersion()
+      .then((version) => {
+        console.log('version', version);
+        setVersion(version);
+      })
+      .catch((error) => console.log(error));
   }
+
+  useEffect(() => {
+    getVersionApp();
+  }, []);
 
   //   useEffect(() => {
   //     // Сохраняем currentUser в localStorage
@@ -65,7 +81,7 @@ function App() {
             />
             <Route path="/salons" element={<Salons/>}
             />
-            <Route path="/aboutus" element={<About/>}
+            <Route path="/aboutus" element={<About version={version}/>}
             />
           </Routes>
     </div>
