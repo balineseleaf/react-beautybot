@@ -42,14 +42,14 @@ const Profile = ({onEditProfile, setCurrentUser}) => {
     function handleSubmit(e) {
       e.preventDefault();
       const formData = {
-        clientId: currentUser.clientId,
         clientName: formValue.name,
         clientGender: formValue.gender,
         clientPhone: formValue.phone,
         clientEmail: formValue.email,
       };
+
+      formData.clientId = currentUser.clientId;
       console.log('formData', formData);
-  
       onEditProfile(formData);
     }
     
@@ -93,7 +93,7 @@ const Profile = ({onEditProfile, setCurrentUser}) => {
                 className="profile_gender"
                 id="m_gender"
                 name="gender"
-                value="Mal" // Установите значение для мужского пола
+                value="male" // Установите значение для мужского пола
                 checked={formValue.gender === 'male'} 
                 //value={formValue.gender}
                 //checked={gender === 'М'}

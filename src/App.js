@@ -34,7 +34,7 @@ function App() {
   }
 
   function updateUserInfo(data) {
-    //console.log("inside app js", data);
+    console.log("inside app js", data);
     api.editProfile(data)
     .then((user) => {
       console.log('POST : идет с сервера ', user);

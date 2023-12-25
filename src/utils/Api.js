@@ -13,13 +13,19 @@ export default class Api {
   }
 
   editProfile(data) {
-    console.log("data", data);
+    console.log("api.js", data);
     return fetch(`${this._url}/clientData/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        clientId: data.clientId,
+        clientName: data.clientName,
+        clientGender: data.clientGender,
+        clientPhone: data.clientPhone,
+        clientEmail: data.clientEmail,
+      }),
     }).then(this._handleResponse);
   }
 

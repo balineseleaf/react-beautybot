@@ -13,8 +13,8 @@ const currentUser = React.useContext(CurrentUserContext);
 const { t } = useTranslation();
 
 
-let tg = window.Telegram.WebApp; // создаем объект телеграмма
-console.log(tg.initDataUnsafe.user.id);
+//let tg = window.Telegram.WebApp; // создаем объект телеграмма
+//console.log(tg.initDataUnsafe.user.id);
 // tg.BackButton.show();
 // tg.onEvent('backButtonClicked', function () {
 // window.location.href = '/';
