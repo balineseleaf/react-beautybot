@@ -13,7 +13,7 @@ import { CurrentUserContext } from "./context/CurrentUserContext";
 
 function App() {
   const[currentUser, setCurrentUser] = useState({});
-  const [dataForPreprofile, setDataForPreprofile] = useState(null);
+  //const [dataForPreprofile, setDataForPreprofile] = useState(null);
 
   const api = new Api({
     url: 'http://localhost:5000',
@@ -23,16 +23,30 @@ function App() {
     },
   });
 
-  function getInfoAboutUser(formData) {
+  function getInfoAboutUser() {
     api
       .getUserInfo()
       .then((clientData) => {
         console.log('идет с сервера', clientData);
         setCurrentUser(clientData);
-        setDataForPreprofile(formData);
       })
       .catch((error) => console.log(error));
   }
+
+  function updateUserInfo(data) {
+    //console.log("inside app js", data);
+    api.editProfile(data)
+    .then((user) => {
+      console.log('POST : идет с сервера ', user);
+      setCurrentUser(user);
+    })
+    .catch((error) => console.log(error));
+  }
+
+  //   useEffect(() => {
+  //     // Сохраняем currentUser в localStorage
+  //     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+  // }, [currentUser]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -43,9 +57,9 @@ function App() {
             />
             <Route path="/mynotes" element={<MyNotes/>}/>
   
-            <Route path="/profile" element={<Profile onEditProfile={getInfoAboutUser}/>}
+            <Route path="/profile" element={<Profile onEditProfile={updateUserInfo}/>}
             />
-            <Route path="/preprofile" element={<Preprofile data={dataForPreprofile}/>}
+            <Route path="/preprofile" element={<Preprofile getInfo={getInfoAboutUser} />}
             />
             <Route path="/signup" element={<Services/>}
             />

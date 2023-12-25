@@ -12,7 +12,8 @@ export function useFormWithValidation() {
 
   const handleChange = (e) => {
     const input = e.target;// здесь мой текущий инпут(dom), куда я ввожу
-    const value = input.value;// то, что я ввел в инпут 
+    const value = input.type === 'radio' ? input.value : input.value; // Учитываем тип радиокнопок
+    //const value = input.value;// то, что я ввел в инпут 
     const name = input.name;// атрибут name у input-a
 
     setFormValue({
@@ -20,12 +21,10 @@ export function useFormWithValidation() {
       [name]: value
     }); // обновляем formValue ,собирая данные с инпута
 
-    console.log("hook", formValue);
-
     setIsValid(input.closest("form").checkValidity());
   }
 
-  console.log("hook out", formValue);
+  //console.log("hook out", formValue);
 
   const resetForm = useCallback(
   (

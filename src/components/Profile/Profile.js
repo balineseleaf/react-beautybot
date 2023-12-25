@@ -5,7 +5,7 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-const Profile = ({onEditProfile}) => {
+const Profile = ({onEditProfile, setCurrentUser}) => {
   const { t } = useTranslation();
   const currentUser = React.useContext(CurrentUserContext);
   const navigate = useNavigate();
@@ -24,28 +24,35 @@ const Profile = ({onEditProfile}) => {
       handleChange(e);
     };
 
-    useEffect(() => {
-      resetForm({
-        clientName: currentUser.name,
-        clientGender: currentUser.gender,
-        clientPhone: currentUser.phone,
-        clientEmail: currentUser.email,
-        clientId: currentUser.clientId,
-      });
+    // useEffect(() => {
+    //   resetForm({
+    //     clientName: currentUser.name,
+    //     clientGender: currentUser.gender,
+    //     clientPhone: currentUser.phone,
+    //     clientEmail: currentUser.email,
+    //     clientId: currentUser.clientId,
+    //   });
   
-    }, [resetForm, currentUser]);
+    // }, [resetForm, currentUser]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const formData = {
-      name: formValue.name,
-      gender: formValue.gender,
-      phoneNumber: formValue.phoneNumber,
-      email: formValue.email,
-    };
-    onEditProfile(formData);
-    navigate('/preprofile');
-  }
+    useEffect(() => {
+      onEditProfile(); // Вызываем getInfoAboutUser при монтировании компонента
+    }, []);
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const formData = {
+        clientId: currentUser.clientId,
+        clientName: formValue.name,
+        clientGender: formValue.gender,
+        clientPhone: formValue.phone,
+        clientEmail: formValue.email,
+      };
+      console.log('formData', formData);
+  
+      onEditProfile(formData);
+    }
+    
     return ( 
         <div className="popup popup_opened popup_type_edit-avatar" id="popup">
         <div className="profile__container">
@@ -83,26 +90,30 @@ const Profile = ({onEditProfile}) => {
               <div className="radio_inputs">
               <input
                 type="radio"
-                className="profile_gender popup__input"
+                className="profile_gender"
                 id="m_gender"
                 name="gender"
-                value={formValue.gender}
+                value="Mal" // Установите значение для мужского пола
+                checked={formValue.gender === 'male'} 
+                //value={formValue.gender}
                 //checked={gender === 'М'}
                 onChange={handleInputChange}
                 //onChange={(e) => setGender(e.target.value)}
               />
-              <label className="radio_label" for="m_gender">{t("MaleGender")}</label><br />
+              <label className="radio_label" htmlFor="m_gender">{t("MaleGender")}</label><br />
               <input
                 type="radio"
-                className="profile_gender popup__input"
+                className="profile_gender"
                 id="f_gender"
                 name="gender"
-                value={formValue.gender}
+                //value={formValue.gender}
+                value="female" // Установите значение для женского пола
+                checked={formValue.gender === 'female'} //
                 //checked={gender === 'Ж'} // Проверка состояния пола
                 onChange={handleInputChange}
                 //onChange={(e) => setGender(e.target.value)}
               />
-              <label className="radio_label" for="f_gender">{t("FemaleGender")}</label><br />
+              <label className="radio_label" htmlFor="f_gender">{t("FemaleGender")}</label><br />
               {/* {formValid || gender ? null : ( */}
               {/* <div
                 className="form__inputs_error gender__input-error"
