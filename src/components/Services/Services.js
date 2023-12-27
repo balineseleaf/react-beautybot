@@ -1,21 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import './Services.css';
-import { Link } from "react-router-dom";
+import Select from 'react-select';
+import { useNavigate } from 'react-router-dom';
+
+const services= [{
+  value: "nails", 
+  label: "Nail Service" 
+},{
+  value: "eyelashes", 
+  label: "Eyelashes" 
+},{
+  value: "brows", 
+  label: "Brow Service" 
+},{
+  value: "sugaring", 
+  label: "Sugaring" 
+},];
 
 const Services = () => {
+  const navigate = useNavigate();
+
+  const [currentService, setCurrentService] = useState('nails');
+    const getValue = () => {
+      return currentService ? services.find(c => c.value === currentService) : ''
+    }
+    const onChange = (newValue) => {
+      setCurrentService(newValue.value)
+    }
+      //const selectedValue = newValue.value;
+      const handleRedirect = () => {
+        switch (currentService) {
+          case 'nails':
+            navigate("/nails");
+            break;
+          case 'eyelashes':
+            navigate("/eyelashes");
+            break;
+          case 'brows':
+            navigate("/brows");
+            break;
+          case 'sugaring':
+            navigate("/sugaring");
+            break;
+          default:
+            navigate("/"); // Редирект на главную или другую страницу по умолчанию
+            break;
+        }
+      }
+
     return ( 
         <div className="services__container">
-        <h1 className="services__header">Все салоны вашего региона:</h1>
-        <div className="services__image-container">
-          <img className="services__image" src="/images/Без названия.png" alt="Картинка"/>
-        </div>
-        <ul className="services__list">
-          <li className="services__item"><Link to="">Кристина</Link></li>
-          <li className="services__item"><Link to="">Ноготочки</Link></li>
-          <li className="services__item"><Link to="">Nails</Link></li>
-          <li className="services__item"><Link to="">Пилки</Link></li>
-          <li className="services__item"><Link to="">Палки в колеса</Link></li>
-        </ul>
+          <h1 className="services__header">Выберите категорию:</h1>
+          <Select value={getValue()} onChange={onChange} options={services} />
+          <button className="services__button-submit" onClick={handleRedirect}>Продолжить</button>
       </div>
      );
 }

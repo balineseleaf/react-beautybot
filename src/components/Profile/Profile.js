@@ -15,25 +15,25 @@ const Profile = ({onEditProfile}) => {
     useFormWithValidation();
 
     // const isDataChanged =
-    // formValue.name !== currentUser.name ||
-    // formValue.email !== currentUser.email || 
-    // formValue.gender !== currentUser.gender ||
-    // formValue.phoneNumber !== currentUser.phoneNumber
+    // formValue.name !== currentUser.clientName ||
+    // formValue.email !== currentUser.clientEmail || 
+    // formValue.gender !== currentUser.clientGender ||
+    // formValue.phone !== currentUser.clientPhone
 
     const handleInputChange = (e) => {
       handleChange(e);
     };
 
-    // useEffect(() => {
-    //   resetForm({
-    //     clientName: currentUser.name,
-    //     clientGender: currentUser.gender,
-    //     clientPhone: currentUser.phone,
-    //     clientEmail: currentUser.email,
-    //     clientId: currentUser.clientId,
-    //   });
+    useEffect(() => {
+      resetForm({
+        clientName: currentUser.clientName,
+        clientGender: currentUser.clientGender,
+        clientPhone: currentUser.clientPhone,
+        clientEmail: currentUser.clientEmail,
+        clientId: currentUser.clientId,
+      });
   
-    // }, [resetForm, currentUser]);
+    }, [resetForm, currentUser]);
 
     useEffect(() => {
       onEditProfile(); // Вызываем getInfoAboutUser при монтировании компонента
@@ -53,7 +53,7 @@ const Profile = ({onEditProfile}) => {
       onEditProfile(formData);
       navigate("/preprofile");
     }
-    
+
     return ( 
         <div className="popup popup_opened popup_type_edit-avatar" id="popup">
         <div className="profile__container">
@@ -76,7 +76,6 @@ const Profile = ({onEditProfile}) => {
                 placeholder="Имя"
                 value={formValue.name}
                 onChange={handleInputChange}
-                //onChange={(e) => setName(e.target.value)}
                 type="text"
               />
               {/* {formValid || !name ? null : ( */}
@@ -91,15 +90,14 @@ const Profile = ({onEditProfile}) => {
               <div className="radio_inputs">
               <input
                 type="radio"
+                required
                 className="profile_gender"
                 id="m_gender"
                 name="gender"
                 value="male" // Установите значение для мужского пола
                 checked={formValue.gender === 'male'} 
-                //value={formValue.gender}
-                //checked={gender === 'М'}
                 onChange={handleInputChange}
-                //onChange={(e) => setGender(e.target.value)}
+
               />
               <label className="radio_label" htmlFor="m_gender">{t("MaleGender")}</label><br />
               <input
@@ -107,12 +105,11 @@ const Profile = ({onEditProfile}) => {
                 className="profile_gender"
                 id="f_gender"
                 name="gender"
-                //value={formValue.gender}
+                required
                 value="female" // Установите значение для женского пола
                 checked={formValue.gender === 'female'} //
-                //checked={gender === 'Ж'} // Проверка состояния пола
                 onChange={handleInputChange}
-                //onChange={(e) => setGender(e.target.value)}
+
               />
               <label className="radio_label" htmlFor="f_gender">{t("FemaleGender")}</label><br />
               {/* {formValid || gender ? null : ( */}
@@ -128,10 +125,10 @@ const Profile = ({onEditProfile}) => {
               <div className="inputs__container">
                 <p className="phone_paragraph">{t("InputYourNumber")}</p>
                 <input
+                  required
                   className="profile_number popup__input"
                   id="phoneNumber"
                   value={formValue.phone}
-                  //onChange={handleInputChange}
                   onChange={handleInputChange}
                   type="tel"
                   name="phone"
@@ -152,7 +149,6 @@ const Profile = ({onEditProfile}) => {
                   type="email"
                   name="email"
                   value={formValue.email}
-                  //onChange={handleInputChange}
                   onChange={handleInputChange}
                   required
                   placeholder="Email"
@@ -170,7 +166,7 @@ const Profile = ({onEditProfile}) => {
                 type="submit"
                 id="submitButton"
                 className="profile__submit popup__submitAddCard"
-                //disabled={!isValid}
+                disabled={!isValid}
               >
                 {t("Submit")}
               </button>

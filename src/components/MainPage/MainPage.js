@@ -24,7 +24,7 @@ const MainPage = () => {
       </div>
       <div className="main__container">
           <div className="main__links-item-round">
-            <Link to="/signup" className="main__link-round"><span className='main__text-in-button'>{t("SignUp")}</span></Link>
+            <Link to="/appointment" className="main__link-round"><span className='main__text-in-button'>{t("SignUp")}</span></Link>
           </div>
       <div className='inner-container'>
           <ul className='main__links-block'>

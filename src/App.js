@@ -8,11 +8,13 @@ import Profile from './components/Profile/Profile';
 import Preprofile from './components/Preprofile/Preprofile';
 import About from './components/About/About';
 import Api from './utils/Api'
+import Nails from './components/Nails/Nails';
 import { useEffect, useState } from 'react';
 import { CurrentUserContext } from "./context/CurrentUserContext";
 
 function App() {
   const[currentUser, setCurrentUser] = useState({});
+  //console.log("user", currentUser);
   const[version, setVersion] = useState('');
   //const [dataForPreprofile, setDataForPreprofile] = useState(null);
 
@@ -36,10 +38,11 @@ function App() {
 
   function updateUserInfo(formData) {
     //console.log("app.js", formData);
-    api.editProfile(formData)
+    return api.editProfile(formData)
     .then((user) => {
       console.log('POST : идет с сервера ', user);
       setCurrentUser(user);
+      return user;
     })
   
     .catch((error) => console.log(error));
@@ -49,7 +52,7 @@ function App() {
     api
       .getVersion()
       .then((version) => {
-        console.log('version', version);
+        //console.log('version', version);
         setVersion(version);
       })
       .catch((error) => console.log(error));
@@ -77,9 +80,11 @@ function App() {
             />
             <Route path="/preprofile" element={<Preprofile getInfo={getInfoAboutUser} />}
             />
-            <Route path="/signup" element={<Services/>}
+            <Route path="/appointment" element={<Services/>}
             />
             <Route path="/salons" element={<Salons/>}
+            />
+            <Route path="/nails" element={<Nails/>}
             />
             <Route path="/aboutus" element={<About version={version}/>}
             />

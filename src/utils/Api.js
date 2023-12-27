@@ -27,7 +27,7 @@ export default class Api {
     return fetch(`${this._url}/service/version`, {
       method: 'GET',
       headers: this._headers,
-    }).then(this._handleResponseText);
+    }).then(this._handleResponseCommon);
   }
 
   _handleResponse(res) {
@@ -47,8 +47,30 @@ export default class Api {
   _handleResponseText(res) {
     if (res.ok) {
       return res.text();
-    } else {
+    } 
+    else {
       return Promise.reject(`Ошибка ${res.status}`);
+    }
+  }
+
+  _handleResponseCommon(res) {
+    switch (res.status) {
+      case 200: // OK
+      // return res;
+        const contentType = res.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          return res.json();
+        } else {
+          return res.text();
+        }
+      case 400:
+        return Promise.reject('Bad Request'); // Not Found
+      case 404: // Not Found
+        return Promise.reject('Page not found');
+      case 500: // Internal Server Error
+        return Promise.reject('Internal Server Error');
+      default:
+        return Promise.reject(`Ошибка ${res.status}`);
     }
   }
 }
