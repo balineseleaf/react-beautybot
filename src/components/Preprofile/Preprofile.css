@@ -50,6 +50,7 @@ body {
     margin:0;
     margin-top: 25px;
     color: black;
+    position: relative;
 }
 
 .gender_paragraph {
@@ -68,6 +69,12 @@ body {
     margin:0;
     margin-top: 25px;
     color: black;
+}
+.region_paragraph {
+  margin:0;
+  margin-top: 25px;
+  color: black;
+  padding-bottom: 20px;
 }
 
 /* popup */
@@ -94,7 +101,7 @@ body {
 
 .popup__container{
     margin-top: 90px;
-    width: 390px;
+    width: 500px;
     position: relative;
     background: #FFFFFF;
     box-shadow: 10px 10px 80px rgba(115, 113, 224, 0.3);
@@ -104,10 +111,10 @@ body {
   .popup__form {
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 10px 36px 10px 36px;
+    padding: 10px 25px 10px 25px;
     background: #FFFFFF;
     border-radius: 10%;
-    width: 390px;
+    width: 430px;
   }
   
   .profile_name {
@@ -127,8 +134,55 @@ body {
     transition: padding .3s ease;
   }
   
+  .edit-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+  }
 
-  .popup__fieldset {
+  .edit-container:hover:after {
+    cursor: pointer;
+    content: ''; /* Обязательно для псевдоэлемента */
+    position: absolute; /* Позиционируем созданную рамку */
+    bottom: 0; /* Помещаем ее внизу */
+    left: 0; /* Выравниваем по левому краю */
+    width: 100%; /* Ширина равна ширине контейнера */
+    border-bottom: 2px solid rgba(0, 0, 0, .1); /* Толщина, стиль и цвет рамки */
+  }
+
+
+  .edit-icon-image {
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    cursor: pointer;
+    /* transition: transform 0.3s ease; */
+    padding-top: 23px;
+  }
+  /* .edit-icon-image:hover {
+    transform: scale(1.3);
+  } */
+
+  .edit-icon {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    border: none;
+  }
+
+  .radio_label {
+    margin-left: 5px;
+    color: black;
+  } 
+
+  .profile_gender {
+    margin:0;
+    padding:0;
+  }
+
+  .preprofile__fieldset {
     display: flex;
     flex-direction: column;
     border: none;
@@ -193,4 +247,24 @@ body {
 
   .popup__close:hover{
     opacity: 0.6;
+  }
+
+  .container-input {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+  }
+  .whileediting-input {
+    width: 100%;
+  }
+
+  .profile__button-save-region {
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 42%;
+    top: 63px;
   }

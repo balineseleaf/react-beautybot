@@ -1,12 +1,13 @@
 .container {
     padding-top:70px;
-	width: 390px;
+	width: 450px;
     margin: 20px auto;
     position: relative;
 }
+
 .header-block {
- background-color: aquamarine;
- height: 50px;
+    background-color: aquamarine;
+    height: 50px;
 }
 
 .header__title {
@@ -15,11 +16,13 @@
     font-size: 23px;
     color: #7371e0;
 }
+
 .main__container {
     display: flex;
     flex-direction: column;
     padding-top: 120px;
 }
+
 .inner-container {
     margin-top: 50px;
 }
@@ -50,7 +53,6 @@
 
 .main__links-item:hover {
     background: rgb(10, 133, 216);
-
     opacity: 0.7;
 }
 

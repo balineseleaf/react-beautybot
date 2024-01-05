@@ -13,14 +13,21 @@ export default class Api {
   }
 
   editProfile(data) {
-    //console.log("api.js", data);
+    console.log("api.js", data);
     return fetch(`${this._url}/clientData/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-    }).then(this._handleResponseWithoutJSON);
+      // body: JSON.stringify({
+      //   clientId: data.clientId,
+      //   clientName: data.clientName,
+      //   clientEmail: data.clientEmail,
+      //   clientPhone: data.clientPhone,
+      //   clientGender: data.clientGender
+      // }),
+    }).then(this._handleResponseCommon);
   }
 
   getVersion() {
