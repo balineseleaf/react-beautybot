@@ -13,7 +13,7 @@ export default class Api {
   }
 
   editProfile(data) {
-    console.log("api.js", data);
+    //console.log("api.js", data);
     return fetch(`${this._url}/clientData/`, {
       method: 'POST',
       headers: {
@@ -29,6 +29,20 @@ export default class Api {
       // }),
     }).then(this._handleResponseCommon);
   }
+
+  getAllRegions() {
+    return fetch(`${this._url}/region/`, {
+      method: 'GET',
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
+
+  // getRegionId(id) {
+  //   return fetch(`${this._url}/region/${id}`, {
+  //     method: 'GET',
+  //     headers: this._headers,
+  //   }).then(this._handleResponse);
+  // }
 
   getVersion() {
     return fetch(`${this._url}/service/version`, {
@@ -54,7 +68,7 @@ export default class Api {
   _handleResponseText(res) {
     if (res.ok) {
       return res.text();
-    } 
+    }
     else {
       return Promise.reject(`Ошибка ${res.status}`);
     }
@@ -63,7 +77,7 @@ export default class Api {
   _handleResponseCommon(res) {
     switch (res.status) {
       case 200: // OK
-      // return res;
+        // return res;
         const contentType = res.headers.get('content-type');
         if (contentType && contentType.includes('application/json')) {
           return res.json();

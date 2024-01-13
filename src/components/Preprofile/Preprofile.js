@@ -9,9 +9,28 @@ import Select from 'react-select';
 import { countries, regions } from "../../utils/constants";
 
 
-const Preprofile = ({ getInfo, onEditProfile }) => {
+const Preprofile = ({ getInfo, onEditProfile, allRegions, getRegions }) => {
   const currentUser = React.useContext(CurrentUserContext);
   const { t } = useTranslation();
+
+  // Заданный массив регионов
+  const allRegionsArray = allRegions;
+
+  // Создание маппинга для идентификаторов регионов и их названий
+  const regionMapping = {};
+
+  allRegionsArray.forEach(region => {
+    regionMapping[region.id] = region.regionName;
+  });
+
+  console.log('mapping', regionMapping);
+
+  // Пример использования маппинга
+  // const regionId = '139aa476-f0a4-47e9-975c-4c2403c09b1a'; // Пример идентификатора региона
+  // const regionName = regionMapping[regionId]; // Получение названия региона по его идентификатору
+
+  // console.log(regionName); 
+
 
 
   //let tg = window.Telegram.WebApp; // создаем объект телеграмма
@@ -77,6 +96,14 @@ const Preprofile = ({ getInfo, onEditProfile }) => {
   useEffect(() => {
     getInfo();
   }, []);
+
+  useEffect(() => {
+    getRegions();
+  }, []);
+
+  // useEffect(() => {
+  //   getRegions();
+  // });
 
   const [editingPhone, setEditingPhone] = useState(false);
   const [phoneData, setPhoneData] = useState('');
@@ -293,7 +320,7 @@ const Preprofile = ({ getInfo, onEditProfile }) => {
             <div>
               {editingRegion ? (
                 <div className="container-input">
-                  <Select className="profile__region" options={countries} value={getValueCountry()} onChange={onChangeCountry} />
+                  {/* <Select className="profile__region" options={countries} value={getValueCountry()} onChange={onChangeCountry} /> */}
                   <Select className="profile__region" options={regions} value={getValueRegion()} onChange={onChangeRegion} />
                   <button className="profile__button-save-region" onClick={handleSaveClickRegion}>Сохранить</button>
                 </div>

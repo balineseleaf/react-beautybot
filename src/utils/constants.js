@@ -19,21 +19,21 @@ export const countries = [{
 },];
 
 export const regions = [{
-    value: "turkey",
-    label: "Turkey"
+    value: "samara",
+    label: "Russia / Samara"
 }, {
-    value: "russia",
-    label: "Russia"
+    value: "moscow",
+    label: "Russia / Moscow"
 }, {
     value: "saint-petersburg",
-    label: "Saint-Petersburg"
+    label: "Russia / Saint-Petersburg"
 }, {
-    value: "israel",
-    label: "Israel"
+    value: "turkeyAntalya",
+    label: "Turkey / Antalya"
 }, {
-    value: "korea",
-    label: "Korea"
+    value: "turkeyAlanya",
+    label: "Turkey / Alanya"
 }, {
-    value: "england",
-    label: "England"
+    value: "turkeyIzmir",
+    label: "Turkey / Izmir"
 },];

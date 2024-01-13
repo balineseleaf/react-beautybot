@@ -10,9 +10,11 @@ import Api from './utils/Api'
 import Nails from './components/Nails/Nails';
 import { useEffect, useState } from 'react';
 import { CurrentUserContext } from "./context/CurrentUserContext";
+import { use } from 'i18next';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
+  const [regions, setRegions] = useState([]);
   //console.log("user", currentUser);
   const [version, setVersion] = useState('');
   //const [dataForPreprofile, setDataForPreprofile] = useState(null);
@@ -29,17 +31,28 @@ function App() {
     api
       .getUserInfo()
       .then((clientData) => {
-        console.log('идет с сервера', clientData);
+        //console.log('идет с сервера', clientData);
         setCurrentUser(clientData);
       })
       .catch((error) => console.log(error));
   }
 
+  function getRegions() {
+    api
+      .getAllRegions()
+      .then((regions) => {
+        console.log('регионы', regions);
+        setRegions(regions);
+      })
+      .catch((error) => console.log(error));
+  }
+
+
   function updateUserInfo(formData) {
     console.log("app.js", formData);
     api.editProfile(formData)
       .then((user) => {
-        console.log('POST : идет с сервера ', user);
+        //console.log('POST : идет с сервера ', user);
         setCurrentUser(user);
       })
       .catch((error) => console.log(error));
@@ -59,6 +72,7 @@ function App() {
     getVersionApp();
   }, []);
 
+
   //   useEffect(() => {
   //     // Сохраняем currentUser в localStorage
   //     localStorage.setItem('currentUser', JSON.stringify(currentUser));
@@ -74,7 +88,7 @@ function App() {
 
           {/* <Route path="/profile" element={<Profile onEditProfile={updateUserInfo}/>}
         /> */}
-          <Route path="/preprofile" element={<Preprofile getInfo={getInfoAboutUser} onEditProfile={updateUserInfo} />}
+          <Route path="/preprofile" element={<Preprofile allRegions={regions} getInfo={getInfoAboutUser} getRegions={getRegions} onEditProfile={updateUserInfo} />}
           />
           <Route path="/appointment" element={<Services />}
           />
