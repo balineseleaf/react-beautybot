@@ -185,6 +185,8 @@ const Preprofile = ({ getInfo, onEditProfile, allRegions, getRegions }) => {
     setIsHoveredRegion(false);
   };
 
+
+
   return (
     <div className="popup popup_opened popup_type_edit-avatar" id="popup">
       <div className="popup__container">
@@ -192,8 +194,7 @@ const Preprofile = ({ getInfo, onEditProfile, allRegions, getRegions }) => {
         <div
           id="formEditProfile"
           name="form-edit-profile"
-          className="popup__form popup__form_edit-profile"
-        >
+          className="popup__form popup__form_edit-profile">
           <div className="preprofile__fieldset">
             <p id="userID" className="id_paragraph">{t("YourID")}{currentUser.clientId}</p>
             <div>
@@ -326,7 +327,7 @@ const Preprofile = ({ getInfo, onEditProfile, allRegions, getRegions }) => {
                 </div>
               ) : (
                 <div className="edit-container" onMouseEnter={handleMouseEnterRegion} onMouseLeave={handleMouseLeaveRegion}>
-                  <p id="userRegion" className="region_paragraph">Регион: {currentUser.regionId}</p>
+                  <p id="userRegion" className="region_paragraph">Регион: {regionMapping[currentUser.regionId]}</p>
                   {isHoveredRegion && (
                     <button className="edit-icon"><img className="edit-icon-image" src={editIcon} alt="иконка" onClick={handleEditClickRegion} /></button>
                   )}

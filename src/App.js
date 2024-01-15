@@ -10,17 +10,17 @@ import Api from './utils/Api'
 import Nails from './components/Nails/Nails';
 import { useEffect, useState } from 'react';
 import { CurrentUserContext } from "./context/CurrentUserContext";
-import { use } from 'i18next';
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [regions, setRegions] = useState([]);
-  //console.log("user", currentUser);
+  console.log("regions", regions);
   const [version, setVersion] = useState('');
   //const [dataForPreprofile, setDataForPreprofile] = useState(null);
 
   const api = new Api({
-    url: 'http://localhost:5000',
+    url: 'http://localhost:8080',
     headers: {
       //authorization: '79aff481-506e-4c4c-8308-be7829df1002',
       'Content-Type': 'application/json',
