@@ -7,9 +7,11 @@ const MyAppointments = () => {
 
   const { t } = useTranslation();
   return (
-    <div className="mynotes__container">
-      <h1 className="mynotes__header">{t("MyFutureProcedures")}</h1>
-      <p className="textwithoutnotes">{t("Story")}</p>
+    <div className="appointments">
+      <h1 className="appointments__header">{t("MyFutureProcedures")}</h1>
+      <div className="appointments__block">
+        <p className="appointments__text">{t("Story")}</p>
+      </div>
     </div>);
 }
 

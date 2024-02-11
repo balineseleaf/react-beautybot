@@ -1,0 +1,62 @@
+.profile__region {
+  width: 100%;
+  cursor: pointer;
+}
+
+.container-input-region {
+  padding-top: 10px;
+}
+
+.region_paragraph {
+  margin: 0;
+  margin-top: 25px;
+  color: black;
+  padding-bottom: 20px;
+}
+
+.edit-container-region {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+}
+
+.edit-container-region:hover:after {
+  cursor: pointer;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.profile__button-save-region {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.edit-icon-image {
+  width: 21px;
+  height: 21px;
+  background-color: white;
+  cursor: pointer;
+  padding-top: 23px;
+}
+
+.edit-icon {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border: none;
+}
+
+.profile__block-buttons {
+  margin: 0 auto;
+  display: flex;
+  width: 200px;
+  justify-content: center;
+  margin-top: 10px;
+}

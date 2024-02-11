@@ -1,31 +1,19 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './MainPage.css';
 import { useTranslation } from 'react-i18next';
+import Header from '../Header/Header';
 
 const MainPage = () => {
-
-  const { t, i18n } = useTranslation();
-
-  const changeLanguage = (language) => {
-    i18n.changeLanguage(language);
-  };
+  const { t } = useTranslation();
 
   return (
-    <div className='container'>
-      <div className="langbox">
-        <button onClick={() => changeLanguage("en")}>EN</button>
-        <button onClick={() => changeLanguage("ru")}>RU</button>
-      </div>
-      <div className="header-block">
-        <h1 data-lang='welcome-message' className='header__title'>
-          {t("NameProject")}
-        </h1>
-      </div>
+    <div className='main'>
+      <Header />
       <div className="main__container">
-        <div className="main__links-item-round">
-          <Link to="/appointment" className="main__link-round"><span className='main__text-in-button'>{t("SignUp")}</span></Link>
-        </div>
+        <Link to="/appointment" className='main__button'>{t("SignUp")}
+          {/* <Link to="/appointment" className="main__link-round"></Link> */}
+        </Link>
         <div className='inner-container'>
           <ul className='main__links-block'>
             <li className="main__links-item">
@@ -39,9 +27,6 @@ const MainPage = () => {
             </li>
           </ul>
         </div>
-        <NavLink to='/preprofile' className="main__account-link" >
-          <div className="main__link-logo" alt="Иконка профиля"></div>
-        </NavLink>
       </div>
     </div>
   );

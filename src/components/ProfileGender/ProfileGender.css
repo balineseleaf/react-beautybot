@@ -1,0 +1,60 @@
+.container-input {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.edit-container-gender {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+}
+
+.edit-container-gender:hover:after {
+  cursor: pointer;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.gender_paragraph {
+  margin: 0;
+  margin-top: 25px;
+  color: black;
+}
+
+.edit-icon-image {
+  width: 21px;
+  height: 21px;
+  background-color: white;
+  cursor: pointer;
+  padding-top: 23px;
+}
+
+.edit-icon {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border: none;
+}
+
+.profile_gender {
+  margin: 0;
+  padding: 0;
+}
+.profile_gender:last-of-type {
+  margin-left: 20px;
+}
+
+.radio_label {
+  margin-left: 5px;
+  color: black;
+}

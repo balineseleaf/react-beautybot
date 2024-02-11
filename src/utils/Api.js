@@ -13,20 +13,13 @@ export default class Api {
   }
 
   editProfile(data) {
-    //console.log("api.js", data);
+    console.log("api.js", data);
     return fetch(`${this._url}/clientData/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-      // body: JSON.stringify({
-      //   clientId: data.clientId,
-      //   clientName: data.clientName,
-      //   clientEmail: data.clientEmail,
-      //   clientPhone: data.clientPhone,
-      //   clientGender: data.clientGender
-      // }),
     }).then(this._handleResponseCommon);
   }
 
@@ -58,6 +51,7 @@ export default class Api {
       return Promise.reject(`Ошибка ${res.status}`);
     }
   }
+
   _handleResponseWithoutJSON(res) {
     if (res.ok) {
       return res;

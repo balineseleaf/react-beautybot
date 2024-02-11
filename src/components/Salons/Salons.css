@@ -1,24 +1,15 @@
-body {
-	margin: 0;
-	padding: 0;
-	font-size: 18px;
-	color: var(--tg-theme-text-color);
-	background: var(--tg-theme-bg-color);
-}
-
-.salons__container {
-    padding-top: 10px;
-	width: 390px;
-    margin: 20px auto 0;
+.salons {
+  padding-top: 10px;
+  width: 560px;
+  margin: 20px auto 0;
 }
 
 .salons__header {
-    margin: 0;
-    font-weight: 900;
-    font-size: 27px;
-    color: #000000;
-    padding: 100px 0 50px 0;
-    text-align: center;
-    color: #7371e0;
-
+  margin: 0;
+  font-weight: 900;
+  font-size: 27px;
+  color: #000000;
+  padding: 100px 0 50px 0;
+  text-align: center;
+  color: #ff83dc;
 }

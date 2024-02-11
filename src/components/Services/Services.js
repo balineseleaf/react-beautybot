@@ -27,7 +27,6 @@ const Services = () => {
   const onChange = (newValue) => {
     setCurrentService(newValue.value)
   }
-  //const selectedValue = newValue.value;
   const handleRedirect = () => {
     switch (currentService) {
       case 'nails':
@@ -49,7 +48,7 @@ const Services = () => {
   }
 
   return (
-    <div className="services__container">
+    <div className="services">
       <h1 className="services__header">Выберите категорию:</h1>
       <Select value={getValue()} onChange={onChange} options={services} />
       <button className="services__button-submit" onClick={handleRedirect}>Продолжить</button>

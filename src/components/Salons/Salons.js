@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import './Salons.css';
-import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import Select from 'react-select'
 
@@ -34,7 +33,7 @@ const Salons = () => {
   }
   const { t } = useTranslation();
   return (
-    <div className="salons__container">
+    <div className="salons">
       <h1 className="salons__header">{t("AllSalons")}</h1>
       <p className="text">Choose ur country:</p>
       <Select className="" value={getValue()} onChange={onChange} options={options} />
