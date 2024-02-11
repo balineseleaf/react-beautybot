@@ -17,7 +17,7 @@ function App() {
   const [version, setVersion] = useState('');
 
   const api = new Api({
-    url: 'http://localhost:5000',
+    url: 'http://localhost:8080',
     headers: {
       'Content-Type': 'application/json',
     },
