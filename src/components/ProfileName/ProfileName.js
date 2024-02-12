@@ -38,6 +38,8 @@ const ProfileName = ({ onEditProfile }) => {
   const handleMouseLeaveName = () => {
     setIsHoveredName(false);
   };
+
+
   //validation--------------------------------------------------
   const validateName = (name) => {
     const nameRegex = /^[a-zA-Zа-яА-Я ,.'-]+$/;
@@ -53,10 +55,10 @@ const ProfileName = ({ onEditProfile }) => {
     <div>
       {editingName ? (
         <div className="container-input-name">
-          <input name="name" className={`${!isValidName ? 'editing-input-name invalid-name' : 'editing-input-name'}`} type="text" value={inputValueName} onChange={handleNameChange} />
+          <input placeholder="Введите ваше имя" name="name" className={`${!isValidName ? 'editing-input-name invalid-name' : 'editing-input-name'}`} type="text" value={inputValueName} onChange={handleNameChange} />
           {!isValidName && <p className="error-message">Некорректное имя</p>}
           <div className="profile__block-buttons">
-            <button onClick={handleSaveClickName} disabled={!isValidName}>Сохранить</button>
+            <button onClick={handleSaveClickName} disabled={!isValidName || inputValueName.trim() === ''}>Сохранить</button>
             <button className="profile__button-cancel-region" onClick={handleCancelClickRegion}>Отмена</button>
           </div>
         </div>

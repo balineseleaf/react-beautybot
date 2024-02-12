@@ -55,10 +55,10 @@ const ProfilePhone = ({ onEditProfile }) => {
     <div>
       {editingPhone ? (
         <div className="container-input-phone">
-          <input name="phone" className={`${!isValidPhone ? 'editing-input-phone invalid-phone' : 'editing-input-phone'}`} type="text" value={inputValuePhone} onChange={handlePhoneChange} />
+          <input placeholder="Введите ваш телефон" name="phone" className={`${!isValidPhone ? 'editing-input-phone invalid-phone' : 'editing-input-phone'}`} type="text" value={inputValuePhone} onChange={handlePhoneChange} />
           {!isValidPhone && <p className="error-message">Некорректный номер телефона</p>}
           <div className="profile__block-buttons">
-            <button onClick={handleSaveClickPhone} disabled={!isValidPhone}>Сохранить</button>
+            <button onClick={handleSaveClickPhone} disabled={!isValidPhone || inputValuePhone.trim() === ''}>Сохранить</button>
             <button className="profile__button-cancel-region" onClick={handleCancelClickPhone}>Отмена</button>
           </div>
         </div>

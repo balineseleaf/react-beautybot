@@ -54,10 +54,10 @@ const ProfileEmail = ({ onEditProfile }) => {
     <div>
       {editingEmail ? (
         <div className="container-input-email">
-          <input name="email" className={`${!isValidEmail ? 'editing-input-email invalid-email' : 'editing-input-email'}`} type="email" value={inputValueEmail} onChange={handleEmailChange} />
-          {!isValidEmail && <p className="error-message">Некорректный email адрес</p>}
+          <input placeholder="Введите ваш email" name="email" className={`${!isValidEmail ? 'editing-input-email invalid-email' : 'editing-input-email'}`} type="email" value={inputValueEmail} onChange={handleEmailChange} />
+          {(!isValidEmail && inputValueEmail.trim() !== '') && < p className="error-message">Некорректный email адрес</p>}
           <div className="profile__block-buttons">
-            <button onClick={handleSaveClickEmail} disabled={!isValidEmail}>Сохранить</button>
+            <button onClick={handleSaveClickEmail} disabled={!isValidEmail || inputValueEmail.trim() === ''}>Сохранить</button>
             <button className="profile__button-cancel-region" onClick={handleCancelClickEmail}>Отмена</button>
           </div>
         </div>
@@ -68,8 +68,9 @@ const ProfileEmail = ({ onEditProfile }) => {
             <button className="edit-icon"><img className="edit-icon-image" src={editIcon} alt="иконка" onClick={handleEditClickEmail} /></button>
           )}
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
 

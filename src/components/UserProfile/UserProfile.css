@@ -9,7 +9,6 @@
 }
 
 .userprofile {
-  position: relative;
   width: 100%;
   display: flex;
   top: 0;
@@ -87,11 +86,13 @@
 }
 
 .profile__back-button {
-  display: block;
+  position: absolute;
   text-align: center;
   margin: 0 auto;
-  width: 80%;
-  margin-top: 100px;
+  width: 60%;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   color: #1c1c1c;
   border: none;
   background: #ff83dc;
