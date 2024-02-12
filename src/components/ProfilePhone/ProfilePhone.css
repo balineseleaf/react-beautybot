@@ -4,20 +4,36 @@
   color: black;
 }
 
-.container-input {
+.container-input-phone {
   padding-top: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+}
+
+.editing-input-phone {
+  border: none;
+  border-bottom: 1px solid #1c1c1c;
+  outline: none;
+  padding-bottom: 5px;
   width: 100%;
-  position: relative;
+}
+.editing-input-phone:focus::after {
+  content: '';
+  display: block;
+  border-bottom: 2px solid #1c1c1c;
 }
 
-.editing-input {
-  width: 90%;
+.invalid-phone:focus::after {
+  content: '';
+  display: block;
+  border-bottom: 2px solid red;
+}
+.error-message {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  color: red;
 }
 
-.edit-container {
+.edit-container-phone {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,7 +41,7 @@
   position: relative;
 }
 
-.edit-container:hover:after {
+.edit-container-phone:hover:after {
   cursor: pointer;
   content: '';
   position: absolute;

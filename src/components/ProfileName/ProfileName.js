@@ -10,10 +10,10 @@ const ProfileName = ({ onEditProfile }) => {
   const [editingName, setEditingName] = useState(false);
   const [nameData, setNameData] = useState('');
   const [inputValueName, setInputValueName] = useState('');
+  const [isValidName, setIsValidName] = useState(true);// validation
 
   const handleEditClickName = () => {
     setEditingName(true);
-    setInputValueName(nameData);
   };
 
   const handleSaveClickName = () => {
@@ -38,14 +38,25 @@ const ProfileName = ({ onEditProfile }) => {
   const handleMouseLeaveName = () => {
     setIsHoveredName(false);
   };
+  //validation--------------------------------------------------
+  const validateName = (name) => {
+    const nameRegex = /^[a-zA-Zа-яА-Я ,.'-]+$/;
+    return nameRegex.test(name);
+  };
+  const handleNameChange = (e) => {
+    const { value } = e.target;
+    setInputValueName(value);
+    setIsValidName(validateName(value));
+  };
 
   return (
     <div>
       {editingName ? (
         <div className="container-input-name">
-          <input name="name" className="editing-input-name" type="text" value={inputValueName} onChange={(e) => setInputValueName(e.target.value)} />
+          <input name="name" className={`${!isValidName ? 'editing-input-name invalid-name' : 'editing-input-name'}`} type="text" value={inputValueName} onChange={handleNameChange} />
+          {!isValidName && <p className="error-message">Некорректное имя</p>}
           <div className="profile__block-buttons">
-            <button onClick={handleSaveClickName}>Сохранить</button>
+            <button onClick={handleSaveClickName} disabled={!isValidName}>Сохранить</button>
             <button className="profile__button-cancel-region" onClick={handleCancelClickRegion}>Отмена</button>
           </div>
         </div>

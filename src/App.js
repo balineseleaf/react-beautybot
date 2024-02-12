@@ -17,7 +17,7 @@ function App() {
   const [version, setVersion] = useState('');
 
   const api = new Api({
-    url: 'http://localhost:8080',
+    url: 'http://localhost:5000',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -25,19 +25,10 @@ function App() {
 
   function getInfoAboutUser() {
     return api.getUserInfo()
-    // .then((clientData) => {
-    //   console.log('идет с сервера', clientData);
-    //   setCurrentUser(clientData);
-    // })
-    // .catch((error) => console.log(error));
   }
 
   function getRegions() {
     return api.getAllRegions();
-    // .then((regions) => {
-    //   setRegions(regions);
-    // })
-    // .catch((error) => console.log(error));
   }
 
   useEffect(() => {
@@ -64,7 +55,6 @@ function App() {
     api
       .getVersion()
       .then((version) => {
-        //console.log('version', version);
         setVersion(version);
       })
       .catch((error) => console.log(error));
@@ -73,14 +63,6 @@ function App() {
   useEffect(() => {
     getVersionApp();
   }, []);
-
-  // useEffect(() => {
-  //   getInfo();
-  // }, []);
-
-  // useEffect(() => {
-  //   getRegions();
-  // }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

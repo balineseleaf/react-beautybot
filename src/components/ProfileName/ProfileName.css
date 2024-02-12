@@ -3,8 +3,33 @@
   width: 100%;
 }
 
+.container-input-name {
+  padding-top: 10px;
+}
+
 .editing-input-name {
+  border: none;
+  border-bottom: 1px solid #1c1c1c;
+  outline: none;
+  padding-bottom: 5px;
   width: 100%;
+}
+.editing-input-name:focus::after {
+  content: '';
+  display: block;
+  border-bottom: 2px solid #1c1c1c;
+}
+
+.invalid-name:focus::after {
+  content: '';
+  display: block;
+  border-bottom: 2px solid red;
+}
+.error-message {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  color: red;
 }
 
 .edit-container-name {

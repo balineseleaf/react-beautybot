@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import './ProfileGender.css';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
@@ -11,6 +11,11 @@ const ProfileGender = ({ onEditProfile }) => {
   const [editingGender, setEditingGender] = useState(false);
   const [genderData, setGenderData] = useState('');
   const [inputValueGender, setInputValueGender] = useState('');
+  const [isAnyOptionSelected, setIsAnyOptionSelected] = useState(false);
+
+  useEffect(() => {
+    setIsAnyOptionSelected(inputValueGender !== '');
+  }, [inputValueGender]);
 
   const handleEditClickGender = () => {
     setEditingGender(true);
@@ -26,6 +31,9 @@ const ProfileGender = ({ onEditProfile }) => {
     onEditProfile(inputData);
     setGenderData(inputValueGender);
   };
+  const handleClickClickGender = () => {
+    setEditingGender(false);
+  };
 
   const [isHoveredGender, setIsHoveredGender] = useState(false);
 
@@ -40,21 +48,26 @@ const ProfileGender = ({ onEditProfile }) => {
   return (
     <div>
       {editingGender ? (
-        <div className="container-input">
-          <input type="radio" required className="profile_gender" id="m_gender" name="gender" value="Мужской" checked={inputValueGender === "Мужской"}
-            onChange={(e) => setInputValueGender(e.target.value)} />
-          <label className="radio_label" htmlFor="m_gender">{t("MaleGender")}</label><br />
+        <>
+          <div className="container-input-gender">
+            <input type="radio" required className="profile_gender" id="m_gender" name="gender" value="Мужской" checked={inputValueGender === "Мужской"}
+              onChange={(e) => setInputValueGender(e.target.value)} />
+            <label className="radio_label" htmlFor="m_gender">{t("MaleGender")}</label><br />
 
-          <input type="radio" className="profile_gender" id="f_gender" name="gender" required value="Женский" checked={inputValueGender === "Женский"}
-            onChange={(e) => setInputValueGender(e.target.value)} />
-          <label className="radio_label" htmlFor="f_gender">{t("FemaleGender")}</label><br />
+            <input type="radio" className="profile_gender" id="f_gender" name="gender" required value="Женский" checked={inputValueGender === "Женский"}
+              onChange={(e) => setInputValueGender(e.target.value)} />
+            <label className="radio_label" htmlFor="f_gender">{t("FemaleGender")}</label><br />
 
-          <input type="radio" className="profile_gender" id="o_gender" name="gender" required value="Другое" checked={inputValueGender === "Другое"}
-            onChange={(e) => setInputValueGender(e.target.value)} />
-          <label className="radio_label" htmlFor="o_gender">{t("OtherGender")}</label><br />
+            <input type="radio" className="profile_gender" id="o_gender" name="gender" required value="Другое" checked={inputValueGender === "Другое"}
+              onChange={(e) => setInputValueGender(e.target.value)} />
+            <label className="radio_label" htmlFor="o_gender">{t("OtherGender")}</label><br />
 
-          <button onClick={handleSaveClickGender}>Сохранить</button>
-        </div>
+          </div>
+          <div className="profile__block-buttons">
+            <button onClick={handleSaveClickGender} disabled={!isAnyOptionSelected}>Сохранить</button>
+            <button className="profile__button-cancel-region" onClick={handleClickClickGender}>Отмена</button>
+          </div>
+        </>
       ) : (
         <div className="edit-container-gender" onMouseEnter={handleMouseEnterGender} onMouseLeave={handleMouseLeaveGender}>
           <p id="userGender" className="gender_paragraph">{t("YourGender")}{currentUser.clientGender}</p>

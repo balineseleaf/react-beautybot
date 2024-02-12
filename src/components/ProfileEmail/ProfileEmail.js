@@ -10,10 +10,10 @@ const ProfileEmail = ({ onEditProfile }) => {
   const [editingEmail, setEditingEmail] = useState(false);
   const [emailData, setEmailData] = useState('');
   const [inputValueEmail, setInputValueEmail] = useState('');
+  const [isValidEmail, setIsValidEmail] = useState(true); //validation state
 
   const handleEditClickEmail = () => {
     setEditingEmail(true);
-    setInputValueEmail(emailData);
   };
 
   const handleSaveClickEmail = () => {
@@ -38,13 +38,26 @@ const ProfileEmail = ({ onEditProfile }) => {
     setIsHoveredEmail(false);
   };
 
+
+  // validation-----------------------------------------------
+  const validateEmail = (email) => {
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(String(email).toLowerCase());
+  };
+  const handleEmailChange = (e) => {
+    const { value } = e.target;
+    setInputValueEmail(value);
+    setIsValidEmail(validateEmail(value));
+  };
+
   return (
     <div>
       {editingEmail ? (
         <div className="container-input-email">
-          <input name="email" className="editing-input-email" type="email" value={inputValueEmail} onChange={(e) => setInputValueEmail(e.target.value)} />
+          <input name="email" className={`${!isValidEmail ? 'editing-input-email invalid-email' : 'editing-input-email'}`} type="email" value={inputValueEmail} onChange={handleEmailChange} />
+          {!isValidEmail && <p className="error-message">Некорректный email адрес</p>}
           <div className="profile__block-buttons">
-            <button onClick={handleSaveClickEmail}>Сохранить</button>
+            <button onClick={handleSaveClickEmail} disabled={!isValidEmail}>Сохранить</button>
             <button className="profile__button-cancel-region" onClick={handleCancelClickEmail}>Отмена</button>
           </div>
         </div>
