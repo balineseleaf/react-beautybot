@@ -37,3 +37,23 @@ export const regions = [{
     value: "turkeyIzmir",
     label: "Turkey / Izmir"
 },];
+
+export const salons = [{
+    value: "turkey",
+    label: "Turkey"
+}, {
+    value: "russia",
+    label: "Russia"
+}, {
+    value: "germany",
+    label: "Germany"
+}, {
+    value: "israel",
+    label: "Israel"
+}, {
+    value: "korea",
+    label: "Korea"
+}, {
+    value: "england",
+    label: "England"
+},];

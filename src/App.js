@@ -4,9 +4,10 @@ import { Routes, Route } from 'react-router-dom';
 import MyAppointments from './components/MyAppointments/MyAppointments';
 import Services from './components/Services/Services';
 import Salons from './components/Salons/Salons';
+import SalonCard from './components/SalonCard/SalonCard';
 import UserProfile from './components/UserProfile/UserProfile';
 import About from './components/About/About';
-import Api from './utils/Api'
+import Api from './utils/Api';
 import Nails from './components/Nails/Nails';
 import { useEffect, useState } from 'react';
 import { CurrentUserContext } from "./context/CurrentUserContext";
@@ -15,6 +16,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [regions, setRegions] = useState([]);
   const [version, setVersion] = useState('');
+  // const [salons, setSalons] = useState([]);
 
   const api = new Api({
     url: 'http://localhost:5000',
@@ -43,13 +45,30 @@ function App() {
 
   async function updateUserInfo(inputData) {
     try {
-      const user = await api.editProfile(inputData);
-      console.log('POST : идет с сервера ', user);
+      await api.editProfile(inputData);
+      const user = await getInfoAboutUser();
       setCurrentUser(user);
     } catch (error) {
       return console.log(error);
     }
   }
+
+  // useEffect(() => {
+  //   if (currentUser && currentUser.regionId) {
+  //     getSalonsByRegionForCurrentUser();
+  //   }
+  // }, [currentUser]);
+
+
+  // function getSalonsByRegionForCurrentUser() {
+  //   return api
+  //     .getAllSalonsInRegion(currentUser.regionId)
+  //     .then((salons) => {
+  //       setSalons(salons);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }
+
 
   function getVersionApp() {
     api
@@ -64,6 +83,7 @@ function App() {
     getVersionApp();
   }, []);
 
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='App'>
@@ -77,6 +97,8 @@ function App() {
           <Route path="/appointment" element={<Services />}
           />
           <Route path="/salons" element={<Salons />}
+          />
+          <Route path="/salons/:salonId" element={<SalonCard />}
           />
           <Route path="/nails" element={<Nails />}
           />

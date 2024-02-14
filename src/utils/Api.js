@@ -13,7 +13,6 @@ export default class Api {
   }
 
   editProfile(data) {
-    console.log("api.js", data);
     return fetch(`${this._url}/clientData/`, {
       method: 'POST',
       headers: {
@@ -25,6 +24,20 @@ export default class Api {
 
   getAllRegions() {
     return fetch(`${this._url}/region/`, {
+      method: 'GET',
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
+
+  getAllSalonsInRegion(regionId) {
+    return fetch(`${this._url}/salonData/region/${regionId}`, {
+      method: 'GET',
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
+
+  getSalonInfo(salonId) {
+    return fetch(`${this._url}/salonData/${salonId}`, {
       method: 'GET',
       headers: this._headers,
     }).then(this._handleResponse);
@@ -56,14 +69,6 @@ export default class Api {
     if (res.ok) {
       return res;
     } else {
-      return Promise.reject(`Ошибка ${res.status}`);
-    }
-  }
-  _handleResponseText(res) {
-    if (res.ok) {
-      return res.text();
-    }
-    else {
       return Promise.reject(`Ошибка ${res.status}`);
     }
   }

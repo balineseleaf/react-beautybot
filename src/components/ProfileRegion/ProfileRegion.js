@@ -7,12 +7,12 @@ import Select from 'react-select'
 
 
 const ProfileRegion = ({ onEditProfile, allRegions }) => {
+
   const currentUser = React.useContext(CurrentUserContext);
   const { t } = useTranslation();
 
   // кнопка состояния Сохранить у Регионов пользователя
-  const [isRegionSelected, setIsRegionSelected] = useState(false);
-  const isSaveButtonDisabled = !isRegionSelected;
+
   // Регионы и их состояния
   const [editingRegion, setEditingRegion] = useState(false);
   const [currentRegion, setCurrentRegion] = useState('');
@@ -68,9 +68,14 @@ const ProfileRegion = ({ onEditProfile, allRegions }) => {
   };
 
   const onChangeRegion = (newValue) => {
-    setCurrentRegion(newValue.label)
-    setIsRegionSelected(!!newValue);
+    if (newValue) {
+      setCurrentRegion(newValue.label);
+    } else {
+      setCurrentRegion('');
+    }
   }
+  const isSaveButtonDisabled = !currentRegion;
+  // const isSaveButtonDisabled = !currentRegion || (getValueRegion() && getValueRegion().label.trim() === '');
 
   const [isHoveredRegion, setIsHoveredRegion] = useState(false);
 
@@ -86,7 +91,7 @@ const ProfileRegion = ({ onEditProfile, allRegions }) => {
     <div>
       {editingRegion ? (
         <div className="container-input-region">
-          <Select className="profile__region" options={transformedNamesArray} value={getValueRegion()} onChange={onChangeRegion} />
+          <Select placeholder="Выберите регион" className="profile__region" options={transformedNamesArray} value={getValueRegion()} onChange={onChangeRegion} />
           <div className="profile__block-buttons">
             <button className="profile__button-save-region" onClick={handleSaveClickRegion} disabled={isSaveButtonDisabled}>Сохранить</button>
             <button className="profile__button-cancel-region" onClick={handleCancelClickRegion}>Отмена</button>
