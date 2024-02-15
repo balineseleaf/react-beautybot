@@ -10,9 +10,9 @@ const Salons = () => {
   const { salonId } = useParams();
   const currentUser = React.useContext(CurrentUserContext);
   const [salons, setSalons] = useState([]);
-
   const [salonInfo, setSalonInfo] = useState(null);
   const { t } = useTranslation();
+
 
   const api = new Api({
     url: 'http://localhost:5000',
@@ -20,8 +20,6 @@ const Salons = () => {
       'Content-Type': 'application/json',
     },
   });
-
-
 
   useEffect(() => {
     if (currentUser && currentUser.regionId) {
@@ -50,19 +48,6 @@ const Salons = () => {
       console.error("Error fetching salon info:", error);
     }
   }
-  // useEffect(() => {
-  //   const getSalonDetails = async () => {
-  //     try {
-  //       const salonInfo = await api.getSalonInfo(salonId);
-  //       setSalonInfo(salonInfo);
-  //     } catch (error) {
-  //       console.error("Error fetching salon info:", error);
-  //     }
-  //   };
-
-  //   getSalonDetails();
-  // }, [salonId]);
-
 
   return (
     <div className="salons">

@@ -10,6 +10,7 @@ const SalonCard = () => {
   const { t } = useTranslation();
   const [salonInfo, setSalonInfo] = useState(null);
 
+
   const api = new Api({
     url: 'http://localhost:5000',
     headers: {

@@ -49,6 +49,12 @@ export default class Api {
       headers: this._headers,
     }).then(this._handleResponse);
   }
+  getProcedureInfo(salonId) {
+    return fetch(`${this._url}/procedure/salon/${salonId}`, {
+      method: 'GET',
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
 
   getVersion() {
     return fetch(`${this._url}/service/version`, {
