@@ -43,12 +43,12 @@ export default class Api {
     }).then(this._handleResponse);
   }
 
-  // getRegionId(id) {
-  //   return fetch(`${this._url}/region/${id}`, {
-  //     method: 'GET',
-  //     headers: this._headers,
-  //   }).then(this._handleResponse);
-  // }
+  getReviews(salonId) {
+    return fetch(`${this._url}/review/salon/${salonId}`, {
+      method: 'GET',
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
 
   getVersion() {
     return fetch(`${this._url}/service/version`, {

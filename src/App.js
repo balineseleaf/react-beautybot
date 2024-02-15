@@ -9,6 +9,9 @@ import UserProfile from './components/UserProfile/UserProfile';
 import About from './components/About/About';
 import Api from './utils/Api';
 import Nails from './components/Nails/Nails';
+import MyCalendar from './components/Calendar/Calendar';
+import Reviews from './components/Reviews/Reviews';
+import PriceList from './components/PriceList/PriceList';
 import { useEffect, useState } from 'react';
 import { CurrentUserContext } from "./context/CurrentUserContext";
 
@@ -53,23 +56,6 @@ function App() {
     }
   }
 
-  // useEffect(() => {
-  //   if (currentUser && currentUser.regionId) {
-  //     getSalonsByRegionForCurrentUser();
-  //   }
-  // }, [currentUser]);
-
-
-  // function getSalonsByRegionForCurrentUser() {
-  //   return api
-  //     .getAllSalonsInRegion(currentUser.regionId)
-  //     .then((salons) => {
-  //       setSalons(salons);
-  //     })
-  //     .catch((error) => console.log(error));
-  // }
-
-
   function getVersionApp() {
     api
       .getVersion()
@@ -97,6 +83,12 @@ function App() {
           <Route path="/appointment" element={<Services />}
           />
           <Route path="/salons" element={<Salons />}
+          />
+          <Route path="/calendar" element={<MyCalendar />}
+          />
+          <Route path="/reviews/:salonId" element={<Reviews />}
+          />
+          <Route path="/pricelist/:salonId" element={<PriceList />}
           />
           <Route path="/salons/:salonId" element={<SalonCard />}
           />

@@ -3,10 +3,15 @@ import './Salons.css';
 import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 import Api from '../../utils/Api';
+import { useParams } from "react-router-dom";
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 const Salons = () => {
+  const { salonId } = useParams();
   const currentUser = React.useContext(CurrentUserContext);
+  const [salons, setSalons] = useState([]);
+
+  const [salonInfo, setSalonInfo] = useState(null);
   const { t } = useTranslation();
 
   const api = new Api({
@@ -16,8 +21,7 @@ const Salons = () => {
     },
   });
 
-  const [salons, setSalons] = useState([]);
-  // const [salonInfo, setSalonInfo] = useState([]);
+
 
   useEffect(() => {
     if (currentUser && currentUser.regionId) {
@@ -31,25 +35,33 @@ const Salons = () => {
       .getAllSalonsInRegion(currentUser.regionId)
       .then((salons) => {
         setSalons(salons);
+        salons.forEach(salon => {
+          getSalonDetails(salon.salonId);
+        });
       })
       .catch((error) => console.log(error));
   }
 
-
+  async function getSalonDetails(salonId) {
+    try {
+      const salonInfo = await api.getSalonInfo(salonId);
+      setSalonInfo(salonInfo);
+    } catch (error) {
+      console.error("Error fetching salon info:", error);
+    }
+  }
   // useEffect(() => {
-  //   if (salons.length > 0) {
-  //     const getFullInfoAboutSalons = async () => {
-  //       try {
-  //         const infoAboutSalon = await Promise.all(salons.map(salon => api.getSalonInfo(salon.salonId)));
-  //         setSalonInfo(infoAboutSalon);
-  //       } catch (error) {
-  //         console.error("Error fetching salon info:", error);
-  //       }
-  //     };
+  //   const getSalonDetails = async () => {
+  //     try {
+  //       const salonInfo = await api.getSalonInfo(salonId);
+  //       setSalonInfo(salonInfo);
+  //     } catch (error) {
+  //       console.error("Error fetching salon info:", error);
+  //     }
+  //   };
 
-  //     getFullInfoAboutSalons();
-  //   }
-  // }, [salons]);
+  //   getSalonDetails();
+  // }, [salonId]);
 
 
   return (
