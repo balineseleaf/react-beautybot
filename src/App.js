@@ -2,7 +2,6 @@ import './App.css';
 import MainPage from './components/MainPage/MainPage';
 import { Routes, Route } from 'react-router-dom';
 import MyAppointments from './components/MyAppointments/MyAppointments';
-import Services from './components/Services/Services';
 import Salons from './components/Salons/Salons';
 import SalonCard from './components/SalonCard/SalonCard';
 import UserProfile from './components/UserProfile/UserProfile';
@@ -21,7 +20,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [regions, setRegions] = useState([]);
   const [version, setVersion] = useState('');
-  // const [salons, setSalons] = useState([]);
 
   const api = new Api({
     url: 'http://localhost:5000',

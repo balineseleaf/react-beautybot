@@ -62,7 +62,7 @@ export default class Api {
   }
 
   getAllCategoriesOfProcedures() {
-    return fetch(`${this._url}/procedure/all`, {
+    return fetch(`${this._url}/category/all`, {
       method: 'GET',
       headers: this._headers,
     }).then(this._handleResponse);
