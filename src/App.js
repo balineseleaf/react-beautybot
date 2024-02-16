@@ -13,6 +13,7 @@ import MyCalendar from './components/Calendar/Calendar';
 import Reviews from './components/Reviews/Reviews';
 import PriceList from './components/PriceList/PriceList';
 import ScheduleDay from './components/ScheduleDay/ScheduleDay';
+import NewAppointment from './components/NewAppointment/NewAppointment';
 import { useEffect, useState } from 'react';
 import { CurrentUserContext } from "./context/CurrentUserContext";
 
@@ -81,7 +82,7 @@ function App() {
 
           <Route path="/preprofile" element={<UserProfile allRegions={regions} onEditProfile={updateUserInfo} />}
           />
-          <Route path="/appointment" element={<Services />}
+          <Route path="/appointment" element={<NewAppointment />}
           />
           <Route path="/salons" element={<Salons />}
           />

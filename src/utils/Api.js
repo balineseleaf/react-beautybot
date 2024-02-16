@@ -61,6 +61,13 @@ export default class Api {
     }).then(this._handleResponse);
   }
 
+  getAllCategoriesOfProcedures() {
+    return fetch(`${this._url}/procedure/all`, {
+      method: 'GET',
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
+
 
   getVersion() {
     return fetch(`${this._url}/service/version`, {
