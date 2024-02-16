@@ -10,6 +10,8 @@ const Pricelist = () => {
 
   const [salonInfo, setSalonInfo] = useState(null);
   const [procedurePrices, setProcedurePrices] = useState(new Map());
+
+  // console.log(procedurePrices);
   const [procedureInfo, setProcedureInfo] = useState(null);
   const { t } = useTranslation();
 
@@ -34,12 +36,12 @@ const Pricelist = () => {
     getSalonDetails();
   }, [salonId]);
 
+
   useEffect(() => {
     const getProcedureInformation = async () => {
       try {
         const procedureInfo = await api.getProcedureInfo(salonId);
         setProcedureInfo(procedureInfo);
-        // console.log('100', procedureInfo);
       } catch (error) {
         console.error("Error fetching procedure info:", error);
       }
@@ -55,24 +57,19 @@ const Pricelist = () => {
   procedureInfo && procedureInfo.forEach(procedure => {
     procedureMapFromIdToName[procedure.procedureId] = t(procedure.procedureName);
   });
-  console.log(procedureMapFromIdToName);
-  const names = Object.values(procedureMapFromIdToName);
-  console.log(names);
-
-  // const nameOfProcedure = procedureMapFromIdToName.map(procedureId => Object.values(procedureId)[0]);
-
-
 
   return (
     <div className="pricelist">
       <div className="pricelist__block">
-        <h3 className="pricelist__header">Процедуры и цены салона:{salonInfo && salonInfo.salonName}</h3>
-        {Array.from(procedurePrices.entries()).map(([procedureId, { price, duration }]) => (
-          <div key={procedureId} className="pricelist__procedure">
-            <p>Процедура: {procedureMapFromIdToName[procedureId]} ({price} / {duration})</p>
-          </div>
-        ))}
-        <Link to="/salons" className="pricelist__back-button">Назад</Link>
+        <h3 className="pricelist__header"><span className="pricelist__bold-header">Процедуры и цены салона:</span> {salonInfo && salonInfo.salonName}</h3>
+        <div className="pricelist__container">
+          {Array.from(procedurePrices.entries()).map(([procedureId, { price, duration }]) => (
+            <div key={procedureId} className="pricelist__procedure">
+              <p>{procedureMapFromIdToName[procedureId]} ({price} / {duration})</p>
+            </div>
+          ))}
+        </div>
+        <Link to={-1} className="pricelist__back-button">Назад</Link>
       </div>
     </div>);
 }

@@ -10,7 +10,6 @@ const SalonCard = () => {
   const { t } = useTranslation();
   const [salonInfo, setSalonInfo] = useState(null);
 
-
   const api = new Api({
     url: 'http://localhost:5000',
     headers: {
@@ -32,17 +31,16 @@ const SalonCard = () => {
     getSalonDetails();
   }, [salonId]);
 
-
   return (
     <div className="saloncard">
       <div className="saloncard__block">
         <h3 className="saloncard__header">{salonInfo && salonInfo.salonName}</h3>
         <ul className="saloncard__list">
-          <li className="saloncard__list-item saloncard__description"> Описание: {salonInfo && salonInfo.salonDescription}</li>
-          <li className="saloncard__list-item saloncard__rate">Рейтинг салона: {salonInfo && salonInfo.salonRate}</li>
-          <li className="saloncard__list-item saloncard__email">Почта салона: {salonInfo && salonInfo.salonEmail}</li>
-          <li className="saloncard__list-item saloncard__phone">Телефон: {salonInfo && salonInfo.salonPhone}</li>
-          <li className="saloncard__list-item saloncard__address">Адрес: {salonInfo && salonInfo.salonAddress}</li>
+          <li className="saloncard__list-item saloncard__description"> <span className="saloncard__list-bold-item">Описание:</span> {salonInfo && salonInfo.salonDescription}</li>
+          <li className="saloncard__list-item saloncard__rate"> <span className="saloncard__list-bold-item">Рейтинг салона:</span> {salonInfo && salonInfo.salonRate}</li>
+          <li className="saloncard__list-item saloncard__email"> <span className="saloncard__list-bold-item">Почта салона:</span> {salonInfo && salonInfo.salonEmail}</li>
+          <li className="saloncard__list-item saloncard__phone"> <span className="saloncard__list-bold-item">Телефон:</span> {salonInfo && salonInfo.salonPhone}</li>
+          <li className="saloncard__list-item saloncard__address"> <span className="saloncard__list-bold-item">Адрес:</span> {salonInfo && salonInfo.salonAddress}</li>
         </ul>
         <div className="saloncard__menu">
           <Link to={`/pricelist/${salonId}`} className="saloncard__menu-button">Прайс-лист</Link>

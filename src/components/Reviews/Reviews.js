@@ -37,11 +37,11 @@ const Reviews = () => {
         <div className="reviews__list">
           {reviews && reviews.map((review, index) => (
             <div key={index} className="review-card">
-              <p className="review__item review__item-header">Дата создания:</p>
-              <p className="review__item">Дата записи:{review.appointmentTime}</p>
-              <p className="review__item">Стоимость:{review.appointmentPrice}</p>
-              <p className="review__item">Рейтинг:{review.rate}</p>
-              <p className="review__item">Процедура(ы):{review.reviewDescription}</p>
+              <p className="review__item review__item-header"><span className="review__bold-item">Дата создания:</span></p>
+              <p className="review__item"><span className="review__bold-item">Дата записи:</span> {review.appointmentTime}</p>
+              <p className="review__item"><span className="review__bold-item">Стоимость:</span> {review.appointmentPrice}</p>
+              <p className="review__item"><span className="review__bold-item">Рейтинг:</span> {review.rate}</p>
+              <p className="review__item"><span className="review__bold-item">Процедура(ы):</span> {review.reviewDescription}</p>
             </div>
           ))}
         </div>

@@ -2,7 +2,6 @@ export default class Api {
   constructor(config) {
     this._url = config.url;
     this._headers = config.headers;
-    //this._authorization = config.headers.authorization;// token
   }
 
   getUserInfo() {
@@ -22,12 +21,14 @@ export default class Api {
     }).then(this._handleResponseCommon);
   }
 
+
   getAllRegions() {
     return fetch(`${this._url}/region/`, {
       method: 'GET',
       headers: this._headers,
     }).then(this._handleResponse);
   }
+
 
   getAllSalonsInRegion(regionId) {
     return fetch(`${this._url}/salonData/region/${regionId}`, {
@@ -36,6 +37,7 @@ export default class Api {
     }).then(this._handleResponse);
   }
 
+
   getSalonInfo(salonId) {
     return fetch(`${this._url}/salonData/${salonId}`, {
       method: 'GET',
@@ -43,18 +45,22 @@ export default class Api {
     }).then(this._handleResponse);
   }
 
+
   getReviews(salonId) {
     return fetch(`${this._url}/review/salon/${salonId}`, {
       method: 'GET',
       headers: this._headers,
     }).then(this._handleResponse);
   }
+
+
   getProcedureInfo(salonId) {
     return fetch(`${this._url}/procedure/salon/${salonId}`, {
       method: 'GET',
       headers: this._headers,
     }).then(this._handleResponse);
   }
+
 
   getVersion() {
     return fetch(`${this._url}/service/version`, {
@@ -63,6 +69,8 @@ export default class Api {
     }).then(this._handleResponseCommon);
   }
 
+
+  //-------------------------------------------------------response-----------------------------------------------------------//
   _handleResponse(res) {
     if (res.ok) {
       return res.json();

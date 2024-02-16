@@ -57,9 +57,7 @@ const Salons = () => {
         {salons.length > 0 ? (
           <ul className="salons__list">
             {salons.map((salon) => (
-              <li className="salons__item" key={salon.salonId}>
-                <Link className="salons__card" to={`/salons/${salon.salonId}`}>{salon.salonName}</Link>
-              </li>
+              <Link key={salon.salonId} className="salons__card" to={`/salons/${salon.salonId}`}>{salon.salonName}</Link>
             ))}
           </ul>
         ) : <p className="salon__item notfound">Салонов в вашем регионе не найдено</p>}

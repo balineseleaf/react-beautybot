@@ -12,6 +12,7 @@ import Nails from './components/Nails/Nails';
 import MyCalendar from './components/Calendar/Calendar';
 import Reviews from './components/Reviews/Reviews';
 import PriceList from './components/PriceList/PriceList';
+import ScheduleDay from './components/ScheduleDay/ScheduleDay';
 import { useEffect, useState } from 'react';
 import { CurrentUserContext } from "./context/CurrentUserContext";
 
@@ -86,6 +87,8 @@ function App() {
           />
           <Route path="/calendar" element={<MyCalendar />}
           />
+          <Route path="/calendar/:date" element={<ScheduleDay />} />
+
           <Route path="/reviews/:salonId" element={<Reviews />}
           />
           <Route path="/pricelist/:salonId" element={<PriceList />}

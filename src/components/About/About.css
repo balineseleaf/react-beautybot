@@ -1,4 +1,4 @@
-.about {
+.aboutus {
   width: 500px;
   margin: 0 auto;
   height: 597px;
@@ -7,14 +7,50 @@
   align-items: center;
 }
 
-.about__block {
+.aboutus__block {
+  border-radius: 20px;
+  height: 300px;
+  border: 5px solid #d0d0d0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
 }
 
-.about__info {
-  padding: 15px;
-  border-radius: 10px;
-  font-weight: 500;
-  border-color: #ff83dc;
-  border-style: solid;
+.aboutus__info {
+  margin: 0;
+  text-align: center;
+  padding: 20px 10px 20px 10px;
+  font-weight: 300;
   font-size: 20px;
+}
+.aboutus__link-instruction {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  margin: 0 auto;
+  text-decoration: none;
+  color: black;
+  width: 40%;
+  padding: 10px;
+  background-color: #ff83dc;
+  border-radius: 20px;
+}
+.aboutus__back-button {
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #1c1c1c;
+  border: none;
+  background: #ff83dc;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 20px;
+  transition: 0.4s ease-in-out;
+  padding: 10px 0px;
+  text-decoration: none;
 }
