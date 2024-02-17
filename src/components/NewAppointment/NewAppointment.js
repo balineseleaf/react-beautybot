@@ -23,7 +23,7 @@ const NewAppointment = () => {
   });
 
   useEffect(() => {
-    async function getAllProceduresInfo() {
+    async function getAllCategories() {
       try {
         const categories = await api.getAllCategoriesOfProcedures();
         setCategories(categories);
@@ -35,7 +35,7 @@ const NewAppointment = () => {
         return console.log(error);
       }
     }
-    getAllProceduresInfo();
+    getAllCategories();
   }, [t]);
 
 

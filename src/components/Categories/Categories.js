@@ -2,13 +2,15 @@ import './Categories.css';
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 import Api from '../../utils/Api';
 
 const Categories = () => {
+  const currentUser = React.useContext(CurrentUserContext);
   const { t } = useTranslation();
   const [categories, setCategories] = useState([]);
-  const [procedureNames, setProcedureNames] = useState([]);
-  const categoryIdForCheckbox = window.location.pathname.split('/').pop();
+  const [procedureData, setProcedureData] = useState([]);
+  const categoryIdForCheckbox = window.location.pathname.split('/').pop();// взяли из url
 
 
   //-----------------api-------------------------------------------------------------
@@ -22,35 +24,35 @@ const Categories = () => {
 
   //-----------------requests-------------------------------------------------------------
   useEffect(() => {
-    async function getAllProceduresInfo() {
+    async function getAllCategories() {
       try {
-        const categories = await api.getAllCategoriesOfProcedures();
+        const categories = await api.getAllCategoriesOfProcedures();// реснички ногти и бровки
         setCategories(categories);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
     }
-    getAllProceduresInfo();
+    getAllCategories();
   }, [t]);
 
 
   const getAllProcedureNames = async (categoryId) => {
     try {
-      const procedureNames = await api.getAllProcedureNamesFromCategory(categoryId);
-      setProcedureNames(procedureNames);
+      const arrayWithProceduresData = await api.getAllProcedureNamesFromCategory(categoryId);
+      setProcedureData(arrayWithProceduresData);
     } catch (error) {
       console.error("Error fetching procedure info:", error);
     }
   };
+
   useEffect(() => {
-    getAllProcedureNames(categoryIdForCheckbox);
+    getAllProcedureNames(categoryIdForCheckbox);// взяли из url
   }, [])
 
-
-  const proceduresForCheckBox = procedureNames.map(procedure => procedure.procedureName);
+  const proceduresForCheckBox = procedureData.map(procedure => procedure.procedureName);// массив с названиями процедур
 
   //------------------------------------checkbox-----------------------------------------------
-  const [checkboxes, setCheckboxes] = useState({ option1: false, option2: false, option3: false });
+  const [checkboxes, setCheckboxes] = useState({});
 
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
@@ -60,17 +62,42 @@ const Categories = () => {
     }));
   };
 
+  //---------------------------------collect data from checkboxes-------------------------
+
+  const mapFromCategoryIdToCategoryName = new Map();// Карта где сопоставляем id -> name
+  const selectedProcedureNames = Object.keys(checkboxes).filter(key => checkboxes[key]); // Получение массива выбранных процедур из состояния checkboxes. 
+  //Мы используем Object.keys(checkboxes) 
+  // для получения ключей (имен процедур) и фильтруем только те, у которых значение true.
+
+  procedureData.forEach(category => {
+    mapFromCategoryIdToCategoryName.set(category.procedureName, category.procedureId);
+  });
+
+  const findMatchesBetweenCheckBoxAndMap = () => {// ищем совпадения между выбранными в чекбоксе и нашей картой с категориями
+    const matchesBetweenMapAndCheckBox = selectedProcedureNames.reduce((acc, procedure) => { //acc пустой массив для заполнения idшниками 
+      const procedureId = mapFromCategoryIdToCategoryName.get(procedure); //Для каждой выбранной процедуры, мы пытаемся получить соответствующий идентификатор из 
+      // карты mapFromCategoryIdToCategoryName с помощью метода get. Если соответствие найдено, мы добавляем идентификатор в аккумулятор acc.
+      if (procedureId) {
+        acc.push(procedureId);
+      }
+      return acc;
+    }, []);
+    //console.log(matchesBetweenMapAndCheckBox); // тут массив айдишек
+  };
+  findMatchesBetweenCheckBoxAndMap();
+
+
   return (
     <div className='categories'>
       <div className="categories__block">
         <div className="categories__header">Выберите одну или несколько желаемых услуг:</div>
         <div className="categories__container">
           {proceduresForCheckBox.map((procedure, index) => (
-            <label className='categories__label' key={procedure}>
+            <label className='categories__label' key={index}>
               <input
                 type="checkbox"
-                name={`option${index + 1}`}
-                checked={checkboxes[`option${index + 1}`]}
+                name={procedure}
+                checked={checkboxes[`procedure${index + 1}`]}
                 onChange={handleCheckboxChange}
                 value={procedure}
                 className='categories__input'

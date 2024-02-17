@@ -75,6 +75,17 @@ export default class Api {
     }).then(this._handleResponse);
   }
 
+  getSalonsForSelectedProcedures(data) {
+    return fetch(`${this._url}/salonData/selectedProcedures`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    }).then(this._handleResponseCommon);
+  }
+
+
 
   getVersionApp() {
     return fetch(`${this._url}/service/version`, {

@@ -19,7 +19,6 @@ import { CurrentUserContext } from "./context/CurrentUserContext";
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [regions, setRegions] = useState([]);
-  const [version, setVersion] = useState('');
 
   const api = new Api({
     url: 'http://localhost:5000',
@@ -56,18 +55,7 @@ function App() {
     }
   }
 
-  function getCurrentVersion() {
-    api
-      .getVersionApp()
-      .then((version) => {
-        setVersion(version);
-      })
-      .catch((error) => console.log(error));
-  }
 
-  useEffect(() => {
-    getCurrentVersion();
-  }, []);
 
 
   return (
@@ -96,7 +84,7 @@ function App() {
           />
           <Route path="/salons/:salonId" element={<SalonCard />}
           />
-          <Route path="/aboutus" element={<About version={version} />}
+          <Route path="/aboutus" element={<About />}
           />
         </Routes>
       </div>
