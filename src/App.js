@@ -7,8 +7,8 @@ import SalonCard from './components/SalonCard/SalonCard';
 import UserProfile from './components/UserProfile/UserProfile';
 import About from './components/About/About';
 import Api from './utils/Api';
-import Nails from './components/Nails/Nails';
 import MyCalendar from './components/Calendar/Calendar';
+import Categories from './components/Categories/Categories';
 import Reviews from './components/Reviews/Reviews';
 import PriceList from './components/PriceList/PriceList';
 import ScheduleDay from './components/ScheduleDay/ScheduleDay';
@@ -56,9 +56,9 @@ function App() {
     }
   }
 
-  function getVersionApp() {
+  function getCurrentVersion() {
     api
-      .getVersion()
+      .getVersionApp()
       .then((version) => {
         setVersion(version);
       })
@@ -66,7 +66,7 @@ function App() {
   }
 
   useEffect(() => {
-    getVersionApp();
+    getCurrentVersion();
   }, []);
 
 
@@ -82,6 +82,8 @@ function App() {
           />
           <Route path="/appointment" element={<NewAppointment />}
           />
+          <Route path="/appointment/:categoryId" element={<Categories />}
+          />
           <Route path="/salons" element={<Salons />}
           />
           <Route path="/calendar" element={<MyCalendar />}
@@ -93,8 +95,6 @@ function App() {
           <Route path="/pricelist/:salonId" element={<PriceList />}
           />
           <Route path="/salons/:salonId" element={<SalonCard />}
-          />
-          <Route path="/nails" element={<Nails />}
           />
           <Route path="/aboutus" element={<About version={version} />}
           />
