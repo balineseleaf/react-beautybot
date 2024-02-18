@@ -8,6 +8,7 @@ import UserProfile from './components/UserProfile/UserProfile';
 import About from './components/About/About';
 import Api from './utils/Api';
 import MyCalendar from './components/Calendar/Calendar';
+import SalonSelection from './components/SalonSelection/SalonSelection';
 import Categories from './components/Categories/Categories';
 import Reviews from './components/Reviews/Reviews';
 import PriceList from './components/PriceList/PriceList';
@@ -55,9 +56,6 @@ function App() {
     }
   }
 
-
-
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='App'>
@@ -73,6 +71,8 @@ function App() {
           <Route path="/appointment/:categoryId" element={<Categories />}
           />
           <Route path="/salons" element={<Salons />}
+          />
+          <Route path="/salonselection" element={<SalonSelection />}
           />
           <Route path="/calendar" element={<MyCalendar />}
           />

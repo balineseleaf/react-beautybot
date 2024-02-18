@@ -28,7 +28,12 @@ const Reviews = () => {
     };
 
     getSalonReview();
-  }, [reviews]);
+  }, [salonId]);
+
+  const reviewsArrayLength = reviews.length;
+
+  console.log(reviewsArrayLength);
+
 
   return (
     <div className="review">
