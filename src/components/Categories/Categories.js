@@ -119,10 +119,16 @@ const Categories = () => {
     selectedProcedures: matchesBetweenMapAndCheckBox
   }
 
-  const handleSaveCategoriesClick = () => {
-    getSalonsThatPerformTheSelectedProcedures(finallyCategoriesAndUserIdObject);
-    navigate('/salonselection', { state: { salons: salonsAfterChooseProcedures } });
-  };
+  const handleSaveCategoriesClick = async () => {
+    await getSalonsThatPerformTheSelectedProcedures(finallyCategoriesAndUserIdObject);
+  }
+
+  useEffect(() => {
+    if (salonsAfterChooseProcedures && salonsAfterChooseProcedures.length) {
+      navigate('/salonselection', { state: { salons: salonsAfterChooseProcedures } });
+    }
+  }, [salonsAfterChooseProcedures])
+
 
   return (
     <div className='categories'>

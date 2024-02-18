@@ -58,7 +58,7 @@ const Salons = () => {
             {salons.map((salon) => (
               <li key={salon.salonId} className="salons__item">
                 <Link to={`/salons/${salon.salonId}`} className="salons__card">
-                  {salon.salonName} {`${salon.salonRate}`}
+                  {salon.salonName} {`${salon.salonRate !== null ? salon.salonRate : ''}`}
                 </Link>
               </li>
             ))}
