@@ -9,6 +9,7 @@
 .header__logo-box {
   width: 200px;
   position: relative;
+  left: -22px;
 }
 
 .main__account-link {
