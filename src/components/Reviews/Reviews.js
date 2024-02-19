@@ -30,10 +30,15 @@ const Reviews = () => {
     getSalonReview();
   }, [salonId]);
 
-  const reviewsArrayLength = reviews.length;
+  console.log(reviews);
 
-  console.log(reviewsArrayLength);
-
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 0; i < rating; i++) {
+      stars.push(<span style={{ color: '#ffa800', fontSize: '23px' }} key={i}>&#9733;</span>);
+    }
+    return stars;
+  };
 
   return (
     <div className="review">
@@ -45,7 +50,7 @@ const Reviews = () => {
               <p className="review__item review__item-header"><span className="review__bold-item">Дата создания:</span></p>
               <p className="review__item"><span className="review__bold-item">Дата записи:</span> {review.appointmentTime}</p>
               <p className="review__item"><span className="review__bold-item">Стоимость:</span> {review.appointmentPrice}</p>
-              <p className="review__item"><span className="review__bold-item">Рейтинг:</span> {review.rate}</p>
+              <p className="review__item"><span className="review__bold-item">Рейтинг:</span> {renderStars(review.rate)}</p>
               <p className="review__item"><span className="review__bold-item">Процедура(ы):</span> {review.reviewDescription}</p>
             </div>
           ))}

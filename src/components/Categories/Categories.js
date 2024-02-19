@@ -141,7 +141,6 @@ const Categories = () => {
                 className='categories__input' /> {t(procedure)} </label>
           ))}
         </div>
-        {/* <Link type="submit" to="/salonselection" className="categories__link"></Link> */}
         <button onClick={handleSaveCategoriesClick} type="submit" className='categories__submit-button'>Продолжить</button>
         <Link to={-1} className="categories__back-button">Назад</Link>
       </div>

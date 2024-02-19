@@ -7,19 +7,22 @@
   position: absolute;
   text-align: center;
   margin: 0 auto;
-  width: 60%;
-  bottom: 20px;
+  width: 300px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  color: #1c1c1c;
+  color: #f8f8f8;
   border: none;
-  background: #ff83dc;
-  border-radius: 20px;
-  font-weight: 600;
+  background: #1c1c1c;
+  border-radius: 10px;
+  font-weight: 300;
   font-size: 22px;
-  transition: 0.4s ease-in-out;
+  transition: 0.5s ease-in-out;
   padding: 13px 0px;
   text-decoration: none;
+}
+.newappointment__back-button:hover {
+  opacity: 0.8;
 }
 
 .newappointment__block {
@@ -46,25 +49,27 @@
   position: absolute;
   text-align: center;
   margin: 0 auto;
-  width: 60%;
-  bottom: 90px;
+  width: 300px;
+  bottom: 110px;
   left: 50%;
   transform: translateX(-50%);
-  color: #1c1c1c;
+  color: #f8f8f8;
   border: none;
-  background: #ff83dc;
-  border-radius: 20px;
-  font-weight: 600;
+  background: #1c1c1c;
+  border-radius: 10px;
+  font-weight: 300;
   font-size: 22px;
-  transition: 0.4s ease-in-out;
+  transition: 0.5s ease-in-out;
   padding: 13px 0px;
   text-decoration: none;
 }
 
 .newappointment__submit-button:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .newappointment__selector {
-  width: 250px;
+  width: 295px;
+  border-radius: 20px;
+  cursor: pointer;
 }

@@ -35,13 +35,17 @@
 }
 
 .pricelist__procedure {
+  margin: 0;
+  padding: 0;
   border-radius: 20px;
   text-align: center;
-  padding: 10px;
+  padding: 8px;
+  font-size: 20px;
   margin-top: 20px;
-  width: 300px;
+  width: 400px;
   background-color: #f8f8f8;
-  border: 1px solid #1c1c1c;
+  border: 2px solid #1c1c1c;
+  filter: drop-shadow(5px 5px 4px #918f8f);
 }
 
 .pricelist__header {

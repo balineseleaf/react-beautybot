@@ -8,12 +8,17 @@
   color: #1c1c1c;
   border: none;
   background: #ff83dc;
-  border-radius: 20px;
+  border-radius: 13px;
   font-weight: 600;
   font-size: 22px;
   transition: 0.4s ease-in-out;
   padding: 13px 0px;
   text-decoration: none;
+  filter: drop-shadow(5px 5px 4px #e54bb9);
+  transition: 0.5s ease-in-out;
+}
+.saloncard__back-button:hover {
+  opacity: 0.7;
 }
 
 .saloncard {
@@ -27,7 +32,7 @@
   font-weight: 600;
   font-size: 25px;
   color: #000000;
-  padding: 0 0 30px 0;
+  padding: 0 0 10px 0;
   margin-top: 40px;
   text-align: center;
   color: #1c1c1c;
@@ -66,8 +71,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  width: 390px;
-  background-color: #d0d0d0;
+  width: 460px;
   height: 100px;
   border-radius: 20px;
   padding: 5px 10px 5px 10px;
@@ -76,12 +80,19 @@
 .saloncard__menu-button {
   margin: 0;
   padding: 0;
+  width: 115px;
   height: 20px;
+  text-align: center;
   text-decoration: none;
-  color: #1c1c1c;
-  padding: 10px 20px 10px 20px;
-  background-color: #ff83dc;
-  border-radius: 20px;
+  color: #f8f8f8;
+  padding: 10px 15px 10px 15px;
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  filter: drop-shadow(3px 3px 4px #1c1c1c);
+  transition: 0.5s ease-in-out;
+}
+.saloncard__menu-button:hover {
+  opacity: 0.8;
 }
 
 .saloncard__list-bold-item {

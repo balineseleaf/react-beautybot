@@ -33,8 +33,10 @@ const About = () => {
     <div className="aboutus">
       <div className="aboutus__block">
         <p className="aboutus__info">&#8520;{t("About")} <span>{version}</span>{t("About2")}</p>
-        <Link to="https://telegra.ph/Telegram-bot-dlya-zapisi-k-byuti-masteru-09-19" className="aboutus__link-instruction">Подробная инструкция</Link>
-        <Link to={-1} className="aboutus__back-button">Назад</Link>
+        <div className="aboutus__button-block">
+          <Link to="https://telegra.ph/Telegram-bot-dlya-zapisi-k-byuti-masteru-09-19" className="aboutus__link-instruction">Подробная инструкция</Link>
+          <Link to={-1} className="aboutus__back-button">Назад</Link>
+        </div>
       </div>
     </div>
   );

@@ -11,8 +11,7 @@ const MainPage = () => {
     <div className='main'>
       <Header />
       <div className="main__container">
-        <Link to="/appointment" className='main__button'>{t("SignUp")}
-          {/* <Link to="/appointment" className="main__link-round"></Link> */}
+        <Link to="/appointment" className='main__central-link'>{t("SignUp")}
         </Link>
         <div className='inner-container'>
           <ul className='main__links-block'>
