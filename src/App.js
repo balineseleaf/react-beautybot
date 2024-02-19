@@ -1,19 +1,19 @@
 import './App.css';
-import MainPage from './components/MainPage/MainPage';
+import MainPage from './components/MainMenu/MainPage/MainPage';
 import { Routes, Route } from 'react-router-dom';
-import MyAppointments from './components/MyAppointments/MyAppointments';
-import Salons from './components/Salons/Salons';
-import SalonCard from './components/SalonCard/SalonCard';
-import UserProfile from './components/UserProfile/UserProfile';
-import About from './components/About/About';
+import MyAppointments from './components/MainMenu/MyAppointments/MyAppointments';
+import Salons from './components/SalonsFolder/Salons/Salons';
+import SalonCard from './components/SalonsFolder/SalonCard/SalonCard';
+import UserProfile from './components/MainMenu/UserProfile/UserProfile';
+import About from './components/MainMenu/About/About';
 import Api from './utils/Api';
-import MyCalendar from './components/Calendar/Calendar';
-import SalonSelection from './components/SalonSelection/SalonSelection';
-import Categories from './components/Categories/Categories';
-import Reviews from './components/Reviews/Reviews';
-import PriceList from './components/PriceList/PriceList';
-import ScheduleDay from './components/ScheduleDay/ScheduleDay';
-import NewAppointment from './components/NewAppointment/NewAppointment';
+import MyCalendar from './components/SalonsFolder/Calendar/Calendar';
+import SalonsAfterFilter from './components/SalonsFolder/SalonsAfterFilter/SalonsAfterFilter';
+import Categories from './components/SalonsFolder/Categories/Categories';
+import Reviews from './components/SalonsFolder/Reviews/Reviews';
+import PriceList from './components/SalonsFolder/PriceList/PriceList';
+import ScheduleDay from './components/SalonsFolder/ScheduleDay/ScheduleDay';
+import NewAppointment from './components/MainMenu/NewAppointment/NewAppointment';
 import { useEffect, useState } from 'react';
 import { CurrentUserContext } from "./context/CurrentUserContext";
 
@@ -72,7 +72,7 @@ function App() {
           />
           <Route path="/salons" element={<Salons />}
           />
-          <Route path="/salonselection" element={<SalonSelection />}
+          <Route path="/salonsafterfilter" element={<SalonsAfterFilter />}
           />
           <Route path="/calendar" element={<MyCalendar />}
           />

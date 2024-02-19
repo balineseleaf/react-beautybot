@@ -1,0 +1,64 @@
+.id_paragraph {
+  margin: 0;
+  margin-top: 25px;
+  color: black;
+}
+
+.userprofile {
+  opacity: 1;
+  width: 100%;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: visibility 0.4s, opacity 0.4s linear;
+}
+
+.userprofile__block {
+  margin-top: 90px;
+  width: 560px;
+  height: 597px;
+  position: relative;
+  background: #ffffff;
+  box-shadow: 10px 10px 80px rgba(115, 113, 224, 0.3);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.userprofile__form {
+  margin: 0 auto;
+  margin-top: 30px;
+  box-sizing: border-box;
+  padding-left: 35px;
+  padding-right: 35px;
+  background: #ffffff;
+  border-radius: 10%;
+  width: 430px;
+}
+
+.userprofile__fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  box-sizing: border-box;
+}
+
+.userprofile__header {
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.21;
+  color: #000000;
+}
+.form-edit-profile {
+  background-color: #000000;
+}
