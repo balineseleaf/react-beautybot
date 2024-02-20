@@ -8,7 +8,6 @@ import Button from '../../elements/Button/Button';
 
 const SalonCard = () => {
   const { salonId } = useParams();
-  //console.log(salonId);
   const { t } = useTranslation();
   const [salonInfo, setSalonInfo] = useState(null);
 
@@ -32,9 +31,7 @@ const SalonCard = () => {
 
     getSalonDetails();
   }, [salonId]);
-  // let location = salonInfo && salonInfo.salonLocation;
-  // // Создаем ссылку с адресом, который ведет на Google Maps
-  // let googleMapsLink = `<a href=${location} target="_blank">Местоположение</a>`;
+
 
   return (
     <div className="saloncard">

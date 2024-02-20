@@ -60,6 +60,8 @@ const Categories = () => {
 
   //------------------------------------checkbox-----------------------------------------------
 
+  const [isAnyCheckboxSelected, setIsAnyCheckboxSelected] = useState(false);
+
 
   const [checkboxes, setCheckboxes] = useState({});
 
@@ -69,6 +71,10 @@ const Categories = () => {
       ...prevState,
       [name]: checked
     }));
+    setIsAnyCheckboxSelected(Object.values({
+      ...checkboxes, // Добавляем текущее состояние checkboxes
+      [name]: checked // Обновляем значение текущего чекбокса
+    }).some(checkbox => checkbox)); // Проверяем, есть ли выбранные чекбоксы
   };
 
 
@@ -96,39 +102,44 @@ const Categories = () => {
   };
 
   findMatchesBetweenCheckBoxAndMap();
+  console.log('111', matchesBetweenMapAndCheckBox);
 
 
 
   //---------------------------------send data to server--------------------------------------------
 
-  const [salonsAfterChooseProcedures, setSalonsAfterChooseProcedures] = useState([]); // это нао передать в другой компонент
-  console.log('салоны, которые нам подходят', salonsAfterChooseProcedures);
+  // const [salonsAfterChooseProcedures, setSalonsAfterChooseProcedures] = useState([]); // это нао передать в другой компонент
+  // console.log('салоны, которые нам подходят', salonsAfterChooseProcedures);
 
-  async function getSalonsThatPerformTheSelectedProcedures(selectedProcedures) {
-    try {
-      const salonsInfo = await api.getSalonsForSelectedProcedures(selectedProcedures);
-      setSalonsAfterChooseProcedures(salonsInfo);
-    } catch (error) {
-      return console.log(error);
-    }
-  }
+  // async function getSalonsThatPerformTheSelectedProcedures(selectedProcedures) {
+  //   try {
+  //     const salonsInfo = await api.getSalonsForSelectedProcedures(selectedProcedures);
+  //     setSalonsAfterChooseProcedures(salonsInfo);
+  //   } catch (error) {
+  //     return console.log(error);
+  //   }
+  // }
 
-  let finallyCategoriesAndUserIdObject = {}; //финальный объект для отправки на сервер 
-  finallyCategoriesAndUserIdObject = {
-    clientId: currentUser.clientId,
-    selectedProcedures: matchesBetweenMapAndCheckBox
-  }
+  // let finallyCategoriesAndUserIdObject = {}; //финальный объект для отправки на сервер 
+  // finallyCategoriesAndUserIdObject = {
+  //   clientId: currentUser.clientId,
+  //   selectedProcedures: matchesBetweenMapAndCheckBox
+  // }
+
+  // const handleSaveCategoriesClick = async () => {
+  //   await getSalonsThatPerformTheSelectedProcedures(finallyCategoriesAndUserIdObject);
+  // }
+
+  // useEffect(() => {
+  //   if (salonsAfterChooseProcedures && salonsAfterChooseProcedures.length) {
+  //     navigate('/salonsafterfilter', { state: { salons: salonsAfterChooseProcedures } });
+  //   }
+  // }, [salonsAfterChooseProcedures])
 
   const handleSaveCategoriesClick = async () => {
-    await getSalonsThatPerformTheSelectedProcedures(finallyCategoriesAndUserIdObject);
+    await findMatchesBetweenCheckBoxAndMap();
+    navigate('/salonsafterfilter', { state: { matches: matchesBetweenMapAndCheckBox } });
   }
-
-  useEffect(() => {
-    if (salonsAfterChooseProcedures && salonsAfterChooseProcedures.length) {
-      navigate('/salonsafterfilter', { state: { salons: salonsAfterChooseProcedures } });
-    }
-  }, [salonsAfterChooseProcedures])
-
 
   return (
     <div className='categories'>
@@ -144,7 +155,7 @@ const Categories = () => {
           </div>
         </div>
         <div className='categories__buttons-block'>
-          <button onClick={handleSaveCategoriesClick} type="submit" className='categories__submit-button'>Продолжить</button>
+          <button onClick={handleSaveCategoriesClick} disabled={!isAnyCheckboxSelected} type="submit" className='categories__submit-button'>Продолжить</button>
           {/* <Button onClick={handleSaveCategoriesClick} type="submit" buttonText="Продолжить" /> */}
           <Button type="button" buttonText={t("Back2")} to={-1} />
         </div>

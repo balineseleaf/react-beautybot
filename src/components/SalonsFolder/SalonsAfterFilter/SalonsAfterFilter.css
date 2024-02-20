@@ -1,29 +1,9 @@
-.salonselection {
+.salonsafterfilter {
   width: 560px;
   margin: 100px auto;
 }
 
-.salonselection__back-button {
-  position: absolute;
-  text-align: center;
-  margin: 0 auto;
-  width: 250px;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #f8f8f8;
-  border: none;
-  background: #1c1c1c;
-  border-radius: 10px;
-  font-weight: 300;
-  font-size: 22px;
-  transition: 0.4s ease-in-out;
-  padding: 13px 0px;
-  text-decoration: none;
-  filter: drop-shadow(3px 3px 4px #1c1c1c);
-}
-
-.salonselection__button-container {
+.salonsafterfilter__button-container {
   margin-top: 10px;
   margin: 0 auto;
   margin-top: 20px;
@@ -32,7 +12,7 @@
   justify-content: space-around;
 }
 
-.salonselection__sort-button {
+.salonsafterfilter__sort-button {
   text-align: center;
   margin: 0 auto;
   width: 100px;
@@ -49,16 +29,16 @@
   filter: drop-shadow(3px 3px 4px #1c1c1c);
 }
 
-.salonselection__sort-button-right {
+.salonsafterfilter__sort-button-right {
   margin: 0;
 }
 
-.salonselection__sort-block {
+.salonsafterfilter__sort-block {
   display: flex;
   justify-content: flex-start;
   width: 220px;
 }
-.salonselection__block {
+.salonsafterfilter__block {
   background-color: #eaecee;
   height: 597px;
   margin: 0 auto;
@@ -70,7 +50,7 @@
   position: relative;
 }
 
-.salonselection__header {
+.salonsafterfilter__header {
   margin: 0;
   padding: 0;
   font-weight: 600;
@@ -80,7 +60,7 @@
   text-align: center;
 }
 
-.salonselection__text {
+.salonsafterfilter__text {
   margin: 0;
   padding: 0;
   font-weight: 300;
@@ -90,7 +70,7 @@
   text-align: center;
 }
 
-.salonselection__hint {
+.salonsafterfilter__hint {
   margin: 0;
   padding: 0;
   font-weight: 300;
@@ -100,7 +80,7 @@
   text-align: center;
 }
 
-.salonselection__submit-button {
+.salonsafterfilter__submit-button {
   position: absolute;
   text-align: center;
   margin: 0 auto;
@@ -120,10 +100,11 @@
   filter: drop-shadow(3px 3px 4px #1c1c1c);
 }
 
-.salonselection__submit-button:hover {
+.salonsafterfilter__submit-button:hover {
   opacity: 0.7;
 }
-.salonselection__container {
+
+.salonsafterfilter__container {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -134,14 +115,14 @@
   border-radius: 20px;
 }
 
-.salonselection__label {
+.salonsafterfilter__label {
   padding-top: 8px;
   font-size: 20px;
   font-weight: 300;
   color: #1c1c1c;
 }
 
-.salonselection__item {
+.salonsafterfilter__item {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -153,12 +134,20 @@
   font-weight: 300;
   margin-top: 10px;
   background-color: #474a51;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 10px 20px 10px 20px;
   text-align: center;
 }
-.salonselection__list {
+
+.salonsafterfilter__list {
   margin: 0;
   padding: 0;
   margin: 0 auto;
+}
+.notfound {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 300;
+  background-color: rgb(241, 120, 120);
+  border-radius: 10px;
 }

@@ -30,8 +30,6 @@ const Reviews = () => {
     getSalonReview();
   }, [salonId]);
 
-  console.log(reviews);
-
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 0; i < rating; i++) {

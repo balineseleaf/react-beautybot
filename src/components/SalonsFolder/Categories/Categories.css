@@ -42,12 +42,18 @@
   transition: 0.5s ease-in-out;
   padding: 13px 0px;
   text-decoration: none;
-  cursor: pointer;
   filter: drop-shadow(3px 3px 4px #1c1c1c);
 }
 
 .categories__submit-button:hover {
   opacity: 0.8;
+  cursor: pointer;
+}
+
+.categories__submit-button:disabled {
+  color: #1c1c1c;
+  background-color: #d0d0d0;
+  cursor: not-allowed;
 }
 
 .categories__container {

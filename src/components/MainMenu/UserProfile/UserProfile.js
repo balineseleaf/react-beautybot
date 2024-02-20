@@ -16,7 +16,7 @@ const UserProfile = ({ onEditProfile, allRegions }) => {
   return (
     <div className="userprofile">
       <div className="userprofile__block">
-        <form autocomplete="off" name="form-edit-profile" className="userprofile__form">
+        <form autoComplete="off" name="form-edit-profile" className="userprofile__form">
           <h2 className="userprofile__header">{t("MyData")}</h2>
           <div className="userprofile__fieldset">
             <p className="id_paragraph">{t("YourID")}{currentUser.clientId}</p>
