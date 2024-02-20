@@ -3,9 +3,11 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './Calendar.css';
 import { useNavigate } from "react-router-dom";
-import BackButton from '../..//elements/BackButton/BackButton';
+import Button from '../../elements/Button/Button';
+import { useTranslation } from 'react-i18next';
 
 const MyCalendar = () => {
+  const { t } = useTranslation();
   const [date, setDate] = useState(new Date());
   const navigate = useNavigate();
 
@@ -50,7 +52,7 @@ const MyCalendar = () => {
           tileDisabled={tileDisabled}
           onClickDay={onClickDay}
         />
-        <BackButton type="button" buttonText={t("Back2")} to={-1} />
+        <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>
     </div>
   );

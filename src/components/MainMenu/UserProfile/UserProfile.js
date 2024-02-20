@@ -7,7 +7,7 @@ import ProfileEmail from "../../EditUser/ProfileEmail/ProfileEmail";
 import ProfilePhone from "../../EditUser/ProfilePhone/ProfilePhone";
 import ProfileGender from "../../EditUser/ProfileGender/ProfileGender";
 import ProfileRegion from "../../EditUser/ProfileRegion/ProfileRegion";
-import BackButton from '../..//elements/BackButton/BackButton';
+import Button from '../../elements/Button/Button';
 
 const UserProfile = ({ onEditProfile, allRegions }) => {
   const currentUser = React.useContext(CurrentUserContext);
@@ -27,7 +27,7 @@ const UserProfile = ({ onEditProfile, allRegions }) => {
             <ProfileRegion onEditProfile={onEditProfile} allRegions={allRegions} />
           </div>
         </form>
-        <BackButton type="button" buttonText={t("Back2")} to="/" />
+        <Button type="button" buttonText={t("Back2")} to="/" />
       </div>
     </div>
   );

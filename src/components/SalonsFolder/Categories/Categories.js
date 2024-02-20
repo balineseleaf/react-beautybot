@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { CurrentUserContext } from '../../../context/CurrentUserContext';
 import Api from '../../../utils/Api';
 import { useNavigate } from 'react-router-dom';
-import BackButton from '../..//elements/BackButton/BackButton';
+import Button from '../../elements/Button/Button';
 
 const Categories = () => {
   const currentUser = React.useContext(CurrentUserContext);
@@ -107,7 +107,6 @@ const Categories = () => {
   async function getSalonsThatPerformTheSelectedProcedures(selectedProcedures) {
     try {
       const salonsInfo = await api.getSalonsForSelectedProcedures(selectedProcedures);
-      console.log(salonsInfo);
       setSalonsAfterChooseProcedures(salonsInfo);
     } catch (error) {
       return console.log(error);
@@ -146,8 +145,8 @@ const Categories = () => {
         </div>
         <div className='categories__buttons-block'>
           <button onClick={handleSaveCategoriesClick} type="submit" className='categories__submit-button'>Продолжить</button>
-          {/* <BackButton onClick={handleSaveCategoriesClick} type="submit" buttonText="Продолжить" /> */}
-          <BackButton type="button" buttonText={t("Back2")} to={-1} />
+          {/* <Button onClick={handleSaveCategoriesClick} type="submit" buttonText="Продолжить" /> */}
+          <Button type="button" buttonText={t("Back2")} to={-1} />
         </div>
       </div>
 

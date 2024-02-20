@@ -1,7 +1,7 @@
 import React from "react";
 import './ScheduleDay.css';
 import { useTranslation } from 'react-i18next';
-import BackButton from '../..//elements/BackButton/BackButton';
+import Button from '../../elements/Button/Button';
 
 const ScheduleDay = () => {
   const { t } = useTranslation();
@@ -20,7 +20,7 @@ const ScheduleDay = () => {
           <li className="scheduleday__hours-item">17:00-18:00</li>
           <li className="scheduleday__hours-item">18:00-19:00</li>
         </ul>
-        <BackButton type="button" buttonText={t("Back2")} to={-1} />
+        <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>
 
     </div>);

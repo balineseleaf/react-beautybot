@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import './PriceList.css';
 import { useTranslation } from 'react-i18next';
-import BackButton from '../..//elements/BackButton/BackButton';
+import Button from '../../elements/Button/Button';
 import Api from '../../../utils/Api';
 
 const Pricelist = () => {
@@ -71,7 +71,7 @@ const Pricelist = () => {
             ))}
           </div>
         </div>
-        <BackButton type="button" buttonText={t("Back2")} to={-1} />
+        <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>
     </div>);
 }

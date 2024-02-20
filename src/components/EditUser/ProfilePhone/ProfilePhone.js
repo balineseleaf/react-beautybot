@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import './ProfilePhone.css';
 import { CurrentUserContext } from '../../../context/CurrentUserContext';
 import editIcon from '../../../images/editIcon.svg';
+import CancelButton from "../../elements/CancelButton/CancelButton";
+import SaveButton from "../../elements/SaveButton/SaveButton";
+import EditButton from "../../elements/EditButton/EditButton";
 
 const ProfilePhone = ({ onEditProfile }) => {
   const currentUser = React.useContext(CurrentUserContext);
@@ -58,15 +61,16 @@ const ProfilePhone = ({ onEditProfile }) => {
           <input placeholder="Введите ваш телефон" name="phone" className={`${!isValidPhone ? 'editing-input-phone invalid-phone' : 'editing-input-phone'}`} type="text" value={inputValuePhone} onChange={handlePhoneChange} />
           {!isValidPhone && <p className="error-message">Некорректный номер телефона</p>}
           <div className="profile__block-buttons">
-            <button onClick={handleSaveClickPhone} disabled={!isValidPhone || inputValuePhone.trim() === ''}>Сохранить</button>
-            <button className="profile__button-cancel-region" onClick={handleCancelClickPhone}>Отмена</button>
+            {/* <button onClick={handleSaveClickPhone} disabled={!isValidPhone || inputValuePhone.trim() === ''}>Сохранить</button> */}
+            <SaveButton onClick={handleSaveClickPhone} disabled={!isValidPhone || inputValuePhone.trim() === ''} />
+            <CancelButton onClick={handleCancelClickPhone} />
           </div>
         </div>
       ) : (
         <div className="edit-container-phone" onMouseEnter={handleMouseEnterPhone} onMouseLeave={handleMouseLeavePhone}>
           <p id="userPhone" className="phone_paragraph">{t("YourNumber")}{currentUser.clientPhone}</p>
           {isHoveredPhone && (
-            <button className="edit-icon"><img className="edit-icon-image" src={editIcon} alt="иконка" onClick={handleEditClickPhone} /></button>
+            <EditButton onClick={handleEditClickPhone} />
           )}
         </div>
       )}

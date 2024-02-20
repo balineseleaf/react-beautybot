@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './MainPage.css';
 import { useTranslation } from 'react-i18next';
 import Header from '../Header/Header';
+import MainButton from '../../elements/MainButton/MainButton';
 
 const MainPage = () => {
   const { t } = useTranslation();
@@ -10,21 +10,16 @@ const MainPage = () => {
   return (
     <div className='main'>
       <Header />
-      <div className="main__container">
-        <Link to="/appointment" className='main__central-link'>{t("SignUp")}
-        </Link>
-        <div className='inner-container'>
-          <ul className='main__links-block'>
-            <li className="main__links-item">
-              <Link to='/salons' className="main__link">{t("Salons")}</Link>
-            </li>
-            <li className="main__links-item">
-              <Link to='/mynotes' className="main__link">{t("MyNotes")}</Link>
-            </li>
-            <li className="main__links-item">
-              <Link to='/aboutus' className="main__link">{t("AboutUs")}</Link>
-            </li>
-          </ul>
+      <div className="main__block">
+        <div className='main__buttons-container'>
+          <div className='main__central-button-block'>
+            <MainButton type="button" buttonText={t("NewAppointment")} to="/appointment" />
+          </div>
+          <div className='main__bottom-buttons-block'>
+            <MainButton type="button" buttonText={t("Salons")} to="/salons" />
+            <MainButton type="button" buttonText={t("MyNotes")} to="/mynotes" />
+            <MainButton type="button" buttonText={t("AboutUs")} to="/aboutus" />
+          </div>
         </div>
       </div>
     </div>

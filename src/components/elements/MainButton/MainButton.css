@@ -1,11 +1,8 @@
-.back__button-link {
+.main__button-link {
   display: inline-block;
   text-align: center;
-  margin: 0 auto;
-  margin-top: 20px;
   padding: 0;
-  width: 250px;
-  bottom: 20px;
+  width: 170px;
   color: #f8f8f8;
   border: none;
   background: #1c1c1c;
@@ -16,16 +13,16 @@
   transition: 0.5s ease-in-out;
 }
 
-.back__button-link:hover {
+.main__button-link:hover {
   opacity: 0.8;
 }
 
-.back__button {
+.main__button {
   color: #f8f8f8;
   text-decoration: none;
   background-color: #1c1c1c;
   border: none;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
 }

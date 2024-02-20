@@ -3,7 +3,7 @@ import './About.css';
 import { useTranslation } from 'react-i18next';
 import Api from '../../../utils/Api';
 import { useEffect, useState } from 'react';
-import BackButton from '../../elements/BackButton/BackButton';
+import Button from '../../elements/Button/Button';
 
 const About = () => {
   const [version, setVersion] = useState('');
@@ -34,8 +34,8 @@ const About = () => {
       <div className="aboutus__block">
         <p className="aboutus__info">&#8520;{t("About")} <span>{version}</span>{t("About2")}</p>
         <div className="aboutus__button-block">
-          <BackButton type="button" buttonText="Подробная инструкция" to="https://telegra.ph/Telegram-bot-dlya-zapisi-k-byuti-masteru-09-19" />
-          <BackButton type="button" buttonText={t("Back2")} to={-1} />
+          <Button type="button" buttonText="Подробная инструкция" to="https://telegra.ph/Telegram-bot-dlya-zapisi-k-byuti-masteru-09-19" />
+          <Button type="button" buttonText={t("Back2")} to={-1} />
         </div>
       </div>
     </div>

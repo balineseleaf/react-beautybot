@@ -31,25 +31,11 @@
   color: black;
 }
 
-.edit-icon-image {
-  width: 21px;
-  height: 21px;
-  background-color: white;
-  cursor: pointer;
-  padding-top: 23px;
-}
-
-.edit-icon {
-  padding: 0;
-  margin: 0;
-  background-color: white;
-  border: none;
-}
-
 .profile_gender {
   margin: 0;
   padding: 0;
 }
+
 .profile_gender:last-of-type {
   margin-left: 20px;
 }

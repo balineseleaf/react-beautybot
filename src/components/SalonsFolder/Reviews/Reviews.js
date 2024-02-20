@@ -3,7 +3,7 @@ import './Reviews.css';
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 import Api from '../../../utils/Api';
-import BackButton from '../..//elements/BackButton/BackButton';
+import Button from '../../elements/Button/Button';
 
 const Reviews = () => {
   const { salonId } = useParams();
@@ -55,7 +55,7 @@ const Reviews = () => {
             </div>
           ))}
         </div>
-        <BackButton type="button" buttonText={t("Back2")} to={-1} />
+        <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>
     </div>
   );

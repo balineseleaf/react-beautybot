@@ -4,7 +4,9 @@ import './ProfileRegion.css';
 import { CurrentUserContext } from '../../../context/CurrentUserContext';
 import editIcon from '../../../images/editIcon.svg';
 import Select from 'react-select';
-
+import CancelButton from "../../elements/CancelButton/CancelButton";
+import SaveButton from "../../elements/SaveButton/SaveButton";
+import EditButton from "../../elements/EditButton/EditButton";
 
 const ProfileRegion = ({ onEditProfile, allRegions }) => {
 
@@ -23,6 +25,7 @@ const ProfileRegion = ({ onEditProfile, allRegions }) => {
     regionToUidMapping[region.regionName] = region.id;// имя и ему юайди
   });
   const regionNames = Object.keys(regionToUidMapping);
+
   // для Selector компонента нужен именно такой массив---------------------------------------------------------
   const transformedNamesArray = regionNames.map(cityName => {// в value будет значение uid от нашего региона 
     return {
@@ -93,15 +96,15 @@ const ProfileRegion = ({ onEditProfile, allRegions }) => {
         <div className="container-input-region">
           <Select placeholder="Выберите регион" className="profile__region" options={transformedNamesArray} value={getValueRegion()} onChange={onChangeRegion} />
           <div className="profile__block-buttons">
-            <button className="profile__button-save-region" onClick={handleSaveClickRegion} disabled={isSaveButtonDisabled}>Сохранить</button>
-            <button className="profile__button-cancel-region" onClick={handleCancelClickRegion}>Отмена</button>
+            <SaveButton onClick={handleSaveClickRegion} disabled={isSaveButtonDisabled} />
+            <CancelButton onClick={handleCancelClickRegion} />
           </div>
         </div>
       ) : (
         <div className="edit-container-region" onMouseEnter={handleMouseEnterRegion} onMouseLeave={handleMouseLeaveRegion}>
           <p id="userRegion" className="region_paragraph">Регион: {currentRegion ? currentRegion : regionNameForUserInfo}</p>
           {isHoveredRegion && (
-            <button className="edit-icon"><img className="edit-icon-image" src={editIcon} alt="иконка" onClick={handleEditClickRegion} /></button>
+            <EditButton onClick={handleEditClickRegion} />
           )}
         </div>
       )}

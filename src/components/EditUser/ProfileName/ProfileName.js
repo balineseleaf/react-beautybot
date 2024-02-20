@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import './ProfileName.css';
 import { CurrentUserContext } from '../../../context/CurrentUserContext';
 import editIcon from '../../../images/editIcon.svg';
+import CancelButton from "../../elements/CancelButton/CancelButton";
+import SaveButton from "../../elements/SaveButton/SaveButton";
+import EditButton from "../../elements/EditButton/EditButton";
 
 const ProfileName = ({ onEditProfile }) => {
   const currentUser = React.useContext(CurrentUserContext);
@@ -58,15 +61,16 @@ const ProfileName = ({ onEditProfile }) => {
           <input placeholder="Введите ваше имя" name="name" className={`${!isValidName ? 'editing-input-name invalid-name' : 'editing-input-name'}`} type="text" value={inputValueName} onChange={handleNameChange} />
           {!isValidName && <p className="error-message">Некорректное имя</p>}
           <div className="profile__block-buttons">
-            <button onClick={handleSaveClickName} disabled={!isValidName || inputValueName.trim() === ''}>Сохранить</button>
-            <button className="profile__button-cancel-region" onClick={handleCancelClickRegion}>Отмена</button>
+            {/* <button onClick={handleSaveClickName} disabled={!isValidName || inputValueName.trim() === ''}>Сохранить</button> */}
+            <SaveButton onClick={handleSaveClickName} disabled={!isValidName || inputValueName.trim() === ''} />
+            <CancelButton onClick={handleCancelClickRegion} />
           </div>
         </div>
       ) : (
         <div className="edit-container-name" onMouseEnter={handleMouseEnterName} onMouseLeave={handleMouseLeaveName}>
           <p id="userName" className="name_paragraph">{t("YourName")}{currentUser.clientName}</p>
           {isHoveredName && (
-            <button className="edit-icon"><img className="edit-icon-image" src={editIcon} alt="иконка" onClick={handleEditClickName} /></button>
+            <EditButton onClick={handleEditClickName} />
           )}
         </div>
       )}

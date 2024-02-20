@@ -1,7 +1,7 @@
 import React from "react";
 import './MyAppointments.css';
 import { useTranslation } from 'react-i18next';
-import BackButton from '../../elements/BackButton/BackButton';
+import Button from '../../elements/Button/Button';
 
 const MyAppointments = () => {
   const { t } = useTranslation();
@@ -11,7 +11,7 @@ const MyAppointments = () => {
       <h1 className="appointments__header">{t("MyFutureProcedures")}</h1>
       <div className="appointments__block">
         <p className="appointments__text">{t("Story")}</p>
-        <BackButton type="button" buttonText={t("Back2")} to="/" />
+        <Button type="button" buttonText={t("Back2")} to="/" />
       </div>
     </div>);
 }

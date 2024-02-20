@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Api from '../../../utils/Api';
-import BackButton from '../..//elements/BackButton/BackButton';
+import Button from '../../elements/Button/Button';
 
 const SalonCard = () => {
   const { salonId } = useParams();
@@ -52,7 +52,7 @@ const SalonCard = () => {
           <Link to="/calendar" className="saloncard__menu-button">Расписание</Link>
           <Link to={`/reviews/${salonId}`} className="saloncard__menu-button">Отзывы</Link>
         </div>
-        <BackButton type="button" buttonText={t("Back2")} to="/salons" />
+        <Button type="button" buttonText={t("Back2")} to="/salons" />
       </div>
     </div>
   );

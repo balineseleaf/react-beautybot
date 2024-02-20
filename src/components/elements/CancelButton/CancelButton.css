@@ -1,0 +1,15 @@
+.cancel-button {
+  width: 100px;
+  padding: 5px;
+  color: #f8f8f8;
+  background-color: #1c1c1c;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  filter: drop-shadow(2px 2px 3px #1c1c1c);
+  transition: 0.5s ease-in-out;
+}
+
+.cancel-button:hover {
+  opacity: 0.8;
+}

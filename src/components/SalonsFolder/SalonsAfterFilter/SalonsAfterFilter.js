@@ -2,7 +2,7 @@ import './SalonsAfterFilter.css';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
-import BackButton from '../..//elements/BackButton/BackButton';
+import Button from '../../elements/Button/Button';
 
 const SalonsAfterFilter = () => {
   const { t } = useTranslation();
@@ -32,8 +32,8 @@ const SalonsAfterFilter = () => {
           ) : <p className="salons__item notfound">Салонов в вашем регионе не найдено</p>}
 
         </div>
-        <BackButton type="button" buttonText="Продолжить" to="" />
-        <BackButton type="button" buttonText={t("Back2")} to={-1} />
+        <Button type="button" buttonText="Продолжить" to="" />
+        <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>
 
     </div>

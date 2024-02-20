@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 import Api from '../../../utils/Api';
 import { CurrentUserContext } from '../../../context/CurrentUserContext';
-import BackButton from '../..//elements/BackButton/BackButton';
+import Button from '../../elements/Button/Button';
 
 const Salons = () => {
   const currentUser = React.useContext(CurrentUserContext);
@@ -67,7 +67,7 @@ const Salons = () => {
             </ul>
           ) : <p className="salons__item notfound">Салонов в вашем регионе не найдено</p>}
         </div>
-        <BackButton type="button" buttonText={t("Back2")} to="/" />
+        <Button type="button" buttonText={t("Back2")} to="/" />
       </div>
     </div>
   );

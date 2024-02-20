@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import './ProfileEmail.css';
 import { CurrentUserContext } from '../../../context/CurrentUserContext';
 import editIcon from '../../../images/editIcon.svg';
+import CancelButton from "../../elements/CancelButton/CancelButton";
+import SaveButton from "../../elements/SaveButton/SaveButton";
+import EditButton from "../../elements/EditButton/EditButton";
 
 const ProfileEmail = ({ onEditProfile }) => {
   const currentUser = React.useContext(CurrentUserContext);
@@ -57,15 +60,16 @@ const ProfileEmail = ({ onEditProfile }) => {
           <input placeholder="Введите ваш email" name="email" className={`${!isValidEmail ? 'editing-input-email invalid-email' : 'editing-input-email'}`} type="email" value={inputValueEmail} onChange={handleEmailChange} />
           {(!isValidEmail && inputValueEmail.trim() !== '') && < p className="error-message">Некорректный email адрес</p>}
           <div className="profile__block-buttons">
-            <button onClick={handleSaveClickEmail} disabled={!isValidEmail || inputValueEmail.trim() === ''}>Сохранить</button>
-            <button className="profile__button-cancel-region" onClick={handleCancelClickEmail}>Отмена</button>
+            {/* <button onClick={handleSaveClickEmail} disabled={!isValidEmail || inputValueEmail.trim() === ''}>Сохранить</button> */}
+            <SaveButton onClick={handleSaveClickEmail} disabled={!isValidEmail || inputValueEmail.trim() === ''} />
+            <CancelButton onClick={handleCancelClickEmail} />
           </div>
         </div>
       ) : (
         <div className="edit-container-email" onMouseEnter={handleMouseEnterEmail} onMouseLeave={handleMouseLeaveEmail}>
           <p id="userEmail" className="email_paragraph">{t("YourEmail")}{currentUser.clientEmail}</p>
           {isHoveredEmail && (
-            <button className="edit-icon"><img className="edit-icon-image" src={editIcon} alt="иконка" onClick={handleEditClickEmail} /></button>
+            <EditButton onClick={handleEditClickEmail} />
           )}
         </div>
       )

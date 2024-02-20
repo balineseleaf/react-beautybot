@@ -50,20 +50,6 @@
   color: black;
 }
 
-.edit-icon-image {
-  width: 21px;
-  height: 21px;
-  background-color: white;
-  cursor: pointer;
-  padding-top: 23px;
-}
-
-.edit-icon {
-  padding: 0;
-  margin: 0;
-  background-color: white;
-  border: none;
-}
 .profile__block-buttons {
   margin: 0 auto;
   display: flex;

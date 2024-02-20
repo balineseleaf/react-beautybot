@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import './ProfileGender.css';
 import { CurrentUserContext } from '../../../context/CurrentUserContext';
 import editIcon from '../../../images/editIcon.svg';
+import CancelButton from "../../elements/CancelButton/CancelButton";
+import SaveButton from "../../elements/SaveButton/SaveButton";
+import EditButton from "../../elements/EditButton/EditButton";
 
 const ProfileGender = ({ onEditProfile }) => {
   const currentUser = React.useContext(CurrentUserContext);
@@ -31,7 +34,7 @@ const ProfileGender = ({ onEditProfile }) => {
     onEditProfile(inputData);
     setGenderData(inputValueGender);
   };
-  const handleClickClickGender = () => {
+  const handleCancelClickGender = () => {
     setEditingGender(false);
   };
 
@@ -64,15 +67,16 @@ const ProfileGender = ({ onEditProfile }) => {
 
           </div>
           <div className="profile__block-buttons">
-            <button onClick={handleSaveClickGender} disabled={!isAnyOptionSelected}>Сохранить</button>
-            <button className="profile__button-cancel-region" onClick={handleClickClickGender}>Отмена</button>
+            {/* <button onClick={handleSaveClickGender} disabled={!isAnyOptionSelected}>Сохранить</button> */}
+            <SaveButton onClick={handleSaveClickGender} disabled={!isAnyOptionSelected} />
+            <CancelButton onClick={handleCancelClickGender} />
           </div>
         </>
       ) : (
         <div className="edit-container-gender" onMouseEnter={handleMouseEnterGender} onMouseLeave={handleMouseLeaveGender}>
           <p id="userGender" className="gender_paragraph">{t("YourGender")}{currentUser.clientGender}</p>
           {isHoveredGender && (
-            <button className="edit-icon"><img className="edit-icon-image" src={editIcon} alt="иконка" onClick={handleEditClickGender} /></button>
+            <EditButton onClick={handleEditClickGender} />
           )}
         </div>
       )}
