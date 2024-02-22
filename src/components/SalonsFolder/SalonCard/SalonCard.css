@@ -57,6 +57,7 @@
   padding: 0;
   width: 115px;
   height: 20px;
+  display: inline-block;
   text-align: center;
   text-decoration: none;
   color: #f8f8f8;
@@ -66,6 +67,7 @@
   filter: drop-shadow(3px 3px 4px #1c1c1c);
   transition: 0.5s ease-in-out;
 }
+
 .saloncard__menu-button:hover {
   opacity: 0.8;
 }
@@ -74,6 +76,19 @@
   font-weight: 600;
   font-size: 20px;
 }
+
 .saloncard__bold-header {
   font-weight: 300;
 }
+
+.inactive {
+  background-color: #f8f8f8;
+  color: #1c1c1c;
+  cursor: not-allowed;
+}
+
+/* .inactive .main__button {
+  background-color: #f8f8f8;
+  color: #1c1c1c;
+  cursor: not-allowed;
+} */

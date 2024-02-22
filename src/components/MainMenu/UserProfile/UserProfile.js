@@ -13,6 +13,7 @@ const UserProfile = ({ onEditProfile, allRegions }) => {
   const currentUser = React.useContext(CurrentUserContext);
   const { t } = useTranslation();
 
+
   return (
     <div className="userprofile">
       <div className="userprofile__block">

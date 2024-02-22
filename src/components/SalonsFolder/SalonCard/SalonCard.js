@@ -5,11 +5,13 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Api from '../../../utils/Api';
 import Button from '../../elements/Button/Button';
+import ToolTip from "../../elements/ToolTip/ToolTip";
 
 const SalonCard = () => {
   const { salonId } = useParams();
   const { t } = useTranslation();
   const [salonInfo, setSalonInfo] = useState(null);
+  const [reviews, setReviews] = useState(null);
 
   const api = new Api({
     url: 'http://localhost:5000',
@@ -32,6 +34,24 @@ const SalonCard = () => {
     getSalonDetails();
   }, [salonId]);
 
+  useEffect(() => {
+    const getSalonReview = async () => {
+      try {
+        const reviewInfo = await api.getReviews(salonId);
+        console.log('2', reviewInfo);
+        setReviews(reviewInfo);
+      } catch (error) {
+        console.error("Error fetching salon info:", error);
+      }
+    };
+
+    getSalonReview();
+  }, [salonId]);
+
+
+  console.log('1', reviews);
+  // onClick = {(event) => reviews && reviews.length === 0 && event.preventDefault()}
+  // className = { reviews.length === 0 ? "saloncard__menu-button inactive" : "saloncard__menu-button" }
 
   return (
     <div className="saloncard">
@@ -47,7 +67,10 @@ const SalonCard = () => {
         <div className="saloncard__menu">
           <Link to={`/pricelist/${salonId}`} className="saloncard__menu-button">Прайс-лист</Link>
           <Link to="/calendar" className="saloncard__menu-button">Расписание</Link>
-          <Link to={`/reviews/${salonId}`} className="saloncard__menu-button">Отзывы</Link>
+          <ToolTip showTooltip={reviews && reviews.length === 0} text={"Нет отзывов"} >
+
+            <Link onClick={(event) => reviews && reviews.length === 0 && event.preventDefault()} to={`/reviews/${salonId}`} className={reviews && reviews.length === 0 ? "saloncard__menu-button inactive" : "saloncard__menu-button"}>Отзывы</Link>
+          </ToolTip>
         </div>
         <Button type="button" buttonText={t("Back2")} to="/salons" />
       </div>

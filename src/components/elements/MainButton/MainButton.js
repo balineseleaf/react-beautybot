@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import './MainButton.css';
-import React, { useState } from "react";
+import React from "react";
 import ToolTip from '../../elements/ToolTip/ToolTip';
 
 const MainButton = (props) => {
   const { buttonText, to, type, disabled } = props;
-  const [isVisibleToolTip, setIsVisibleToolTip] = useState(false);
 
   return (
     <ToolTip showTooltip={disabled} text={"В вашем регионе еще нет салонов"} >
