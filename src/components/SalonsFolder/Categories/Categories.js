@@ -102,39 +102,6 @@ const Categories = () => {
   };
 
   findMatchesBetweenCheckBoxAndMap();
-  console.log('111', matchesBetweenMapAndCheckBox);
-
-
-
-  //---------------------------------send data to server--------------------------------------------
-
-  // const [salonsAfterChooseProcedures, setSalonsAfterChooseProcedures] = useState([]); // это нао передать в другой компонент
-  // console.log('салоны, которые нам подходят', salonsAfterChooseProcedures);
-
-  // async function getSalonsThatPerformTheSelectedProcedures(selectedProcedures) {
-  //   try {
-  //     const salonsInfo = await api.getSalonsForSelectedProcedures(selectedProcedures);
-  //     setSalonsAfterChooseProcedures(salonsInfo);
-  //   } catch (error) {
-  //     return console.log(error);
-  //   }
-  // }
-
-  // let finallyCategoriesAndUserIdObject = {}; //финальный объект для отправки на сервер 
-  // finallyCategoriesAndUserIdObject = {
-  //   clientId: currentUser.clientId,
-  //   selectedProcedures: matchesBetweenMapAndCheckBox
-  // }
-
-  // const handleSaveCategoriesClick = async () => {
-  //   await getSalonsThatPerformTheSelectedProcedures(finallyCategoriesAndUserIdObject);
-  // }
-
-  // useEffect(() => {
-  //   if (salonsAfterChooseProcedures && salonsAfterChooseProcedures.length) {
-  //     navigate('/salonsafterfilter', { state: { salons: salonsAfterChooseProcedures } });
-  //   }
-  // }, [salonsAfterChooseProcedures])
 
   const handleSaveCategoriesClick = async () => {
     await findMatchesBetweenCheckBoxAndMap();

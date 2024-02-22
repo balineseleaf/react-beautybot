@@ -66,7 +66,7 @@ const Pricelist = () => {
           <div className="pricelist__container">
             {Array.from(procedurePrices.entries()).map(([procedureId, { price, duration }]) => (
               <div key={procedureId} className="pricelist__procedure">
-                <p>{procedureMapFromIdToName[procedureId]} ({price}р / {duration}ч)</p>
+                <p className="pricelist__procedure-info">{procedureMapFromIdToName[procedureId]} ({price}р / {duration}ч)</p>
               </div>
             ))}
           </div>

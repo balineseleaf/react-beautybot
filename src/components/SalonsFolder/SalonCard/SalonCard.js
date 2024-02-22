@@ -5,10 +5,12 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Api from '../../../utils/Api';
 import Button from '../../elements/Button/Button';
+import { useNavigate } from "react-router-dom";
 import ToolTip from "../../elements/ToolTip/ToolTip";
 
 const SalonCard = () => {
   const { salonId } = useParams();
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [salonInfo, setSalonInfo] = useState(null);
   const [reviews, setReviews] = useState(null);
@@ -24,8 +26,8 @@ const SalonCard = () => {
   useEffect(() => {
     const getSalonDetails = async () => {
       try {
-        const salonInfo = await api.getSalonInfo(salonId);
-        setSalonInfo(salonInfo);
+        const salonData = await api.getSalonInfo(salonId);
+        setSalonInfo(salonData);
       } catch (error) {
         console.error("Error fetching salon info:", error);
       }
@@ -38,7 +40,6 @@ const SalonCard = () => {
     const getSalonReview = async () => {
       try {
         const reviewInfo = await api.getReviews(salonId);
-        console.log('2', reviewInfo);
         setReviews(reviewInfo);
       } catch (error) {
         console.error("Error fetching salon info:", error);
@@ -49,9 +50,10 @@ const SalonCard = () => {
   }, [salonId]);
 
 
-  console.log('1', reviews);
-  // onClick = {(event) => reviews && reviews.length === 0 && event.preventDefault()}
-  // className = { reviews.length === 0 ? "saloncard__menu-button inactive" : "saloncard__menu-button" }
+
+  const handleMoveToCalendar = () => {
+    navigate(`/calendar/${salonId}`, { state: { salonId: salonId } });
+  }
 
   return (
     <div className="saloncard">
@@ -66,9 +68,9 @@ const SalonCard = () => {
         </ul>
         <div className="saloncard__menu">
           <Link to={`/pricelist/${salonId}`} className="saloncard__menu-button">Прайс-лист</Link>
-          <Link to="/calendar" className="saloncard__menu-button">Расписание</Link>
+          <button onClick={handleMoveToCalendar} className="saloncard__menu-button" type="button">Расписание</button>
+          {/* <Link to={handleMoveToCalendar} className="saloncard__menu-button">Расписание</Link> */}
           <ToolTip showTooltip={reviews && reviews.length === 0} text={"Нет отзывов"} >
-
             <Link onClick={(event) => reviews && reviews.length === 0 && event.preventDefault()} to={`/reviews/${salonId}`} className={reviews && reviews.length === 0 ? "saloncard__menu-button inactive" : "saloncard__menu-button"}>Отзывы</Link>
           </ToolTip>
         </div>

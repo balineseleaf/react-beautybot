@@ -74,9 +74,9 @@ function App() {
           />
           <Route path="/salonsafterfilter" element={<SalonsAfterFilter />}
           />
-          <Route path="/calendar" element={<MyCalendar />}
+          <Route path="/calendar/:salonId" element={<MyCalendar />}
           />
-          <Route path="/calendar/:date" element={<ScheduleDay />} />
+          <Route path="/schedule/:schedule" element={<ScheduleDay />} />
 
           <Route path="/reviews/:salonId" element={<Reviews />}
           />

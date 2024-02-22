@@ -17,14 +17,14 @@
 }
 
 .pricelist__procedure {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   border-radius: 20px;
   text-align: center;
   padding: 8px;
   font-size: 20px;
   margin-top: 20px;
-  width: 400px;
+  width: 350px;
   background-color: #f8f8f8;
   border: 2px solid #1c1c1c;
   filter: drop-shadow(5px 5px 4px #918f8f);
@@ -42,4 +42,9 @@
 }
 .pricelist__container {
   margin-top: 30px;
+}
+
+.pricelist__procedure-info {
+  margin: 0;
+  padding: 0;
 }
