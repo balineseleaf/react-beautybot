@@ -26,3 +26,29 @@
   font-size: 18px;
   cursor: pointer;
 }
+
+.inactive {
+  background-color: #f8f8f8;
+  color: #1c1c1c;
+  cursor: not-allowed;
+}
+
+.inactive .main__button {
+  background-color: #f8f8f8;
+  color: #1c1c1c;
+  cursor: not-allowed;
+}
+
+/* Стили для подсказки */
+.react-tooltip {
+  font-size: 15px;
+  font-weight: 300;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: red;
+  background-color: #961212;
+}
+
+.react-tooltip:after {
+  border-top-color: #1c1c1c;
+}

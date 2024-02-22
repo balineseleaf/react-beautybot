@@ -36,7 +36,7 @@ const SalonCard = () => {
   return (
     <div className="saloncard">
       <div className="saloncard__block">
-        <h3 className="saloncard__header">Салон: {salonInfo && salonInfo.salonName} {salonInfo && salonInfo.salonRate.toFixed(2)}* ()</h3>
+        <h3 className="saloncard__header"><span className="saloncard__bold-header">Салон:</span> {salonInfo && salonInfo.salonName} {salonInfo && salonInfo.salonRate?.toFixed(2)}* ()</h3>
         <ul className="saloncard__list">
           <li className="saloncard__list-item saloncard__description"> <span className="saloncard__list-bold-item">Описание:</span> {salonInfo && salonInfo.salonDescription}</li>
           <li className="saloncard__list-item saloncard__email"> <span className="saloncard__list-bold-item">Почта салона:</span> {salonInfo && salonInfo.salonEmail}</li>

@@ -18,10 +18,12 @@
   margin-top: 10px;
   width: 100%;
 }
+
 .main__central-button-block {
   display: flex;
   justify-content: center;
 }
+
 .main__bottom-buttons-block {
   display: flex;
   margin-top: 20px;
