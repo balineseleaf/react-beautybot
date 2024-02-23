@@ -58,3 +58,17 @@
   padding: 13px 0px;
   text-decoration: none;
 }
+
+/* .avaliable-day {
+  background-color: #ffaaaa;
+}
+.unavailable-day {
+  background-color: #318a34;
+} */
+.avaliable {
+  background-color: #93ec96;
+}
+
+.not-avaliable {
+  background-color: #ffaaaa;
+}

@@ -8,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 import Api from '../../../utils/Api';
 import { useLocation } from 'react-router-dom';
 
-
 const MyCalendar = () => {
   const { t } = useTranslation();
   const [date, setDate] = useState(new Date());
@@ -26,12 +25,14 @@ const MyCalendar = () => {
   });
 
   useEffect(() => {
-    if (salonInfo && selectedDay) {
+    if (scheduleForDay && selectedDay) {
       const localDate = new Date(selectedDay.getTime() - selectedDay.getTimezoneOffset() * 60000); // Преобразование в локальное время
-      navigate(`/schedule/${localDate.toISOString().split('T')[0]}`, { state: { salonInfo: salonInfo } });
+      navigate(`/schedule/${localDate.toISOString().split('T')[0]}`, { state: { salonSchedule: scheduleForDay } });
     }
-  }, [salonInfo, selectedDay])
+  }, [selectedDay])
 
+
+  // ----------------------------работа с компонентом Calendar------------------------
 
   const onChange = (newDate) => {
     setDate(newDate);
@@ -47,6 +48,45 @@ const MyCalendar = () => {
     }
   };
 
+
+
+  //------------ работаем с полем schedule  чтобы он понимал дни недели--------------------
+
+
+  const getScheduleForDay = (dayIndex) => {
+    // Преобразуем дни недели для объекта Date, чтобы они совпадали с вашими индексами
+    const salonSchedule = {
+      1: salonInfo && salonInfo.schedule[1],
+      2: salonInfo && salonInfo.schedule[2],
+      3: salonInfo && salonInfo.schedule[3],
+      4: salonInfo && salonInfo.schedule[4],
+      5: salonInfo && salonInfo.schedule[5],
+      6: salonInfo && salonInfo.schedule[6],
+      7: salonInfo && salonInfo.schedule[7],
+    };
+    return salonSchedule[dayIndex];
+  };
+
+  // Получаем день недели для выбранной даты
+  const dayIndex = selectedDay ? selectedDay.getDay() : null; // 1, 2, 3, 4, 5, 6, 7
+  // Получаем расписание для выбранного дня
+  const scheduleForDay = dayIndex !== null ? getScheduleForDay(dayIndex) : null;
+
+
+
+  //------------------------------ закрашиваем свободные окошки зеленым-------------
+  const getTileClassName = ({ date }) => {
+    // Получаем день недели для выбранной даты
+    const dayIndex = date.getDay();
+
+    // Проверяем, есть ли расписание для выбранного дня
+    if (salonInfo && salonInfo.schedule && salonInfo.schedule[dayIndex]) {
+      return 'not-avaliable';
+    } else {
+      return 'avaliable';
+    }
+  };
+
   return (
     <div className="calendar">
       <div className="calendar__container">
@@ -57,6 +97,7 @@ const MyCalendar = () => {
           onChange={onChange}
           value={date}
           onClickDay={onClickDay}
+          tileClassName={getTileClassName}
         />
         <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>
