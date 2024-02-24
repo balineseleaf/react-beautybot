@@ -87,8 +87,23 @@
   cursor: not-allowed;
 }
 
-/* .inactive .main__button {
-  background-color: #f8f8f8;
-  color: #1c1c1c;
-  cursor: not-allowed;
-} */
+.saloncard__button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  padding: 10px 15px 10px 15px;
+  font-size: 18px;
+  text-align: center;
+  outline: none;
+  width: 145px;
+  border: none;
+  background: #1c1c1c;
+  color: #f8f8f8;
+  border-radius: 10px;
+  filter: drop-shadow(3px 3px 4px #1c1c1c);
+}
+
+.saloncard__button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
