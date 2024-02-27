@@ -1,19 +1,16 @@
 import './Categories.css';
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CurrentUserContext } from '../../../context/CurrentUserContext';
 import Api from '../../../utils/Api';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../elements/Button/Button';
 
 const Categories = () => {
-  const currentUser = React.useContext(CurrentUserContext);
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [categories, setCategories] = useState([]);
   const [procedureData, setProcedureData] = useState([]);
   const categoryIdForCheckbox = window.location.pathname.split('/').pop();// взяли из url
-
 
   //-----------------api-------------------------------------------------------------
 

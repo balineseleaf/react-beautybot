@@ -1,9 +1,10 @@
 .header {
-  background-color: white;
+  background-color: var(--block-color);
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 30px;
 }
 
 .header__logo-box {
@@ -37,7 +38,7 @@
   padding: 0;
   font-size: 35px;
   font-weight: 600;
-  color: #1c1c1c;
+  color: var(--header-color);
   position: absolute;
   left: 47px;
   top: 10px;

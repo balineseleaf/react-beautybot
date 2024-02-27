@@ -1,6 +1,6 @@
 .categories {
   width: 560px;
-  margin: 100px auto;
+  margin: 0 auto;
 }
 .categories__link {
   color: #1c1c1c;
@@ -9,14 +9,12 @@
 
 .categories__block {
   background-color: #eaecee;
-  height: 597px;
+  height: 654px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  border: 5px solid #d0d0d0;
-  border-radius: 20px;
   position: relative;
 }
 
@@ -25,7 +23,7 @@
   padding: 0;
   font-weight: 600;
   font-size: 27px;
-  color: #1c1c1c;
+  color: var(--header-color);
   text-align: center;
 }
 
@@ -61,7 +59,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 250px;
+  height: 350px;
   width: 400px;
 }
 

@@ -19,13 +19,12 @@
 }
 
 .userprofile__block {
-  margin-top: 90px;
+  margin: 0 auto;
   width: 560px;
-  height: 597px;
+  height: 654px;
   position: relative;
-  background: #ffffff;
+  background: var(--block-color);
   box-shadow: 10px 10px 80px rgba(115, 113, 224, 0.3);
-  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -37,7 +36,7 @@
   box-sizing: border-box;
   padding-left: 35px;
   padding-right: 35px;
-  background: #ffffff;
+  background: var(--block-color);
   border-radius: 10%;
   width: 430px;
 }
@@ -52,7 +51,7 @@
 .userprofile__header {
   margin: 0;
   padding: 0;
-  margin-top: 40px;
+  margin-top: 10px;
   text-align: center;
   font-weight: 900;
   font-size: 24px;

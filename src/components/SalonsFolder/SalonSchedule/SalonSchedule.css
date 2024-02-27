@@ -1,62 +1,38 @@
-.calendar {
+.salonschedule {
   width: 560px;
-  margin: 100px auto 0;
 }
-.calendar__container {
-  border: 5px solid #d0d0d0;
-  border-radius: 20px;
+.salonschedule__container {
   background-color: #eaecee;
   display: flex;
   flex-direction: column;
-  height: 597px;
+  height: 654px;
   box-sizing: border-box;
   position: relative;
 }
 
-.calendar__header {
+.salonschedule__header {
   margin: 0;
   font-weight: 600;
   font-size: 24px;
-  color: #000000;
   padding: 30px 0 0 0;
   text-align: center;
-  color: #1c1c1c;
+  color: var(--header-color);
 }
 
-.calendar__hint {
+.salonschedule__hint {
   margin: 0;
   font-weight: 300;
   font-size: 22px;
-  color: #000000;
+  color: var(--header-color);
   padding: 30px 0 0 0;
   text-align: center;
-  color: #1c1c1c;
 }
 
-.calendar__component {
+.salonschedule__component {
   margin: 0 auto;
   margin-top: 40px;
   border-radius: 20px;
   overflow: hidden;
-}
-
-.calendar__back-button {
-  position: absolute;
-  text-align: center;
-  margin: 0 auto;
-  width: 60%;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #1c1c1c;
-  border: none;
-  background: #ff83dc;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 22px;
-  transition: 0.4s ease-in-out;
-  padding: 13px 0px;
-  text-decoration: none;
 }
 
 /* .avaliable-day {

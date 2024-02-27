@@ -1,13 +1,14 @@
 .main {
-  width: 560px;
-  margin: 90px auto;
+  width: 530px;
+  height: 654px;
+  margin: 0 auto;
   position: relative;
 }
 
 .main__block {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-end;
   height: 547px;
 }
 

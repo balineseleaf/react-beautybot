@@ -1,0 +1,48 @@
+.appointmentcalendar {
+  width: 560px;
+}
+
+.appointmentcalendar__container {
+  background-color: #eaecee;
+  display: flex;
+  flex-direction: column;
+  height: 654px;
+  box-sizing: border-box;
+  position: relative;
+  justify-content: space-around;
+}
+
+.appointmentcalendar__header {
+  margin: 0;
+  font-weight: 600;
+  font-size: 24px;
+  color: #000000;
+  padding: 30px 0 0 0;
+  text-align: center;
+  color: var(--header-color);
+}
+
+.appointmentcalendar__component {
+  margin: 0 auto;
+  margin-top: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* .avaliable-day {
+  background-color: #ffaaaa;
+}
+.unavailable-day {
+  background-color: #318a34;
+} */
+/* .avaliable {
+  background-color: #93ec96;
+}
+
+.not-avaliable {
+  background-color: #ffaaaa;
+} */
+
+/* .react-calendar__tile:disabled {
+  background-color: rgb(243, 139, 139);
+} */

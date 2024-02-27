@@ -64,9 +64,9 @@ const Salons = () => {
 
   return (
     <div className="salons">
-      <h2 className="salons__header">{t("AllSalons")}</h2>
       <div className="salons__block">
         <div className="salons__container">
+          <h2 className="salons__header">{t("AllSalons")}</h2>
           {/* <Preloader /> */}
           {isLoading ? (<Preloader />) : (
             salons.length > 0 ? (

@@ -4,15 +4,15 @@ import './PriceList.css';
 import { useTranslation } from 'react-i18next';
 import Button from '../../elements/Button/Button';
 import Api from '../../../utils/Api';
+import Preloader from "../../elements/Preloader/Preloader";
 
 const Pricelist = () => {
   const { salonId } = useParams();
-
   const [salonInfo, setSalonInfo] = useState(null);
   const [procedurePrices, setProcedurePrices] = useState(new Map());
-
-  // console.log(procedurePrices);
   const [procedureInfo, setProcedureInfo] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingTimeout, setLoadingTimeout] = useState(null);
   const { t } = useTranslation();
 
   const api = new Api({
@@ -23,6 +23,14 @@ const Pricelist = () => {
   });
 
   useEffect(() => {
+    setLoadingTimeout(setTimeout(() => {
+      setIsLoading(false);
+    }, 10000));
+    return () => clearTimeout(loadingTimeout);
+  }, [salonInfo]);
+
+  useEffect(() => {
+    setIsLoading(true);
     const getSalonDetails = async () => {
       try {
         const salonInfo = await api.getSalonInfo(salonId);
@@ -31,6 +39,9 @@ const Pricelist = () => {
       } catch (error) {
         console.error("Error fetching salon info:", error);
       }
+      finally {
+        setIsLoading(false);
+      };
     };
 
     getSalonDetails();
@@ -38,6 +49,7 @@ const Pricelist = () => {
 
 
   useEffect(() => {
+    // setIsLoading(true);
     const getProcedureInformation = async () => {
       try {
         const procedureInfo = await api.getProcedureInfo(salonId);
@@ -64,12 +76,16 @@ const Pricelist = () => {
         <div>
           <h3 className="pricelist__header"><span className="pricelist__bold-header">Процедуры и цены салона:</span> {salonInfo && salonInfo.salonName}</h3>
           <div className="pricelist__container">
-            {Array.from(procedurePrices.entries()).map(([procedureId, { price, duration }]) => (
-              <div key={procedureId} className="pricelist__procedure">
-                <p className="pricelist__procedure-info">{procedureMapFromIdToName[procedureId]} ({price}р / {duration}ч)</p>
-              </div>
-            ))}
+            {isLoading ? (<Preloader />) : (
+              Array.from(procedurePrices.entries()).map(([procedureId, { price, duration }]) => (
+                <div key={procedureId} className="pricelist__procedure">
+                  <p className="pricelist__procedure-info">{procedureMapFromIdToName[procedureId]} ({price}р / {duration}ч)</p>
+                </div>
+              ))
+            )}
+            {!isLoading && procedurePrices.size === 0 && <p className="salons__item notfound">Салонов в вашем регионе не найдено</p>}
           </div>
+
         </div>
         <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>

@@ -69,7 +69,6 @@ const SalonCard = () => {
         <div className="saloncard__menu">
           <Link to={`/pricelist/${salonId}`} className="saloncard__menu-button">Прайс-лист</Link>
           <button onClick={handleMoveToCalendar} className="saloncard__button" type="button">Расписание</button>
-          {/* <Link to={handleMoveToCalendar} className="saloncard__menu-button">Расписание</Link> */}
           <ToolTip showTooltip={reviews && reviews.length === 0} text={"Нет отзывов"} >
             <Link onClick={(event) => reviews && reviews.length === 0 && event.preventDefault()} to={`/reviews/${salonId}`} className={reviews && reviews.length === 0 ? "saloncard__menu-button inactive" : "saloncard__menu-button"}>Отзывы</Link>
           </ToolTip>

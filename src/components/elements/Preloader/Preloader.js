@@ -2,8 +2,8 @@ import "./Preloader.css";
 
 const Preloader = () => {
   return (
-    <div class="preloader">
-      <div class="preloader__item">
+    <div className="preloader">
+      <div className="preloader__item">
         <div>
           <div>
           </div>

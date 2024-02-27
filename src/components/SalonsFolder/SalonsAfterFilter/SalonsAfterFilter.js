@@ -1,12 +1,14 @@
 import './SalonsAfterFilter.css';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
 import Button from '../../elements/Button/Button';
 import React, { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../../context/CurrentUserContext';
+// import { CurrentSalonContext } from '../../../context/CurrentSalonContext';
 import Api from '../../../utils/Api';
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SalonsAfterFilter = () => {
+  const navigate = useNavigate();
   const currentUser = React.useContext(CurrentUserContext);
   const { t } = useTranslation();
   const location = useLocation(); // объект , где есть pathname и state  с нашими данными ,переданным по useNavigate
@@ -20,7 +22,8 @@ const SalonsAfterFilter = () => {
   });
 
   //--------------------------------------------------get salons after filter ----------------------------------
-  const [salonsAfterChooseProcedures, setSalonsAfterChooseProcedures] = useState([]); // это нао передать в другой компонент
+  const [salonsAfterChooseProcedures, setSalonsAfterChooseProcedures] = useState([]);
+  // console.log('нужный объект', salonsAfterChooseProcedures);// это надо передать в другой компонент
 
   async function getSalonsThatPerformTheSelectedProcedures(selectedProcedures) {
     try {
@@ -30,6 +33,8 @@ const SalonsAfterFilter = () => {
       return console.log(error);
     }
   }
+
+
   useEffect(() => {
     getSalonsThatPerformTheSelectedProcedures(finallyCategoriesAndUserIdObject)
   }, [])
@@ -39,6 +44,17 @@ const SalonsAfterFilter = () => {
     clientId: currentUser.clientId,
     selectedProcedures: matches
   }
+
+
+  // useEffect(() => {
+  //   if (salonsAfterChooseProcedures) {
+  //     navigate(`/appointmentcalendar/${salonId}`, { state: { salonId: salonsAfterChooseProcedures.salonId } });
+  //   }
+  // }, [salonsAfterChooseProcedures]);
+
+  // const handleMoveToCalendar = () => {
+  //   navigate(`/appointmentcalendar`, { state: { salonId: salonsAfterChooseProcedures.salonId } });
+  // }
 
   return (
     <div className='salonsafterfilter'>
@@ -54,6 +70,7 @@ const SalonsAfterFilter = () => {
           <button className='salonsafterfilter__sort-button salonsafterfilter__sort-button-right'>Все</button>
         </div>
         <div className="salonsafterfilter__container">
+
           {salonsAfterChooseProcedures.length > 0 ? (
             <ul className="salonsafterfilter__list">
               {salonsAfterChooseProcedures.map((salon) => (
@@ -62,10 +79,10 @@ const SalonsAfterFilter = () => {
             </ul>
           ) : <p className="salons__item notfound">Салонов в вашем регионе не найдено</p>}
         </div>
-        <Button type="button" buttonText="Продолжить" to="" />
+        {/* <Button onClick={handleMoveToCalendar} type="button" buttonText="Продолжить" /> */}
+        <Button type="button" buttonText="Продолжить" to="/appointmentcalendar" />
         <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>
-
     </div>
   );
 }

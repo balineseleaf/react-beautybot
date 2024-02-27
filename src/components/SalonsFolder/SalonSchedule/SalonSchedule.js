@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import './Calendar.css';
+import './SalonSchedule.css';
 import { useNavigate } from "react-router-dom";
 import Button from '../../elements/Button/Button';
 import { useTranslation } from 'react-i18next';
 import Api from '../../../utils/Api';
 import { useLocation } from 'react-router-dom';
+import { CurrentSalonContext } from '../../../context/CurrentSalonContext';
 
-const MyCalendar = () => {
+const SalonSchedule = () => {
+  // const salons = React.useContext(CurrentSalonContext);
+  // console.log('112', salons.salonId);
   const { t } = useTranslation();
   const [date, setDate] = useState(new Date());
   const navigate = useNavigate();
@@ -23,13 +26,6 @@ const MyCalendar = () => {
       'Content-Type': 'application/json',
     },
   });
-
-  useEffect(() => {
-    if (scheduleForDay && selectedDay) {
-      const localDate = new Date(selectedDay.getTime() - selectedDay.getTimezoneOffset() * 60000); // Преобразование в локальное время
-      navigate(`/schedule/${localDate.toISOString().split('T')[0]}`, { state: { salonSchedule: scheduleForDay } });
-    }
-  }, [selectedDay])
 
 
   // ----------------------------работа с компонентом Calendar------------------------
@@ -52,7 +48,6 @@ const MyCalendar = () => {
 
   //------------ работаем с полем schedule  чтобы он понимал дни недели--------------------
 
-
   const getScheduleForDay = (dayIndex) => {
     // Преобразуем дни недели для объекта Date, чтобы они совпадали с вашими индексами
     const salonSchedule = {
@@ -73,8 +68,8 @@ const MyCalendar = () => {
   const scheduleForDay = dayIndex !== null ? getScheduleForDay(dayIndex) : null;
 
 
-
   //------------------------------ закрашиваем свободные окошки зеленым-------------
+
   const getTileClassName = ({ date }) => {
     // Получаем день недели для выбранной даты
     const dayIndex = date.getDay();
@@ -87,13 +82,20 @@ const MyCalendar = () => {
     }
   };
 
+  useEffect(() => {
+    if (scheduleForDay && selectedDay) {
+      const localDate = new Date(selectedDay.getTime() - selectedDay.getTimezoneOffset() * 60000); // Преобразование в локальное время
+      navigate(`/schedule/${localDate.toISOString().split('T')[0]}`, { state: { salonSchedule: scheduleForDay } });
+    }
+  }, [selectedDay])
+
   return (
-    <div className="calendar">
-      <div className="calendar__container">
-        <h3 className="calendar__header">Расписание салона </h3>
-        <p className="calendar__hint">Для записи к мастеру, пожалуйста, нажмите кнопку "Новая запись" или перейдите в раздел "Цены".</p>
+    <div className="salonschedule">
+      <div className="salonschedule__container">
+        <h3 className="salonschedule__header">Расписание салона </h3>
+        <p className="salonschedule__hint">Для записи к мастеру, пожалуйста, нажмите кнопку "Новая запись" или перейдите в раздел "Цены".</p>
         <Calendar
-          className="calendar__component"
+          className="salonschedule__component"
           onChange={onChange}
           value={date}
           onClickDay={onClickDay}
@@ -105,4 +107,4 @@ const MyCalendar = () => {
   );
 }
 
-export default MyCalendar;
+export default SalonSchedule;

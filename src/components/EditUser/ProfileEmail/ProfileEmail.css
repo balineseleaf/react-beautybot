@@ -32,6 +32,7 @@
   justify-content: space-between;
   cursor: pointer;
   position: relative;
+  height: 70px;
 }
 
 .edit-container-email:hover:after {
