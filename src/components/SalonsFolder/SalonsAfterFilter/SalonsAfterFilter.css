@@ -1,5 +1,24 @@
 .salonsafterfilter {
   width: 560px;
+  margin: 0 auto;
+  height: var(--container-height);
+  background-color: #f8f8f8;
+}
+
+.salonsafterfilter__sort-block {
+  display: flex;
+  justify-content: flex-start;
+  width: 220px;
+}
+.salonsafterfilter__container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 190px;
+  width: 500px;
+  background-color: #f8f8f8;
+  border-radius: 20px;
 }
 
 .salonsafterfilter__button-container {
@@ -38,8 +57,8 @@
   width: 220px;
 }
 .salonsafterfilter__block {
-  background-color: #eaecee;
-  height: 654px;
+  background-color: #f8f8f8;
+  height: 309px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -50,10 +69,10 @@
 .salonsafterfilter__header {
   margin: 0;
   padding: 0;
-  font-weight: 600;
-  font-size: 27px;
+  font-weight: 300;
+  font-size: var(--header-fs);
   color: var(--header-color);
-  margin: 30px 0 0 0;
+  margin: 10px 0 0 0;
   text-align: center;
 }
 
@@ -61,7 +80,7 @@
   margin: 0;
   padding: 0;
   font-weight: 300;
-  font-size: 22px;
+  font-size: 19px;
   color: var(--header-color);
   margin: 20px 0 0 0;
   text-align: center;
@@ -73,43 +92,8 @@
   font-weight: 300;
   font-size: 19px;
   color: var(--header-color);
-  margin: 10px 0 0 0;
+  margin: 5px 0 0 0;
   text-align: center;
-}
-
-.salonsafterfilter__submit-button {
-  position: absolute;
-  text-align: center;
-  margin: 0 auto;
-  width: 250px;
-  bottom: 90px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #f8f8f8;
-  border: none;
-  background: #1c1c1c;
-  border-radius: 10px;
-  font-weight: 300;
-  font-size: 22px;
-  transition: 0.4s ease-in-out;
-  padding: 13px 0px;
-  text-decoration: none;
-  filter: drop-shadow(3px 3px 4px #1c1c1c);
-}
-
-.salonsafterfilter__submit-button:hover {
-  opacity: 0.7;
-}
-
-.salonsafterfilter__container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  height: 190px;
-  width: 300px;
-  background-color: #d0d0d0;
-  border-radius: 20px;
 }
 
 .salonsafterfilter__label {
@@ -147,4 +131,11 @@
   font-weight: 300;
   background-color: rgb(241, 120, 120);
   border-radius: 10px;
+}
+.salonsafterfilter__buttons-block {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
 }

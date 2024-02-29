@@ -3,7 +3,8 @@ import './Reviews.css';
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 import Api from '../../../utils/Api';
-import Button from '../../elements/Button/Button';
+import leftArrow from "../../../images/leftArrow.svg";
+import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
 
 const Reviews = () => {
   const { salonId } = useParams();
@@ -39,6 +40,7 @@ const Reviews = () => {
   };
 
   return (
+
     <div className="review">
       <div className="review__block">
         <h2 className="review__header">Отзывы</h2>
@@ -53,8 +55,8 @@ const Reviews = () => {
             </div>
           ))}
         </div>
-        <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>
+      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
     </div>
   );
 }

@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import './PriceList.css';
 import { useTranslation } from 'react-i18next';
-import Button from '../../elements/Button/Button';
 import Api from '../../../utils/Api';
 import Preloader from "../../elements/Preloader/Preloader";
+import leftArrow from "../../../images/leftArrow.svg";
+import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
 
 const Pricelist = () => {
   const { salonId } = useParams();
@@ -87,9 +88,10 @@ const Pricelist = () => {
           </div>
 
         </div>
-        <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>
-    </div>);
+      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
+    </div>
+  );
 }
 
 export default Pricelist;

@@ -1,16 +1,25 @@
 .header {
-  background-color: var(--block-color);
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 30px;
+  /* background-color: var(--block-color); */
+  background: url(../../../images/header.png);
+  object-fit: contain;
+  height: 230px;
+  width: 560px;
+  background-size: 100% 100%;
+  aspect-ratio: 16/9;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0 auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 .header__logo-box {
   width: 200px;
-  position: relative;
-  left: -22px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .main__account-link {
@@ -44,22 +53,14 @@
   top: 10px;
 }
 
-.header__link-to-profile {
-  width: 36px;
-  height: 36px;
-  border-radius: 50px;
-  align-self: center;
-  background-position: center;
-  background-image: url(../../../images/account.svg);
-  background-size: auto;
-  background-repeat: no-repeat;
-  background-color: #ff83dc;
-}
-
 .langbox {
   display: flex;
   width: 90px;
   flex-direction: row;
+  border-radius: 10px;
+  position: absolute;
+  left: 4%;
+  top: 4%;
 }
 
 .lang__button_eng {
@@ -67,7 +68,8 @@
   margin: 0;
   width: 48px;
   border: none;
-  height: 48px;
+  border-radius: 10px;
+  height: 40px;
   color: #7e7e80;
   font-size: 17px;
   background-color: white;
@@ -85,10 +87,11 @@
   padding: 0;
   margin: 0;
   width: 48px;
+  border-radius: 10px;
   font-size: 17px;
   color: #7e7e80;
   border: none;
-  height: 48px;
+  height: 40px;
   background-color: white;
   transition: 0.4s ease-out;
 }
@@ -129,4 +132,19 @@
 .lang__button_ru:hover {
   cursor: pointer;
   transition: 0.4s ease-out;
+}
+
+.header__link-to-profile {
+  width: 36px;
+  height: 36px;
+  border-radius: 50px;
+  align-self: center;
+  background-position: center;
+  background-image: url(../../../images/account.svg);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-color: #f8f8f8;
+  position: absolute;
+  right: 4%;
+  top: 4%;
 }

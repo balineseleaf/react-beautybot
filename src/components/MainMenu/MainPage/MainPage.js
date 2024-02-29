@@ -5,7 +5,12 @@ import Header from '../Header/Header';
 import MainButton from '../../elements/MainButton/MainButton';
 import Api from '../../../utils/Api';
 import { CurrentUserContext } from '../../../context/CurrentUserContext';
-import ToolTip from '../../elements/ToolTip/ToolTip';
+
+import newappointment from "../../../images/newappointment.png";
+import myappointments from "../../../images/myappointments.png";
+import aboutus from "../../../images/aboutus.png";
+import salonIcon from "../../../images/salons.png";
+import { Link } from 'react-router-dom';
 
 const MainPage = () => {
   const { t } = useTranslation();
@@ -36,18 +41,13 @@ const MainPage = () => {
 
   return (
     <div className='main'>
-      <Header />
       <div className="main__block">
-        <div className='main__buttons-container'>
-          <div className='main__central-button-block'>
-            <MainButton type="button" buttonText={t("NewAppointment")} to="/appointment" />
-          </div>
-          <div className='main__bottom-buttons-block'>
-            <MainButton disabled={salons.length === 0} type="button" buttonText={t("Salons")} to="/salons" />
-            <MainButton type="button" buttonText={t("MyNotes")} to="/mynotes" />
-            <MainButton type="button" buttonText={t("AboutUs")} to="/aboutus" />
-          </div>
-        </div>
+        <nav className='main__navbar'>
+          <MainButton src={newappointment} alt="новая запись" to="/" />
+          <MainButton src={salonIcon} alt="салоны" disabled={salons.length === 0} type="button" to="/salons" />
+          <MainButton src={myappointments} alt="мои записи" to="/mynotes" />
+          <MainButton src={aboutus} alt="о нас" to="/aboutus" />
+        </nav>
       </div>
     </div>
   );

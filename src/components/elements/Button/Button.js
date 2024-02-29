@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import './Button.css';
 
 const Button = (props) => {
-  const { buttonText, to, type } = props;
+  const { to, type, src } = props;
   return (
     <Link to={to} className="back-button-link">
       <button className="back-button" type={type}>
-        {buttonText}
+        <img className="arrow-image" src={src} alt="pink arrow" />
       </button>
     </Link>
   );

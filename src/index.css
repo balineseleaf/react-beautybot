@@ -8,11 +8,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--tg-theme-text-color);
   background: var(--tg-theme-bg-color);
-  font-size: 18px;
+  --header-fs: 21px;
   --header-color: #1c1c1c;
   --button-color: #1c1c1c;
   --container-color: grey;
   --block-color: #eaecee;
+  --background-color: #f8f8f8;
+  --container-height: 376px;
 
   /* --swiper-theme-color: #1c1c1c; */
 }

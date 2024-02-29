@@ -3,11 +3,13 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './SalonSchedule.css';
 import { useNavigate } from "react-router-dom";
-import Button from '../../elements/Button/Button';
 import { useTranslation } from 'react-i18next';
 import Api from '../../../utils/Api';
 import { useLocation } from 'react-router-dom';
 import { CurrentSalonContext } from '../../../context/CurrentSalonContext';
+import leftArrow from "../../../images/leftArrow.svg";
+import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
+
 
 const SalonSchedule = () => {
   // const salons = React.useContext(CurrentSalonContext);
@@ -93,7 +95,7 @@ const SalonSchedule = () => {
     <div className="salonschedule">
       <div className="salonschedule__container">
         <h3 className="salonschedule__header">Расписание салона </h3>
-        <p className="salonschedule__hint">Для записи к мастеру, пожалуйста, нажмите кнопку "Новая запись" или перейдите в раздел "Цены".</p>
+        {/* <p className="salonschedule__hint">Для записи к мастеру, пожалуйста, нажмите кнопку "Новая запись" или перейдите в раздел "Цены".</p> */}
         <Calendar
           className="salonschedule__component"
           onChange={onChange}
@@ -101,8 +103,8 @@ const SalonSchedule = () => {
           onClickDay={onClickDay}
           tileClassName={getTileClassName}
         />
-        <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>
+      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
     </div>
   );
 }

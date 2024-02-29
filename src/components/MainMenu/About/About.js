@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Api from '../../../utils/Api';
 import { useEffect, useState } from 'react';
 import Button from '../../elements/Button/Button';
+import { Link } from "react-router-dom";
 
 const About = () => {
   const [version, setVersion] = useState('');
@@ -33,11 +34,9 @@ const About = () => {
     <div className="aboutus">
       <div className="aboutus__block">
         <p className="aboutus__info">&#8520;{t("About")} <span>{version}</span>{t("About2")}</p>
-        <div className="aboutus__button-block">
-          <Button type="button" buttonText="Подробная инструкция" to="https://telegra.ph/Telegram-bot-dlya-zapisi-k-byuti-masteru-09-19" />
-          <Button type="button" buttonText={t("Back2")} to={-1} />
-        </div>
+        <Link className="aboutus__link" to="https://telegra.ph/Telegram-bot-dlya-zapisi-k-byuti-masteru-09-19" >Подробная инструкция</Link>
       </div>
+      <Button type="button" buttonText={t("Back2")} to={-1} />
     </div>
   );
 }

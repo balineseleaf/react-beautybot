@@ -14,6 +14,7 @@ import Reviews from './components/SalonsFolder/Reviews/Reviews';
 import PriceList from './components/SalonsFolder/PriceList/PriceList';
 import ScheduleDay from './components/SalonsFolder/ScheduleDay/ScheduleDay';
 import NewAppointment from './components/MainMenu/NewAppointment/NewAppointment';
+import Header from './components/MainMenu/Header/Header';
 import { useEffect, useState } from 'react';
 import { CurrentUserContext } from "./context/CurrentUserContext";
 import { CurrentSalonContext } from "./context/CurrentSalonContext";
@@ -95,14 +96,15 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <CurrentSalonContext.Provider value={salons}>
         <div className='App'>
+          <Header />
+          <MainPage />
           <Routes>
-            <Route path="/" element={<MainPage />} />
+            {/* <Route path="/" element={<MainPage />} /> */}
+            <Route path="/" element={<NewAppointment />} />
 
             <Route path="/mynotes" element={<MyAppointments />} />
 
-            <Route path="/preprofile" element={<UserProfile allRegions={regions} onEditProfile={updateUserInfo} />} />
-
-            <Route path="/appointment" element={<NewAppointment />} />
+            <Route path="/profile" element={<UserProfile allRegions={regions} onEditProfile={updateUserInfo} />} />
 
             <Route path="/appointment/:categoryId" element={<Categories />} />
 

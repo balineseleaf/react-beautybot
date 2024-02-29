@@ -26,10 +26,10 @@ const ScheduleDay = () => {
             <p>Расписание отсутствует</p>
           )}
         </div>
-        <Button type="button" buttonText={t("Back2")} to={-1} />
       </div>
-
-    </div>);
+      <Button type="button" buttonText={t("Back2")} to={-1} />
+    </div>
+  );
 }
 
 export default ScheduleDay;

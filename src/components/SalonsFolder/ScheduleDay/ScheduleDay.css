@@ -1,12 +1,14 @@
 .scheduleday {
   width: 560px;
+  margin: 0 auto;
+  height: var(--container-height);
+  background-color: #f8f8f8;
 }
 
 .scheduleday__block {
-  background-color: #eaecee;
+  background-color: #f8f8f8;
   display: flex;
   flex-direction: column;
-  height: 654px;
   box-sizing: border-box;
   position: relative;
 }
@@ -16,12 +18,11 @@
   margin-top: 20px;
   padding: 0;
   display: flex;
-  flex-direction: column;
   gap: 8px;
-  background-color: #eaecee;
-  width: 200px;
+  flex-wrap: wrap;
+  background-color: #f8f8f8;
   overflow-y: auto;
-  height: 420px;
+  justify-content: center;
 }
 
 .scheduleday__hours-item {

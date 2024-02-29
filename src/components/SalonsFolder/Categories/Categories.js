@@ -3,7 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Api from '../../../utils/Api';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../elements/Button/Button';
+import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
+import RightArrowButton from '../../elements/RightArrowButton/RightArrowButton';
+import leftArrow from "../../../images/leftArrow.svg";
+import rightArrow from "../../../images/rightArrow.svg";
+
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -118,13 +122,11 @@ const Categories = () => {
             ))}
           </div>
         </div>
-        <div className='categories__buttons-block'>
-          <button onClick={handleSaveCategoriesClick} disabled={!isAnyCheckboxSelected} type="submit" className='categories__submit-button'>Продолжить</button>
-          {/* <Button onClick={handleSaveCategoriesClick} type="submit" buttonText="Продолжить" /> */}
-          <Button type="button" buttonText={t("Back2")} to={-1} />
-        </div>
       </div>
-
+      <div className='categories__buttons-block'>
+        <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
+        <RightArrowButton src={rightArrow} alt="стрелка вправо" onClick={handleSaveCategoriesClick} disabled={!isAnyCheckboxSelected} type="submit" />
+      </div>
     </div>
   );
 }

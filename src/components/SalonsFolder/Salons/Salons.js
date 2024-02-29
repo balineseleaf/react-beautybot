@@ -82,7 +82,6 @@ const Salons = () => {
             ) : <p className="salons__item notfound">Салонов в вашем регионе не найдено</p>
           )}
         </div>
-        <Button type="button" buttonText={t("Back2")} to="/" />
       </div>
     </div >
   );

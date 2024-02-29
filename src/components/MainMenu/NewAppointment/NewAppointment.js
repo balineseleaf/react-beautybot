@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import './NewAppointment.css';
-import Select from 'react-select';
+import { Link } from "react-router-dom";
 import Api from '../../../utils/Api';
-import Button from '../../elements/Button/Button';
 
 const NewAppointment = () => {
   const { t } = useTranslation();
 
   const [categories, setCategories] = useState([]);
   const [categoriesForSelector, setCategoriesForSelector] = useState([]);
-  const [procedureNames, setProcedureNames] = useState([]);
-  const [selectedCategoryId, setSelectedCategoryId] = useState('');
+  // const [procedureNames, setProcedureNames] = useState([]);
+  // const [selectedCategoryId, setSelectedCategoryId] = useState('');
 
   //-----------------api-------------------------------------------------------------
 
@@ -38,44 +37,33 @@ const NewAppointment = () => {
     getAllCategories();
   }, [t]);
 
-
-  const getAllProcedureNames = async (categoryId) => {
-    try {
-      const procedureNames = await api.getAllProcedureNamesFromCategory(categoryId);
-      setProcedureNames(procedureNames);
-    } catch (error) {
-      console.error("Error fetching salon info:", error);
-    }
+  const handleCategoryClick = async (categoryId) => {
+    console.log("Category clicked:", categoryId);
   };
-
-
-  // -----------------------для Selector компонента------------------
-
-  const [currentCategory, setCurrentCategory] = useState('');
-  const getValue = () => {
-    return currentCategory ? categoriesForSelector.find(c => c.value === currentCategory) : ''
-  }
-  const onChange = async (newValue) => {
-    const categoryId = newValue.value;
-    setCurrentCategory(categoryId);
-    setSelectedCategoryId(categoryId);
-    await getAllProcedureNames(categoryId);
-  }
-
 
   return (
     <div className="newappointment">
       <div className="newappointment__block">
         <div>
-          <h1 className="newappointment__header">Выберите категорию:</h1>
-          <Select placeholder="Выберите категорию" className="newappointment__selector" value={getValue()} onChange={onChange} options={categoriesForSelector} />
-        </div>
-        <div className="newappointment__buttonsblock">
-          <Button type="button" buttonText="Продолжить" to={`/appointment/${selectedCategoryId}`} />
-          <Button type="button" buttonText={t("Back2")} to="/" />
+          <div className="newappointment__header-container">
+            <h1 className="newappointment__header">Выберите категорию:</h1>
+          </div>
+          {/* <Select placeholder="Выберите категорию" className="newappointment__selector" value={getValue()} onChange={onChange} options={categoriesForSelector} />
+           */}
+          <ul className="newappointment__category-list">
+            {categories.map(category => (
+              <li className="newappointment__category-item" key={category.categoryId}>
+                <Link onClick={() => handleCategoryClick(category.categoryId)} to={`/appointment/${category.categoryId}`} className="newappointment__category-link">
+                  {t(category.categoryName)}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </div>);
+      {/* <RightArrowButton alt="стрелка вправо" src={rightArrow} type="button" to={`/appointment/${selectedCategoryId}`} /> */}
+    </div>
+  );
 }
 
 export default NewAppointment;

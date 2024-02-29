@@ -2,7 +2,7 @@ import './Header.css';
 import { ReactComponent as Logo } from '../../../images/O-logo.svg';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { i18n } = useTranslation();
@@ -21,7 +21,7 @@ const Header = () => {
         <Logo className="header__logo" />
         <h1 className="header__text">koshko</h1>
       </div>
-      <Link to='/preprofile' >
+      <Link to='/profile' >
         <div className="header__link-to-profile" alt="Иконка профиля"></div>
       </Link>
     </div>);

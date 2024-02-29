@@ -3,11 +3,12 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from "react";
-import Button from '../../elements/Button/Button';
 import { isBefore } from 'date-fns';
 import Api from "../../../utils/Api";
 import { useNavigate, useLocation } from "react-router-dom";
 import { CurrentSalonContext } from '../../../context/CurrentSalonContext';
+import leftArrow from "../../../images/leftArrow.svg";
+import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
 
 const AppointmentCalendar = () => {
   // const salons = React.useContext(CurrentSalonContext);
@@ -91,7 +92,7 @@ const AppointmentCalendar = () => {
           tileDisabled={tileDisabled}
         // onClickDay={onClickDay}
         />
-        <Button type="button" buttonText={t("Back2")} to={-1} />
+        <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
       </div>
     </div>
   );

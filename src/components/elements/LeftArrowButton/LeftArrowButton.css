@@ -1,4 +1,4 @@
-.back-button-link {
+.left-arrow-button {
   margin: 0 auto;
   padding: 0;
   border: none;
@@ -8,7 +8,7 @@
   position: absolute;
   background-color: #f8f8f8;
   bottom: 10px;
-  right: 10px;
+  left: 10px;
 }
 
 .back-button-link:hover {
