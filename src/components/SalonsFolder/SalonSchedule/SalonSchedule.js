@@ -96,15 +96,18 @@ const SalonSchedule = () => {
       <div className="salonschedule__header-container">
         <h3 className="salonschedule__header">Расписание салона </h3>
       </div>
+      <div className="salonschedule__calendar-container">
+        <Calendar
+          className="salonschedule__component"
+          onChange={onChange}
+          value={date}
+          onClickDay={onClickDay}
+          tileClassName={getTileClassName}
+        />
+      </div>
 
       {/* <p className="salonschedule__hint">Для записи к мастеру, пожалуйста, нажмите кнопку "Новая запись" или перейдите в раздел "Цены".</p> */}
-      <Calendar
-        className="salonschedule__component"
-        onChange={onChange}
-        value={date}
-        onClickDay={onClickDay}
-        tileClassName={getTileClassName}
-      />
+
       <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
     </div>
   );

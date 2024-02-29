@@ -68,7 +68,7 @@ const ProfilePhone = ({ onEditProfile }) => {
         </div>
       ) : (
         <div className="edit-container-phone" onMouseEnter={handleMouseEnterPhone} onMouseLeave={handleMouseLeavePhone}>
-          <p id="userPhone" className="phone_paragraph">{t("YourNumber")}{currentUser.clientPhone}</p>
+          <p id="userPhone" className="paragraph-phonenumber">{t("YourNumber")}{currentUser.clientPhone}</p>
           {isHoveredPhone && (
             <EditButton onClick={handleEditClickPhone} />
           )}

@@ -16,12 +16,14 @@ import ScheduleDay from './components/SalonsFolder/ScheduleDay/ScheduleDay';
 import NewAppointment from './components/MainMenu/NewAppointment/NewAppointment';
 import Header from './components/MainMenu/Header/Header';
 import { useEffect, useState } from 'react';
+import { useLocation } from "react-router-dom";
 import { CurrentUserContext } from "./context/CurrentUserContext";
 import { CurrentSalonContext } from "./context/CurrentSalonContext";
 import AppointmentCalendar from './components/SalonsFolder/AppointmentCalendar/AppointmentCalendar';
 import AppointmentConfirmation from './components/SalonsFolder/AppointmentConfirmation/AppointmentConfirmation';
 
 function App() {
+  const location = useLocation();
   const [currentUser, setCurrentUser] = useState({});
   const [currentSalon, setCurrentSalon] = useState({});
   const [regions, setRegions] = useState([]);
@@ -96,39 +98,43 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <CurrentSalonContext.Provider value={salons}>
         <div className='App'>
-          <Header />
-          <MainPage />
-          <Routes>
-            {/* <Route path="/" element={<MainPage />} /> */}
-            <Route path="/" element={<NewAppointment />} />
+          {['/profile'].includes(location.pathname) ? <UserProfile allRegions={regions} onEditProfile={updateUserInfo} /> : (
+            <>
+              <Header />
+              <MainPage />
+              <Routes>
+                {/* <Route path="/" element={<MainPage />} /> */}
+                <Route path="/" element={<NewAppointment />} />
 
-            <Route path="/mynotes" element={<MyAppointments />} />
+                <Route path="/mynotes" element={<MyAppointments />} />
 
-            <Route path="/profile" element={<UserProfile allRegions={regions} onEditProfile={updateUserInfo} />} />
+                {/* <Route path="/profile" element={<UserProfile allRegions={regions} onEditProfile={updateUserInfo} />} /> */}
 
-            <Route path="/appointment/:categoryId" element={<Categories />} />
+                <Route path="/appointment/:categoryId" element={<Categories />} />
 
-            <Route path="/salons" element={<Salons />} />
+                <Route path="/salons" element={<Salons />} />
 
-            <Route path="/salonsafterfilter" element={<SalonsAfterFilter />} />
+                <Route path="/salonsafterfilter" element={<SalonsAfterFilter />} />
 
-            <Route path="/calendar/:salonId" element={<SalonSchedule />} />
+                <Route path="/calendar/:salonId" element={<SalonSchedule />} />
 
-            <Route path="/schedule/:scheduleday" element={<ScheduleDay />} />
+                <Route path="/schedule/:scheduleday" element={<ScheduleDay />} />
 
-            {/* <Route path="/appointmentcalendar" element={<AppointmentCalendar />} /> */}
-            <Route path="/appointmentcalendar" element={<AppointmentCalendar />} />
+                {/* <Route path="/appointmentcalendar" element={<AppointmentCalendar />} /> */}
+                <Route path="/appointmentcalendar" element={<AppointmentCalendar />} />
 
-            <Route path="/appointmentconfirmation" element={<AppointmentConfirmation />} />
+                <Route path="/appointmentconfirmation" element={<AppointmentConfirmation />} />
 
-            <Route path="/reviews/:salonId" element={<Reviews />} />
+                <Route path="/reviews/:salonId" element={<Reviews />} />
 
-            <Route path="/pricelist/:salonId" element={<PriceList />} />
+                <Route path="/pricelist/:salonId" element={<PriceList />} />
 
-            <Route path="/salons/:salonId" element={<SalonCard />} />
+                <Route path="/salons/:salonId" element={<SalonCard />} />
 
-            <Route path="/aboutus" element={<About />} />
-          </Routes>
+                <Route path="/aboutus" element={<About />} />
+              </Routes>
+            </>
+          )}
         </div>
       </CurrentSalonContext.Provider>
     </CurrentUserContext.Provider >

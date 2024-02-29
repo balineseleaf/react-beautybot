@@ -1,7 +1,8 @@
-.phone_paragraph {
+.paragraph-phonenumber {
   margin: 0;
   margin-top: 25px;
   color: black;
+  font-size: 19px;
 }
 
 .container-input-phone {
@@ -15,6 +16,7 @@
   padding-bottom: 5px;
   width: 100%;
 }
+
 .editing-input-phone:focus::after {
   content: '';
   display: block;
@@ -26,6 +28,7 @@
   display: block;
   border-bottom: 2px solid red;
 }
+
 .error-message {
   padding: 0;
   margin: 0;
@@ -39,7 +42,7 @@
   justify-content: space-between;
   cursor: pointer;
   position: relative;
-  height: 70px;
+  height: 90px;
 }
 
 .edit-container-phone:hover:after {

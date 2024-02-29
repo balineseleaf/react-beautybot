@@ -13,7 +13,7 @@
   justify-content: space-between;
   cursor: pointer;
   position: relative;
-  height: 70px;
+  height: 90px;
 }
 
 .edit-container-gender:hover:after {
@@ -26,8 +26,9 @@
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 
-.gender_paragraph {
+.paragraph-gender {
   margin: 0;
+  font-size: 19px;
   margin-top: 25px;
   color: black;
 }

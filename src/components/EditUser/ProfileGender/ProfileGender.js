@@ -74,7 +74,7 @@ const ProfileGender = ({ onEditProfile }) => {
         </>
       ) : (
         <div className="edit-container-gender" onMouseEnter={handleMouseEnterGender} onMouseLeave={handleMouseLeaveGender}>
-          <p id="userGender" className="gender_paragraph">{t("YourGender")}{currentUser.clientGender}</p>
+          <p id="userGender" className="paragraph-gender">{t("YourGender")}{currentUser.clientGender}</p>
           {isHoveredGender && (
             <EditButton onClick={handleEditClickGender} />
           )}

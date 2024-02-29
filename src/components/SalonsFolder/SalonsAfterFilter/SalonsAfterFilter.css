@@ -5,6 +5,7 @@
   background-color: #f8f8f8;
   border-radius: 10px;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+  position: relative;
 }
 
 .salonsafterfilter__sort-block {
@@ -13,7 +14,7 @@
   width: 220px;
 }
 .salonsafterfilter__container {
-  margin-top: 80px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -72,7 +73,6 @@
   background-color: #ff83dc;
   height: 50px;
   width: 100%;
-  position: absolute;
   left: 0;
   top: 0;
   display: flex;
@@ -131,7 +131,7 @@
 .salonsafterfilter__list {
   margin: 0 auto;
   padding: 0;
-  margin-top: 90px;
+  margin-top: 30px;
   width: 400px;
 }
 .notfound {

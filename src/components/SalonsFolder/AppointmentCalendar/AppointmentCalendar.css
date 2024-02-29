@@ -20,7 +20,6 @@
   background-color: #ff83dc;
   height: 50px;
   width: 100%;
-  position: absolute;
   left: 0;
   top: 0;
   display: flex;
@@ -44,7 +43,7 @@
   margin-top: 10px;
   border-radius: 20px;
   overflow: hidden;
-  margin-top: 65px;
+  margin-top: 25px;
 }
 
 /* .avaliable-day {

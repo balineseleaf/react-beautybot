@@ -1,38 +1,26 @@
-.id_paragraph {
-  margin: 0;
-  margin-top: 25px;
-  color: black;
-}
-
 .userprofile {
-  opacity: 1;
-  width: 100%;
-  display: flex;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  transition: visibility 0.4s, opacity 0.4s linear;
+  box-sizing: border-box;
+  width: 560px;
+  margin: 0 auto;
+  /* height: 654px; */
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 .userprofile__block {
   margin: 0 auto;
-  width: 560px;
-  height: 309px;
   position: relative;
   background: var(--block-color);
-  box-shadow: 10px 10px 80px rgba(115, 113, 224, 0.3);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  height: 100%;
+  height: 654px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .userprofile__form {
   margin: 0 auto;
-  margin-top: 30px;
   box-sizing: border-box;
   padding-left: 35px;
   padding-right: 35px;
@@ -45,19 +33,50 @@
   display: flex;
   flex-direction: column;
   border: none;
-  box-sizing: border-box;
+  margin-top: 30px;
 }
 
-.userprofile__header {
+/* .userprofile__header {
   margin: 0;
   padding: 0;
-  margin-top: 10px;
+  margin-top: 30px;
   text-align: center;
   font-weight: 900;
   font-size: 24px;
   line-height: 1.21;
   color: #000000;
+} */
+.userprofile__header-container {
+  background-color: #ff83dc;
+  height: 50px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
+
+.userprofile__header {
+  font-weight: 300;
+  font-size: 27px;
+  color: var(--header-color);
+  width: 100%;
+  text-align: center;
+  background-color: #ff83dc;
+  margin: 0;
+  padding: 0;
+}
+
 .form-edit-profile {
   background-color: #000000;
+}
+
+.paragraph-id {
+  margin: 0;
+  font-size: 19px;
+  margin-top: 25px;
+  color: black;
 }

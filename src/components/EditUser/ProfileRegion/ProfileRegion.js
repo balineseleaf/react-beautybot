@@ -102,7 +102,7 @@ const ProfileRegion = ({ onEditProfile, allRegions }) => {
         </div>
       ) : (
         <div className="edit-container-region" onMouseEnter={handleMouseEnterRegion} onMouseLeave={handleMouseLeaveRegion}>
-          <p id="userRegion" className="region_paragraph">Регион: {currentRegion ? currentRegion : regionNameForUserInfo}</p>
+          <p id="userRegion" className="paragraph-region">Регион: {currentRegion ? currentRegion : regionNameForUserInfo}</p>
           {isHoveredRegion && (
             <EditButton onClick={handleEditClickRegion} />
           )}

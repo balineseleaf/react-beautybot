@@ -60,14 +60,13 @@ const ProfileEmail = ({ onEditProfile }) => {
           <input placeholder="Введите ваш email" name="email" className={`${!isValidEmail ? 'editing-input-email invalid-email' : 'editing-input-email'}`} type="email" value={inputValueEmail} onChange={handleEmailChange} />
           {(!isValidEmail && inputValueEmail.trim() !== '') && < p className="error-message">Некорректный email адрес</p>}
           <div className="profile__block-buttons">
-            {/* <button onClick={handleSaveClickEmail} disabled={!isValidEmail || inputValueEmail.trim() === ''}>Сохранить</button> */}
             <SaveButton onClick={handleSaveClickEmail} disabled={!isValidEmail || inputValueEmail.trim() === ''} />
             <CancelButton onClick={handleCancelClickEmail} />
           </div>
         </div>
       ) : (
         <div className="edit-container-email" onMouseEnter={handleMouseEnterEmail} onMouseLeave={handleMouseLeaveEmail}>
-          <p id="userEmail" className="email_paragraph">{t("YourEmail")}{currentUser.clientEmail}</p>
+          <p id="userEmail" className="paragraph-email ">{t("YourEmail")}{currentUser.clientEmail}</p>
           {isHoveredEmail && (
             <EditButton onClick={handleEditClickEmail} />
           )}

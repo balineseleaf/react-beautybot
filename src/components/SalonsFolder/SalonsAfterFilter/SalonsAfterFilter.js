@@ -86,11 +86,11 @@ const SalonsAfterFilter = () => {
           ) : <p className="salons__item notfound">Салонов в вашем регионе не найдено</p>}
         </div>
       </div>
-      <div className='salonsafterfilter__buttons-block'>
-        <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
-        <RightArrowButton src={rightArrow} alt="стрелка вправо" type="submit" to="/appointmentcalendar" />
-        {/* <Button onClick={handleMoveToCalendar} type="button" buttonText="Продолжить" /> */}
-      </div>
+
+      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
+      <RightArrowButton src={rightArrow} alt="стрелка вправо" type="submit" to="/appointmentcalendar" />
+      {/* <Button onClick={handleMoveToCalendar} type="button" buttonText="Продолжить" /> */}
+
     </div>
   );
 }

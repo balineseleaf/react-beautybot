@@ -68,7 +68,7 @@ const ProfileName = ({ onEditProfile }) => {
         </div>
       ) : (
         <div className="edit-container-name" onMouseEnter={handleMouseEnterName} onMouseLeave={handleMouseLeaveName}>
-          <p id="userName" className="name_paragraph">{t("YourName")}{currentUser.clientName}</p>
+          <p id="userName" className="paragraph-name">{t("YourName")}{currentUser.clientName}</p>
           {isHoveredName && (
             <EditButton onClick={handleEditClickName} />
           )}

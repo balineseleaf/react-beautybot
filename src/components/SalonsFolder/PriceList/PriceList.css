@@ -36,7 +36,6 @@
   background-color: #ff83dc;
   height: 50px;
   width: 100%;
-  position: absolute;
   left: 0;
   top: 0;
   display: flex;
@@ -61,7 +60,7 @@
 }
 
 .pricelist__container {
-  margin-top: 65px;
+  margin-top: 25px;
 }
 
 .pricelist__procedure-info {

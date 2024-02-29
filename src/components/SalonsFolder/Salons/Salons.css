@@ -25,7 +25,6 @@
   background-color: #ff83dc;
   height: 50px;
   width: 100%;
-  position: absolute;
   left: 0;
   top: 0;
   display: flex;
@@ -48,7 +47,7 @@
   width: 400px;
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
+  margin-top: 20px;
 }
 
 .salons__list {

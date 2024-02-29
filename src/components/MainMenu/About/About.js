@@ -33,10 +33,12 @@ const About = () => {
   return (
     <div className="aboutus">
       <div className="aboutus__block">
-        <p className="aboutus__info">&#8520;{t("About")} <span>{version}</span>{t("About2")}</p>
+        <div className="aboutus__header-container">
+          <h1 className="aboutus__header">Информация о приложении:</h1>
+        </div>
+        <p className="aboutus__info">Версия <span>{version}</span>{t("About2")}</p>
         <Link className="aboutus__link" to="https://telegra.ph/Telegram-bot-dlya-zapisi-k-byuti-masteru-09-19" >Подробная инструкция</Link>
       </div>
-      <Button type="button" buttonText={t("Back2")} to={-1} />
     </div>
   );
 }

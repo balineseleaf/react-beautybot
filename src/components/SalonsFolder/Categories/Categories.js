@@ -123,10 +123,8 @@ const Categories = () => {
           ))}
         </div>
       </div>
-      <div className='categories__buttons-block'>
-        <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
-        <RightArrowButton src={rightArrow} alt="стрелка вправо" onClick={handleSaveCategoriesClick} disabled={!isAnyCheckboxSelected} type="submit" />
-      </div>
+      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
+      <RightArrowButton src={rightArrow} alt="стрелка вправо" onClick={handleSaveCategoriesClick} disabled={!isAnyCheckboxSelected} type="submit" />
     </div>
   );
 }

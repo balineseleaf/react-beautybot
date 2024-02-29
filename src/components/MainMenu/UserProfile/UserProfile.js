@@ -7,7 +7,8 @@ import ProfileEmail from "../../EditUser/ProfileEmail/ProfileEmail";
 import ProfilePhone from "../../EditUser/ProfilePhone/ProfilePhone";
 import ProfileGender from "../../EditUser/ProfileGender/ProfileGender";
 import ProfileRegion from "../../EditUser/ProfileRegion/ProfileRegion";
-import Button from '../../elements/Button/Button';
+import leftArrow from "../../../images/leftArrow.svg";
+import LeftArrowButton from "../../elements/LeftArrowButton/LeftArrowButton";
 
 const UserProfile = ({ onEditProfile, allRegions }) => {
   const currentUser = React.useContext(CurrentUserContext);
@@ -17,10 +18,12 @@ const UserProfile = ({ onEditProfile, allRegions }) => {
   return (
     <div className="userprofile">
       <div className="userprofile__block">
+        <div className="userprofile__header-container">
+          <h3 className="userprofile__header">{t("MyData")}</h3>
+        </div>
         <form autoComplete="off" name="form-edit-profile" className="userprofile__form">
-          <h2 className="userprofile__header">{t("MyData")}</h2>
           <div className="userprofile__fieldset">
-            <p className="id_paragraph">{t("YourID")}{currentUser.clientId}</p>
+            <p className="paragraph-id">{t("YourID")}{currentUser.clientId}</p>
             <ProfileName onEditProfile={onEditProfile} />
             <ProfilePhone onEditProfile={onEditProfile} />
             <ProfileGender onEditProfile={onEditProfile} />
@@ -28,7 +31,7 @@ const UserProfile = ({ onEditProfile, allRegions }) => {
             <ProfileRegion onEditProfile={onEditProfile} allRegions={allRegions} />
           </div>
         </form>
-        <Button type="button" buttonText={t("Back2")} to="/" />
+        <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to="/" />
       </div>
     </div>
   );
