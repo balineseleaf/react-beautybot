@@ -84,7 +84,10 @@ const AppointmentCalendar = () => {
   return (
     <div className="appointmentcalendar">
       <div className="appointmentcalendar__container">
-        <h3 className="appointmentcalendar__header">Выберите свободную дату:</h3>
+        <div className="appointmentcalendar__header-container">
+
+          <h3 className="appointmentcalendar__header">Выберите свободную дату:</h3>
+        </div>
         <Calendar
           className="appointmentcalendar__component"
           onChange={onChange}

@@ -3,6 +3,8 @@
   margin: 0 auto;
   height: var(--container-height);
   background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 }
 .categories__link {
   color: #1c1c1c;
@@ -18,14 +20,27 @@
   justify-content: space-around;
   position: relative;
 }
+.categories__header-container {
+  background-color: #ff83dc;
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .categories__header {
   margin: 0;
   padding: 0;
-  font-weight: 600;
-  font-size: 20px;
+  font-weight: 300;
+  font-size: var(--header-fs);
   color: var(--header-color);
+  width: 100%;
   text-align: center;
+  background-color: #ff83dc;
 }
 
 .categories__submit-button {
@@ -45,14 +60,6 @@
 .categories__submit-button:disabled {
   color: #1c1c1c;
   cursor: not-allowed;
-}
-
-.categories__container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  /* overflow-y: auto;
-  height: 220px; */
 }
 
 .categories__label {
@@ -83,4 +90,5 @@ input[type='checkbox'] {
   flex-direction: column;
   overflow-y: auto;
   height: 220px;
+  margin-top: 80px;
 }

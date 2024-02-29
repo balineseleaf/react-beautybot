@@ -43,7 +43,9 @@ const Reviews = () => {
 
     <div className="review">
       <div className="review__block">
-        <h2 className="review__header">Отзывы</h2>
+        <div className="review__header-container">
+          <h3 className="review__header">Отзывы</h3>
+        </div>
         <div className="reviews__list">
           {reviews && reviews.map((review, index) => (
             <div key={index} className="review-card">

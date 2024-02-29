@@ -3,6 +3,8 @@
   margin: 0 auto;
   height: var(--container-height);
   background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 .appointmentcalendar__container {
@@ -14,14 +16,27 @@
   position: relative;
 }
 
+.appointmentcalendar__header-container {
+  background-color: #ff83dc;
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .appointmentcalendar__header {
   margin: 0;
+  padding: 0;
   font-weight: 300;
   font-size: var(--header-fs);
-  color: #000000;
-  margin: 10px 0 0 0;
-  text-align: center;
   color: var(--header-color);
+  width: 100%;
+  text-align: center;
+  background-color: #ff83dc;
 }
 
 .appointmentcalendar__component {
@@ -29,6 +44,7 @@
   margin-top: 10px;
   border-radius: 20px;
   overflow: hidden;
+  margin-top: 65px;
 }
 
 /* .avaliable-day {

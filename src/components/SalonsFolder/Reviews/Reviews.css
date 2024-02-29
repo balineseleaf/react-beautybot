@@ -4,11 +4,30 @@
   height: var(--container-height);
   background-color: #f8f8f8;
   position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.review__header-container {
+  background-color: #ff83dc;
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .review__header {
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
   font-size: var(--header-fs);
+  color: var(--header-color);
+  margin: 10px 0 0 0;
+  text-align: center;
 }
 
 .review__block {
@@ -25,6 +44,7 @@
   overflow-y: auto;
   height: 250px;
   width: 75%;
+  margin-top: 60px;
 }
 
 .review-card {

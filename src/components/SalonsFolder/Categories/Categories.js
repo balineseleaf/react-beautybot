@@ -112,15 +112,15 @@ const Categories = () => {
   return (
     <div className='categories'>
       <div className="categories__block">
-        <div className="categories__container">
+        <div className='categories__header-container'>
           <h3 className="categories__header">Выберите одну или несколько желаемых услуг:</h3>
-          <div className='categories__checkbox'>
-            {proceduresForCheckBox.map((procedure, index) => (
-              <label className='categories__label' key={index}>
-                <input type="checkbox" name={procedure} checked={checkboxes[`procedure${index + 1}`]} onChange={handleCheckboxChange} value={procedure}
-                  className='categories__input' /> {t(procedure)} </label>
-            ))}
-          </div>
+        </div>
+        <div className='categories__checkbox'>
+          {proceduresForCheckBox.map((procedure, index) => (
+            <label className='categories__label' key={index}>
+              <input type="checkbox" name={procedure} checked={checkboxes[`procedure${index + 1}`]} onChange={handleCheckboxChange} value={procedure}
+                className='categories__input' /> {t(procedure)} </label>
+          ))}
         </div>
       </div>
       <div className='categories__buttons-block'>

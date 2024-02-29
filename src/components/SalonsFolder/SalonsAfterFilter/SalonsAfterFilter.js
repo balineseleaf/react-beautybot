@@ -64,9 +64,11 @@ const SalonsAfterFilter = () => {
   return (
     <div className='salonsafterfilter'>
       <div className="salonsafterfilter__block">
-        <h3 className="salonsafterfilter__header">Выберите салон или мастера:</h3>
+        <div className="salonsafterfilter__header-container">
+          <h3 className="salonsafterfilter__header">Выберите салон или мастера:</h3>
+        </div>
         {/* <p className="salonsafterfilter__hint">Название (цена/длительность услуги) (рейтинг)</p> */}
-        <p className="salonsafterfilter__text">Вы можете сортировать мастеров по цене и рейтингу, а также выбирать нескольких мастеров.</p>
+        {/* <p className="salonsafterfilter__text">Вы можете сортировать мастеров по цене и рейтингу, а также выбирать нескольких мастеров.</p> */}
         {/* <div className='salonsafterfilter__button-container'>
           <div className='salonsafterfilter__sort-block'>
             <button className='salonsafterfilter__sort-button'>По стоимости</button>

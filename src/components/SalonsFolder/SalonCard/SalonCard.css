@@ -4,6 +4,8 @@
   height: var(--container-height);
   background-color: #f8f8f8;
   position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 .saloncard__block {
@@ -14,15 +16,27 @@
   justify-content: space-around;
 }
 
+.saloncard__header-container {
+  background-color: #ff83dc;
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .saloncard__header {
   margin: 0;
-  font-weight: 600;
-  font-size: 25px;
-  color: #000000;
-  padding: 0 0 10px 0;
-  margin-top: 40px;
-  text-align: center;
+  padding: 0;
+  font-weight: 300;
+  font-size: var(--header-fs);
   color: var(--header-color);
+  width: 100%;
+  text-align: center;
+  background-color: #ff83dc;
 }
 
 .saloncard__list {
@@ -30,6 +44,7 @@
   margin: 0;
   margin: 0 auto;
   display: flex;
+  margin-top: 65px;
   flex-direction: column;
   justify-content: flex-start;
 }

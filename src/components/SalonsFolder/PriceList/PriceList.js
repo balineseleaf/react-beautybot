@@ -74,19 +74,18 @@ const Pricelist = () => {
   return (
     <div className="pricelist">
       <div className="pricelist__block">
-        <div>
+        <div className="pricelist__header-container">
           <h3 className="pricelist__header"><span className="pricelist__bold-header">Процедуры и цены салона:</span> {salonInfo && salonInfo.salonName}</h3>
-          <div className="pricelist__container">
-            {isLoading ? (<Preloader />) : (
-              Array.from(procedurePrices.entries()).map(([procedureId, { price, duration }]) => (
-                <div key={procedureId} className="pricelist__procedure">
-                  <p className="pricelist__procedure-info">{procedureMapFromIdToName[procedureId]} ({price}р / {duration}ч)</p>
-                </div>
-              ))
-            )}
-            {!isLoading && procedurePrices.size === 0 && <p className="salons__item notfound">Салонов в вашем регионе не найдено</p>}
-          </div>
-
+        </div>
+        <div className="pricelist__container">
+          {isLoading ? (<Preloader />) : (
+            Array.from(procedurePrices.entries()).map(([procedureId, { price, duration }]) => (
+              <div key={procedureId} className="pricelist__procedure">
+                <p className="pricelist__procedure-info">{procedureMapFromIdToName[procedureId]} ({price}р / {duration}ч)</p>
+              </div>
+            ))
+          )}
+          {!isLoading && procedurePrices.size === 0 && <p className="salons__item notfound">Салонов в вашем регионе не найдено</p>}
         </div>
       </div>
       <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />

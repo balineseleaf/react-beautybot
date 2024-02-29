@@ -44,22 +44,21 @@ const NewAppointment = () => {
   return (
     <div className="newappointment">
       <div className="newappointment__block">
-        <div>
-          <div className="newappointment__header-container">
-            <h1 className="newappointment__header">Выберите категорию:</h1>
-          </div>
-          {/* <Select placeholder="Выберите категорию" className="newappointment__selector" value={getValue()} onChange={onChange} options={categoriesForSelector} />
-           */}
-          <ul className="newappointment__category-list">
-            {categories.map(category => (
-              <li className="newappointment__category-item" key={category.categoryId}>
-                <Link onClick={() => handleCategoryClick(category.categoryId)} to={`/appointment/${category.categoryId}`} className="newappointment__category-link">
-                  {t(category.categoryName)}
-                </Link>
-              </li>
-            ))}
-          </ul>
+
+        <div className="newappointment__header-container">
+          <h1 className="newappointment__header">Выберите категорию:</h1>
         </div>
+        {/* <Select placeholder="Выберите категорию" className="newappointment__selector" value={getValue()} onChange={onChange} options={categoriesForSelector} />
+           */}
+        <ul className="newappointment__category-list">
+          {categories.map(category => (
+            <li className="newappointment__category-item" key={category.categoryId}>
+              <Link onClick={() => handleCategoryClick(category.categoryId)} to={`/appointment/${category.categoryId}`} className="newappointment__category-link">
+                {t(category.categoryName)}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
       {/* <RightArrowButton alt="стрелка вправо" src={rightArrow} type="button" to={`/appointment/${selectedCategoryId}`} /> */}
     </div>

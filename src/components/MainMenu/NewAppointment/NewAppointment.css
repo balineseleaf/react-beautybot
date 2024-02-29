@@ -23,6 +23,9 @@
   position: absolute;
   left: 0;
   top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .newappointment__header {
@@ -32,6 +35,8 @@
   width: 100%;
   text-align: center;
   background-color: #ff83dc;
+  margin: 0;
+  padding: 0;
 }
 
 .newappointment__selector {
@@ -66,6 +71,5 @@
   color: #1c1c1c;
   text-decoration: none;
   font-size: 23px;
-
   padding: 7px 15px 7px 15px;
 }
