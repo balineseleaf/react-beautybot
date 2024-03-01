@@ -41,6 +41,7 @@
   cursor: pointer;
   position: relative;
   height: 90px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .edit-container-name:hover:after {

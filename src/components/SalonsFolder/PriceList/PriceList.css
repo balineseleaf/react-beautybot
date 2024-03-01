@@ -6,6 +6,7 @@
   position: relative;
   border-radius: 10px;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 }
 
 .pricelist__block {
@@ -22,14 +23,11 @@
   margin: 0 auto;
   padding: 0;
   border-radius: 10px;
-  text-align: center;
-  padding: 8px;
-  font-size: 20px;
+  text-align: left;
+  font-size: 21px;
   margin-top: 20px;
   width: 350px;
   background-color: #f8f8f8;
-  border: 2px solid #1c1c1c;
-  filter: drop-shadow(5px 5px 4px #918f8f);
 }
 
 .pricelist__header-container {
@@ -46,7 +44,7 @@
 .pricelist__header {
   margin: 0;
   padding: 0;
-  font-weight: 300;
+  font-weight: 600;
   font-size: var(--header-fs);
   color: var(--header-color);
   width: 100%;
@@ -55,15 +53,17 @@
 }
 
 .pricelist__bold-header {
-  font-size: 23px;
+  font-size: 20px;
   font-weight: 300;
 }
 
 .pricelist__container {
   margin-top: 25px;
+  width: 400px;
 }
 
 .pricelist__procedure-info {
   margin: 0;
   padding: 0;
+  border-bottom: 2px solid #eee;
 }

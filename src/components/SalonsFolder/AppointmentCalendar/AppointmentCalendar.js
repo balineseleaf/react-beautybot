@@ -85,7 +85,6 @@ const AppointmentCalendar = () => {
     <div className="appointmentcalendar">
       <div className="appointmentcalendar__container">
         <div className="appointmentcalendar__header-container">
-
           <h3 className="appointmentcalendar__header">Выберите свободную дату:</h3>
         </div>
         <Calendar

@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './MainPage.css';
 import { useTranslation } from 'react-i18next';
-import Header from '../Header/Header';
 import MainButton from '../../elements/MainButton/MainButton';
 import Api from '../../../utils/Api';
 import { CurrentUserContext } from '../../../context/CurrentUserContext';
-
 import newappointment from "../../../images/newappointment.png";
-import myappointments from "../../../images/myappointments.png";
-import aboutus from "../../../images/aboutus.png";
-import salonIcon from "../../../images/salons.png";
-import { Link } from 'react-router-dom';
+import myappointments from "../../../images/myAppoint.png";
+import info from "../../../images/Information.png";
+import salonIcon from "../../../images/salon.png";
 
 const MainPage = () => {
   const { t } = useTranslation();
@@ -46,7 +43,7 @@ const MainPage = () => {
           <MainButton src={newappointment} alt="новая запись" to="/" />
           <MainButton src={salonIcon} alt="салоны" disabled={salons.length === 0} type="button" to="/salons" />
           <MainButton src={myappointments} alt="мои записи" to="/mynotes" />
-          <MainButton src={aboutus} alt="о нас" to="/aboutus" />
+          <MainButton src={info} alt="о нас" to="/aboutus" />
         </nav>
       </div>
     </div>

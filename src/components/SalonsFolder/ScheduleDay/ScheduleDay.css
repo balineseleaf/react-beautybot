@@ -3,6 +3,7 @@
   margin: 0 auto;
   height: var(--container-height);
   background-color: #f8f8f8;
+  /* overflow: hidden; */
 }
 
 .scheduleday__block {

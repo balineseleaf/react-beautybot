@@ -117,9 +117,17 @@ const Categories = () => {
         </div>
         <div className='categories__checkbox'>
           {proceduresForCheckBox.map((procedure, index) => (
-            <label className='categories__label' key={index}>
-              <input type="checkbox" name={procedure} checked={checkboxes[`procedure${index + 1}`]} onChange={handleCheckboxChange} value={procedure}
-                className='categories__input' /> {t(procedure)} </label>
+            <label className='categories__checkbox-label' key={index}>
+              <input
+                type="checkbox"
+                name={procedure}
+                checked={checkboxes[`procedure${index + 1}`]}
+                onChange={handleCheckboxChange}
+                value={procedure}
+                className='categories__checkbox-input' />
+              {t(procedure)}
+              <span className='categories__checkbox-span'>&nbsp;</span>
+            </label>
           ))}
         </div>
       </div>

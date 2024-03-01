@@ -6,6 +6,7 @@
   position: relative;
   border-radius: 10px;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 }
 
 .review__header-container {
@@ -42,6 +43,10 @@
   overflow-y: auto;
   height: 250px;
   width: 75%;
+  margin-left: 85px;
+}
+.reviews__list::-webkit-scrollbar {
+  width: 0 !important;
 }
 
 .review-card {
