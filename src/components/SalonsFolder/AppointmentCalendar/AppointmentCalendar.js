@@ -6,8 +6,6 @@ import React, { useState, useEffect } from "react";
 import { isBefore } from 'date-fns';
 import Api from "../../../utils/Api";
 import { useNavigate, useLocation } from "react-router-dom";
-import { CurrentSalonContext } from '../../../context/CurrentSalonContext';
-import leftArrow from "../../../images/leftArrow.svg";
 import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
 
 const AppointmentCalendar = () => {
@@ -105,7 +103,7 @@ const AppointmentCalendar = () => {
           tileDisabled={tileDisabled}
           onClickDay={onClickDay}
         />
-        <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
+        <LeftArrowButton type="button" to={-1} />
       </div>
     </div>
   );

@@ -7,9 +7,6 @@ import Api from '../../../utils/Api';
 import { useNavigate } from "react-router-dom";
 import ToolTip from "../../elements/ToolTip/ToolTip";
 import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
-import RightArrowButton from '../../elements/RightArrowButton/RightArrowButton';
-import leftArrow from "../../../images/leftArrow.svg";
-import rightArrow from "../../../images/rightArrow.svg";
 
 const SalonCard = () => {
   const { salonId } = useParams();
@@ -79,7 +76,7 @@ const SalonCard = () => {
           </ToolTip>
         </div>
       </div>
-      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
+      <LeftArrowButton type="button" to={-1} />
     </div>
   );
 }

@@ -3,7 +3,6 @@ import './Reviews.css';
 import { useTranslation } from 'react-i18next';
 import { useParams } from "react-router-dom";
 import Api from '../../../utils/Api';
-import leftArrow from "../../../images/leftArrow.svg";
 import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
 
 const Reviews = () => {
@@ -58,7 +57,7 @@ const Reviews = () => {
           ))}
         </div>
       </div>
-      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
+      <LeftArrowButton type="button" to={-1} />
     </div>
   );
 }

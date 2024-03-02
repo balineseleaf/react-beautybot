@@ -5,9 +5,6 @@ import Api from '../../../utils/Api';
 import { useNavigate } from 'react-router-dom';
 import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
 import RightArrowButton from '../../elements/RightArrowButton/RightArrowButton';
-import leftArrow from "../../../images/leftArrow.svg";
-import rightArrow from "../../../images/rightArrow.svg";
-
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -131,8 +128,9 @@ const Categories = () => {
           ))}
         </div>
       </div>
-      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
-      <RightArrowButton src={rightArrow} alt="стрелка вправо" onClick={handleSaveCategoriesClick} disabled={!isAnyCheckboxSelected} type="submit" />
+      <LeftArrowButton type="button" to={-1} />
+      {/* <RightArrowButton src={rightArrow} alt="стрелка вправо" onClick={handleSaveCategoriesClick} disabled={!isAnyCheckboxSelected} type="submit" /> */}
+      <RightArrowButton onClick={handleSaveCategoriesClick} disabled={!isAnyCheckboxSelected} type="submit" />
     </div>
   );
 }

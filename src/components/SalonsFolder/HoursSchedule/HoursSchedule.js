@@ -1,10 +1,8 @@
 import React from "react";
 import './HoursSchedule.css';
 import { useTranslation } from 'react-i18next';
-import Button from '../../elements/Button/Button';
 import { useLocation } from "react-router-dom";
 import LeftArrowButton from "../../elements/LeftArrowButton/LeftArrowButton";
-import leftArrow from "../../../images/leftArrow.svg";
 
 const ScheduleDay = () => {
   const location = useLocation(); // объект , где есть pathname и state  с нашими данными ,переданным по useNavigate
@@ -31,7 +29,7 @@ const ScheduleDay = () => {
           )}
         </div>
       </div>
-      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
+      <LeftArrowButton type="button" to={-1} />
     </div>
   );
 }

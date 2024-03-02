@@ -6,14 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import Api from '../../../utils/Api';
 import { useLocation } from 'react-router-dom';
-import { CurrentSalonContext } from '../../../context/CurrentSalonContext';
 import leftArrow from "../../../images/leftArrow.svg";
 import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
 
 
 const SalonSchedule = () => {
-  // const salons = React.useContext(CurrentSalonContext);
-  // console.log('112', salons.salonId);
   const { t } = useTranslation();
   const [date, setDate] = useState(new Date());
   const navigate = useNavigate();
@@ -112,7 +109,7 @@ const SalonSchedule = () => {
         />
       </div>
       {/* <p className="salonschedule__hint">Для записи к мастеру, пожалуйста, нажмите кнопку "Новая запись" или перейдите в раздел "Цены".</p> */}
-      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
+      <LeftArrowButton type="button" to={-1} />
     </div>
   );
 }

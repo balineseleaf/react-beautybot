@@ -4,7 +4,6 @@ import './PriceList.css';
 import { useTranslation } from 'react-i18next';
 import Api from '../../../utils/Api';
 import Preloader from "../../elements/Preloader/Preloader";
-import leftArrow from "../../../images/leftArrow.svg";
 import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
 
 const Pricelist = () => {
@@ -88,7 +87,7 @@ const Pricelist = () => {
           {!isLoading && procedurePrices.size === 0 && <p className="salons__item notfound">Салонов в вашем регионе не найдено</p>}
         </div>
       </div>
-      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
+      <LeftArrowButton type="button" to={-1} />
     </div>
   );
 }
