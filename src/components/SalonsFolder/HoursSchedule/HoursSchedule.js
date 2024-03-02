@@ -1,8 +1,10 @@
 import React from "react";
-import './ScheduleDay.css';
+import './HoursSchedule.css';
 import { useTranslation } from 'react-i18next';
 import Button from '../../elements/Button/Button';
 import { useLocation } from "react-router-dom";
+import LeftArrowButton from "../../elements/LeftArrowButton/LeftArrowButton";
+import leftArrow from "../../../images/leftArrow.svg";
 
 const ScheduleDay = () => {
   const location = useLocation(); // объект , где есть pathname и state  с нашими данными ,переданным по useNavigate
@@ -14,7 +16,9 @@ const ScheduleDay = () => {
   return (
     <div className="scheduleday">
       <div className="scheduleday__block">
-        <h3 className="scheduleday__header"> Выберите подходящее время:</h3>
+        <div className="scheduleday__header-container">
+          <h3 className="scheduleday__header"> Выберите подходящее время:</h3>
+        </div>
         <div className="scheduleday__container">
           {sortedSalonSchedule.length > 0 ? (
             <ul className="scheduleday__hours-list">
@@ -27,7 +31,7 @@ const ScheduleDay = () => {
           )}
         </div>
       </div>
-      <Button type="button" buttonText={t("Back2")} to={-1} />
+      <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
     </div>
   );
 }

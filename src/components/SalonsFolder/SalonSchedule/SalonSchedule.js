@@ -29,6 +29,17 @@ const SalonSchedule = () => {
     },
   });
 
+  useEffect(() => {
+    const getSalonInfo = async function () {
+      try {
+        const salonInfo = await api.getSalonInfo(salonId);
+        setSalonInfo(salonInfo);
+      } catch (error) {
+        console.error("Error fetching salon info:", error);
+      }
+    }
+    getSalonInfo();
+  }, [])
 
   // ----------------------------работа с компонентом Calendar------------------------
 
@@ -37,15 +48,8 @@ const SalonSchedule = () => {
   };
 
   const onClickDay = async (value) => {
-    try {
-      const salonInfo = await api.getSalonInfo(salonId);
-      setSelectedDay(value);
-      setSalonInfo(salonInfo);
-    } catch (error) {
-      console.error("Error fetching salon info:", error);
-    }
+    setSelectedDay(value);
   };
-
 
 
   //------------ работаем с полем schedule  чтобы он понимал дни недели--------------------
@@ -74,13 +78,15 @@ const SalonSchedule = () => {
 
   const getTileClassName = ({ date }) => {
     // Получаем день недели для выбранной даты
-    const dayIndex = date.getDay();
-
+    let dayIndex = date.getDay();
+    if (dayIndex === 0) {
+      dayIndex = 7;
+    }
     // Проверяем, есть ли расписание для выбранного дня
     if (salonInfo && salonInfo.schedule && salonInfo.schedule[dayIndex]) {
-      return 'not-avaliable';
-    } else {
       return 'avaliable';
+    } else {
+      return 'not-avaliable';
     }
   };
 
@@ -105,9 +111,7 @@ const SalonSchedule = () => {
           tileClassName={getTileClassName}
         />
       </div>
-
       {/* <p className="salonschedule__hint">Для записи к мастеру, пожалуйста, нажмите кнопку "Новая запись" или перейдите в раздел "Цены".</p> */}
-
       <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
     </div>
   );

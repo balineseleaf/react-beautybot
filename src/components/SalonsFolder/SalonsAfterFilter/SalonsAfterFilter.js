@@ -1,6 +1,6 @@
 import './SalonsAfterFilter.css';
 import { useTranslation } from 'react-i18next';
-import Button from '../../elements/Button/Button';
+
 import React, { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../../../context/CurrentUserContext';
 // import { CurrentSalonContext } from '../../../context/CurrentSalonContext';
@@ -27,12 +27,12 @@ const SalonsAfterFilter = () => {
   });
 
   //--------------------------------------------------get salons after filter ----------------------------------
-  const [salonsAfterChooseProcedures, setSalonsAfterChooseProcedures] = useState([]);
-  // console.log('нужный объект', salonsAfterChooseProcedures);// это надо передать в другой компонент
+  const [salonsAfterChooseProcedures, setSalonsAfterChooseProcedures] = useState([]);// это надо передать в другой компонент
 
   async function getSalonsThatPerformTheSelectedProcedures(selectedProcedures) {
     try {
       const salonsInfo = await api.getSalonsForSelectedProcedures(selectedProcedures);
+      console.log('q', salonsInfo)
       setSalonsAfterChooseProcedures(salonsInfo);
     } catch (error) {
       return console.log(error);
@@ -51,11 +51,12 @@ const SalonsAfterFilter = () => {
   }
 
 
-  // useEffect(() => {
-  //   if (salonsAfterChooseProcedures) {
-  //     navigate(`/appointmentcalendar/${salonId}`, { state: { salonId: salonsAfterChooseProcedures.salonId } });
-  //   }
-  // }, [salonsAfterChooseProcedures]);
+  useEffect(() => {
+    if (salonsAfterChooseProcedures.length > 0) {
+      localStorage.setItem('salonId', JSON.stringify(salonsAfterChooseProcedures));
+      //navigate(`/appointmentcalendar/${salonId}`, { state: { salonId: salonsAfterChooseProcedures.salonId } });
+    }
+  }, [salonsAfterChooseProcedures]);
 
   // const handleMoveToCalendar = () => {
   //   navigate(`/appointmentcalendar`, { state: { salonId: salonsAfterChooseProcedures.salonId } });
@@ -67,15 +68,6 @@ const SalonsAfterFilter = () => {
         <div className="salonsafterfilter__header-container">
           <h3 className="salonsafterfilter__header">Выберите салон или мастера:</h3>
         </div>
-        {/* <p className="salonsafterfilter__hint">Название (цена/длительность услуги) (рейтинг)</p> */}
-        {/* <p className="salonsafterfilter__text">Вы можете сортировать мастеров по цене и рейтингу, а также выбирать нескольких мастеров.</p> */}
-        {/* <div className='salonsafterfilter__button-container'>
-          <div className='salonsafterfilter__sort-block'>
-            <button className='salonsafterfilter__sort-button'>По стоимости</button>
-            <button className='salonsafterfilter__sort-button'>По рейтингу</button>
-          </div>
-          <button className='salonsafterfilter__sort-button salonsafterfilter__sort-button-right'>Все</button>
-        </div> */}
         <div className="salonsafterfilter__container">
           {salonsAfterChooseProcedures.length > 0 ? (
             <ul className="salonsafterfilter__list">

@@ -12,7 +12,7 @@ import SalonsAfterFilter from './components/SalonsFolder/SalonsAfterFilter/Salon
 import Categories from './components/SalonsFolder/Categories/Categories';
 import Reviews from './components/SalonsFolder/Reviews/Reviews';
 import PriceList from './components/SalonsFolder/PriceList/PriceList';
-import ScheduleDay from './components/SalonsFolder/ScheduleDay/ScheduleDay';
+import HoursSchedule from './components/SalonsFolder/HoursSchedule/HoursSchedule';
 import NewAppointment from './components/MainMenu/NewAppointment/NewAppointment';
 import Header from './components/MainMenu/Header/Header';
 import { useEffect, useState } from 'react';
@@ -103,12 +103,9 @@ function App() {
               <Header />
               <MainPage />
               <Routes>
-                {/* <Route path="/" element={<MainPage />} /> */}
                 <Route path="/" element={<NewAppointment />} />
 
                 <Route path="/mynotes" element={<MyAppointments />} />
-
-                {/* <Route path="/profile" element={<UserProfile allRegions={regions} onEditProfile={updateUserInfo} />} /> */}
 
                 <Route path="/appointment/:categoryId" element={<Categories />} />
 
@@ -118,9 +115,8 @@ function App() {
 
                 <Route path="/calendar/:salonId" element={<SalonSchedule />} />
 
-                <Route path="/schedule/:scheduleday" element={<ScheduleDay />} />
+                <Route path="/schedule/:scheduleday" element={<HoursSchedule />} />
 
-                {/* <Route path="/appointmentcalendar" element={<AppointmentCalendar />} /> */}
                 <Route path="/appointmentcalendar" element={<AppointmentCalendar />} />
 
                 <Route path="/appointmentconfirmation" element={<AppointmentConfirmation />} />

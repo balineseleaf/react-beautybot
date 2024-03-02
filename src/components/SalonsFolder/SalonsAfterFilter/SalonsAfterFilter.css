@@ -14,6 +14,7 @@
   justify-content: flex-start;
   width: 220px;
 }
+
 .salonsafterfilter__container {
   margin-top: 15px;
   display: flex;
@@ -60,6 +61,7 @@
   justify-content: flex-start;
   width: 220px;
 }
+
 .salonsafterfilter__block {
   background-color: #f8f8f8;
   height: 309px;
@@ -135,6 +137,7 @@
   margin-top: 30px;
   width: 400px;
 }
+
 .notfound {
   margin-top: 20px;
   font-size: 22px;
@@ -142,6 +145,7 @@
   background-color: rgb(241, 120, 120);
   border-radius: 10px;
 }
+
 .salonsafterfilter__buttons-block {
   display: flex;
   position: relative;

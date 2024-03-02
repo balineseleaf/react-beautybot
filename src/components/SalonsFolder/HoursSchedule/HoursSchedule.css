@@ -3,7 +3,10 @@
   margin: 0 auto;
   height: var(--container-height);
   background-color: #f8f8f8;
-  /* overflow: hidden; */
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 }
 
 .scheduleday__block {
@@ -36,14 +39,28 @@
   text-align: center;
 }
 
-.scheduleday__header {
-  padding: 0;
-  margin: 0;
-  margin-top: 10px;
-  text-align: center;
-  font-size: 23px;
-  font-weight: 300;
+.scheduleday__header-container {
+  background-color: #ff83dc;
+  height: 50px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.scheduleday__header {
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
+  font-size: var(--header-fs);
+  color: var(--header-color);
+  width: 100%;
+  text-align: center;
+  background-color: #ff83dc;
+}
+
 .scheduleday__container {
-  margin-top: 20px;
+  margin-top: 25px;
 }

@@ -46,15 +46,19 @@
   border-radius: 20px;
   overflow: hidden;
 }
+
 .salonschedule__calendar-container {
   margin-top: 25px;
 }
+
 /* .avaliable-day {
   background-color: #ffaaaa;
 }
+
 .unavailable-day {
   background-color: #318a34;
 } */
+
 .avaliable {
   background-color: #93ec96;
 }

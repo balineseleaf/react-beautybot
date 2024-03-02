@@ -11,17 +11,12 @@ import leftArrow from "../../../images/leftArrow.svg";
 import LeftArrowButton from '../../elements/LeftArrowButton/LeftArrowButton';
 
 const AppointmentCalendar = () => {
-  // const salons = React.useContext(CurrentSalonContext);
-  // console.log('1', salons.salonId);
-
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [selectedDay, setSelectedDay] = useState(null);
   const [date, setDate] = useState(new Date());
-  const [salonInfo, setSalonInfo] = useState(null);
+  const [salonInfo, setSalonInfo] = useState([]);
   const location = useLocation(); // объект , где есть pathname и state  с нашими данными ,переданным по useNavigate
-  // const { salonId } = location.state;
-  // console.log(location);
 
   const api = new Api({
     url: 'http://localhost:5000',
@@ -31,32 +26,54 @@ const AppointmentCalendar = () => {
   });
 
   useEffect(() => {
-    if (scheduleForDay && selectedDay) {
+    const salons = JSON.parse(localStorage.getItem('salonId'));
+    const getSalonInfo = async function () {
+      try {
+        const avaliableSalon = [];
+        for (const salon of salons) {
+          const salonInfo = await api.getSalonInfo(salon.salonId);
+          avaliableSalon.push(salonInfo);
+        }
+        setSalonInfo(avaliableSalon);
+      } catch (error) {
+        console.error("Error fetching salon info:", error);
+      }
+    }
+    getSalonInfo();
+  }, [])
+
+
+  useEffect(() => {
+    // Получаем расписание для выбранного дня
+    if (selectedDay) {
+      const dayIndex = selectedDay ? selectedDay.getDay() : null; // 1, 2, 3, 4, 5, 6, 7
+      const scheduleForDay = dayIndex !== null ? getScheduleForDay(dayIndex) : null;
+      if (scheduleForDay.length === 0) {
+        return
+      }
       const localDate = new Date(selectedDay.getTime() - selectedDay.getTimezoneOffset() * 60000); // Преобразование в локальное время
       navigate(`/schedule/${localDate.toISOString().split('T')[0]}`, { state: { salonSchedule: scheduleForDay } });
     }
   }, [selectedDay])
 
-  // ------------ работаем с полем schedule  чтобы он понимал дни недели--------------------
 
-  const getScheduleForDay = (dayIndex) => {
+  const getScheduleForDay = (dayIndex) => { // возвращаем часы для выбранного дня
     // Преобразуем дни недели для объекта Date, чтобы они совпадали с вашими индексами
-    const salonSchedule = {
-      1: salonInfo && salonInfo.schedule[1],
-      2: salonInfo && salonInfo.schedule[2],
-      3: salonInfo && salonInfo.schedule[3],
-      4: salonInfo && salonInfo.schedule[4],
-      5: salonInfo && salonInfo.schedule[5],
-      6: salonInfo && salonInfo.schedule[6],
-      7: salonInfo && salonInfo.schedule[7],
-    };
-    return salonSchedule[dayIndex];
+    if (dayIndex === 0) {
+      dayIndex = 7;
+    }
+    const salonSchedule = [];
+    for (const salon of salonInfo) {
+      const salonScheduleHours = salon.schedule[dayIndex];
+      for (const scheduleHour of salonScheduleHours) {
+        if (!salonSchedule.includes(scheduleHour)) {
+          salonSchedule.push(scheduleHour)
+        }
+      }
+    }
+    return salonSchedule;
   };
 
-  // Получаем день недели для выбранной даты
-  const dayIndex = selectedDay ? selectedDay.getDay() : null; // 1, 2, 3, 4, 5, 6, 7
-  // Получаем расписание для выбранного дня
-  const scheduleForDay = dayIndex !== null ? getScheduleForDay(dayIndex) : null;
 
   // // ----------------------------работа с компонентом Calendar------------------------
 
@@ -64,15 +81,9 @@ const AppointmentCalendar = () => {
     setDate(newDate);
   };
 
-  // const onClickDay = async (value) => {
-  //   try {
-  //     const salonInfo = await api.getSalonInfo(salonId);
-  //     setSelectedDay(value);
-  //     setSalonInfo(salonInfo);
-  //   } catch (error) {
-  //     console.error("Error fetching salon info:", error);
-  //   }
-  // };
+  const onClickDay = async (value) => {
+    setSelectedDay(value);
+  };
 
   const tileDisabled = ({ date, view }) => {
     if (view !== 'month') {
@@ -92,7 +103,7 @@ const AppointmentCalendar = () => {
           onChange={onChange}
           value={date}
           tileDisabled={tileDisabled}
-        // onClickDay={onClickDay}
+          onClickDay={onClickDay}
         />
         <LeftArrowButton alt="стрелка влево" type="button" src={leftArrow} to={-1} />
       </div>
